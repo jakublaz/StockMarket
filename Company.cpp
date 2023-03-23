@@ -21,3 +21,35 @@ void Company::add_transaction(Transaction* transaction) {
 void Company::remove_transaction(Transaction* transaction) {
     transactions.remove(transaction);
 }
+
+string Company::GetName() {
+	return this->name;
+}
+
+double Company::GetMoney() {
+	return money;
+}
+
+int Company::GetShares() {
+	return shares;
+}
+
+int Company::GetPhoneNumber() {
+	return phoneNumber;
+}
+
+void Company::SetMoney(double amount) {
+	this->money = amount;
+}
+
+void Company::SetShares(int shares) {
+	this->shares = shares;
+}
+
+void Company::SetName(string name) {
+	this->name = name;
+}
+
+void Company::SetPhoneNumber(int number) {
+	this->phoneNumber = number;
+}

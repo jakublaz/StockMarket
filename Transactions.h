@@ -11,9 +11,18 @@ class StockMarket;
 
 class Transaction {
 public:
-    Transaction(Customer* customer, Company* company, StockMarket* stock_market);
-
+    /*Transaction();*/
+    Transaction(int ID, int amount, int shares,Customer* customer, Company* company, StockMarket* stock_market);
+    int GetID();
+    int GetAmount();
+    int GetShares();
+    void SetID(int ID);
+    void SetAmount(int amount);
+    void SetShares(int shares);
 private:
+    int ID;
+    int amount;
+    int shares;
     Customer* customer;
     Company* company;
     StockMarket* stock_market;
