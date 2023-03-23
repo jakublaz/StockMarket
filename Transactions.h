@@ -4,6 +4,9 @@
 #include "Customer.h"
 #include "Company.h"
 #include "StockMarket.h"
+#include<string>
+
+using namespace std;
 
 class Customer;
 class Company;
@@ -23,6 +26,7 @@ private:
     int ID;
     int amount;
     int shares;
+    string type;
     Customer* customer;
     Company* company;
     StockMarket* stock_market;

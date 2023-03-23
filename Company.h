@@ -14,10 +14,10 @@ class Company {
 public:
     Company();
     ~Company();
-    void add_customer(Customer* customer);
-    void remove_customer(Customer* customer);
-    void add_transaction(Transaction* transaction);
-    void remove_transaction(Transaction* transaction);
+    void Add_Customer(Customer* customer);
+    void Remove_Customer(Customer* customer);
+    void Add_Transaction(Transaction* transaction);
+    void Remove_Transaction(Transaction* transaction);
     double GetMoney();
     int GetShares();
     string GetName();

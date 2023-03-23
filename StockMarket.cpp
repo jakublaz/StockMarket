@@ -1,25 +1,18 @@
 #include "StockMarket.h"
 
-void StockMarket::add_customer(Customer* customer) {
-    customers.push_back(customer);
+void StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
 }
 
-void StockMarket::remove_customer(Customer* customer) {
+void StockMarket::Remove_Customer(Customer* customer) {
     customers.remove(customer);
 }
 
-void StockMarket::add_company(Company* company) {
-    companies.push_back(company);
+void StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
 }
 
-void StockMarket::remove_company(Company* company) {
+void StockMarket::Remove_Company(Company* company) {
     companies.remove(company);
 }
 
-void StockMarket::add_transaction(Transaction* transaction) {
-    transactions.push_back(transaction);
-}
-
-void StockMarket::remove_transaction(Transaction* transaction) {
-    transactions.remove(transaction);
+void StockMarket::Add_Transaction(Customer* customer, int amountShares, Company* company, string type) {
 }

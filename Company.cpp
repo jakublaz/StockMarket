@@ -1,24 +1,25 @@
 #include "Company.h"
 
-Company::Company() {}
+Company::Company() {
+}
 
 Company::~Company(){
 
 }
 
-void Company::add_customer(Customer* customer) {
+void Company::Add_Customer(Customer* customer) {
     customers.push_back(customer);
 }
 
-void Company::remove_customer(Customer* customer) {
+void Company::Remove_Customer(Customer* customer) {
     customers.remove(customer);
 }
 
-void Company::add_transaction(Transaction* transaction) {
+void Company::Add_Transaction(Transaction* transaction) {
     transactions.push_back(transaction);
 }
 
-void Company::remove_transaction(Transaction* transaction) {
+void Company::Remove_Transaction(Transaction* transaction) {
     transactions.remove(transaction);
 }
 
