@@ -16,35 +16,124 @@ class StockMarket;
 
 class Company {
 public:
+    /*
+    * Default constructor
+    */
     Company();
+    /*
+    * Copy constructor, using name, phoneNumber, and not nessesarry money and shares
+    */
     Company(string name, int phoneNumber, double money = 0, int shares = 0);
+    /*
+    * Default deconstructor
+    */
     ~Company();
+    /*
+    * Function to add customer to list customers
+    */
     void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
+    /*
+    * Function to remove customer from list customers
+    */
     void Remove_Customer(string name, string surname);
+    /*
+    * Function to add transaction to list transactions
+    */
     void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+    /*
+    * Function to add stockmarket to list stockmarkets
+    */
     void Add_StockMarket(string name, int ID);
+    /*
+    * Function to remove stockmarket from list stockmarkets
+    */
     void Remove_StockMarket(string name, int ID);
+    /*
+    * Getter for money
+    */
     double Get_Money();
+    /*
+    * Getter for shares
+    */
     int Get_Shares();
+    /*
+    * Getter for name
+    */
     string Get_Name();
+    /*
+    * Getter for phoneNumber
+    */
     int Get_PhoneNumber();
+    /*
+    * Setter for money
+    * It modifies earlier value
+    */
     void Set_Money(double amount);
+    /*
+    * Setter for shares
+    * It modifies earlier value
+    */
     void Set_Shares(int shares);
+    /*
+    * Setter for name
+    * It modifies earlier value
+    */
     void Set_Name(string name);
+    /*
+    * Setter for phoneNumber
+    * It modifies earlier value
+    */
     void Set_PhoneNumber(int number);
-    void Update_CostShare();        //used in Update_Money();
-    void Update_Money(int shares, double money, string type);    //the price must be higher then the costShare if we buy, lower if we sell
-    bool Ok_Price(int shares,double money,string type); //used in Update_Money();
+    /*
+    * Function that calculates how much should share cost, it divides money by shares
+    * used in Update_Money();
+    */
+    void Update_CostShare();        
+    /*
+    * This function updates the the money this company is worth
+    * the price must be higher then the costShare if we buy, lower if we sell
+    */
+    void Update_Money(int shares, double money, string type);
+    /*
+    * Checks if the price is ok for the restrictions
+    * return -1 if price is too low
+    * return 0 if price is ok
+    * return 1 if price is too high
+    */
+    int Ok_Price(int shares,double money,string type); //used in Update_Money();
 
 private:
+    /*
+    * name of the customer
+    */
     string name;
+    /*
+    * phonenumber of the customer
+    */
     int phoneNumber;
+    /*
+    * amount of money company is worth
+    */
     double money;
+    /*
+    * amount of shares, that are being distributed
+    */
     int shares;
+    /*
+    * amount of money you have to pay for 1 share
+    */
     double costShare;
-
+    /*
+    * list of customers that invested in your company
+    */
     list<Customer*> customers;
+    /*
+    * list of transactions that you took part in
+    */
     list<Transaction*> transactions;
+    /*
+    * list of stock markets you are in
+    */
     list<StockMarket*> stockmarkets;
 
     //this functions will be used to check if certain objects are not on the lists

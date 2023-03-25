@@ -87,7 +87,7 @@ void Company::Update_Money(int shares, double money, string type)
 	Update_CostShare();
 }
 
-bool Company::Ok_Price(int shares,double money, string type)
+int Company::Ok_Price(int shares,double money, string type)
 {
 	double costPerShare = (double)money / shares;
 	if (type == "sell" && costPerShare<costShare) {

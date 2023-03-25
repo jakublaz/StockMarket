@@ -85,7 +85,7 @@ public:
 	*/
 	bool Remove_Company(string name);
 	/*
-	* Function to add transaction to list transactions
+	* Function to add transaction from list transactions
 	*/
 	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);	//check if  the limits are ok
 	/*
@@ -93,7 +93,7 @@ public:
 	*/
 	void Add_StockMarket(string name, int ID);
 	/*
-	* Function to removez stockmarket to list stockmarkets
+	* Function to remove stockmarket from list stockmarkets
 	*/
 	void Remove_StockMarket(string name, int ID);
 private:
