@@ -30,7 +30,7 @@ Customer::~Customer() {
 //    return false;
 //}
 
-void Customer::SetName(string name) {
+void Customer::Set_Name(string name) {
     this->name = name;
 }
 
@@ -50,7 +50,7 @@ void Customer::SetpocketMoney(double amount) {
     this->investedMoney = amount;
 }
 
-string Customer::GetName() const {
+string Customer::Get_Name() const {
     return this->name;
 }
 
@@ -83,6 +83,27 @@ bool Customer::SellShares(int amount) {
     //
     //
     return true;
+}
+
+void Customer::Add_Company(string name, int phoneNumber, int money, int shares)
+{
+}
+
+bool Customer::Remove_Company(string name)
+{
+    return false;
+}
+
+void Customer::Add_Transaction(Customer* customer, int amountShares, Company* company, string type)
+{
+}
+
+void Customer::Add_StockMarket(string name, int ID)
+{
+}
+
+void Customer::Remove_StockMarket(string name, int ID)
+{
 }
 
 Company* Customer::Find_Company(string name)

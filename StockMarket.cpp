@@ -1,26 +1,36 @@
 #include "StockMarket.h"
 
-StockMarket::StockMarket()
-{
+StockMarket::StockMarket(){
+    this->name = "";
+    this->ID = 0;
+    this->amountOfTransactions = 0;
+    this->investedMoney = 0;
 }
 
-StockMarket::~StockMarket()
-{
+StockMarket::StockMarket(string name, int ID){
+    this->name = name;
+    this->ID = ID;
+    this->amountOfTransactions = 0;
+    this->investedMoney = 0;
+}
+
+StockMarket::~StockMarket(){
+
 }
 
 void StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
 }
 
-void StockMarket::Remove_Customer(Customer* customer) {
-    customers.remove(customer);
+void StockMarket::Remove_Customer(string name, string surname) {
+
 }
 
 void StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
 
 }
 
-void StockMarket::Remove_Company(Company* company) {
-    companies.remove(company);
+void StockMarket::Remove_Company(string name) {
+
 }
 
 void StockMarket::Add_Transaction(Customer* customer, int amountShares, Company* company, string type) {
@@ -28,39 +38,39 @@ void StockMarket::Add_Transaction(Customer* customer, int amountShares, Company*
 
 }
 
-bool StockMarket::CheckTransaction(const Customer& customer, const Company& company, const int& ID)
+bool StockMarket::Check_Transaction(const Customer& customer, const Company& company, const int& ID)
 {
     return false;
 }
 
-void StockMarket::PrintTransactions(const string& name)
+void StockMarket::Print_Transactions(const string& name)
 {
 }
 
-void StockMarket::PrintAllTransactions()
+void StockMarket::PrintAll_Transactions()
 {
 }
 
-void StockMarket::PrintTransaction(const int& ID)
+void StockMarket::Print_Transaction(const int& ID)
 {
 }
 
-void StockMarket::SetName(string name)
+void StockMarket::Set_Name(string name)
 {
     this->name = name;
 }
 
-void StockMarket::SetID(int ID)
+void StockMarket::Set_ID(int ID)
 {
     this->ID = ID;
 }
 
-int StockMarket::GetID()
+int StockMarket::Get_ID()
 {
     return ID;
 }
 
-string StockMarket::GetName()
+string StockMarket::Get_Name()
 {
     return name;
 }

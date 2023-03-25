@@ -17,19 +17,23 @@ class Customer {
 public:
 	Customer(string name, string surname, int phoneNumber, double pocketMoney = 0);
 	~Customer();
-	void SetName(string name);
+	void Set_Name(string name);
 	void SetSurname(string surname);
 	void SetPhoneNumber(int phoneNumber);
 	void SetInvestedMoney(double amount);
 	void SetpocketMoney(double amount);
 	double GetInvestedMoney();
 	double GetpocketMoney();
-	string GetName() const;
+	string Get_Name() const;
 	string GetSurname() const;
 	int GetPhoneNumber();
 	bool BuyShares(int amount);
 	bool SellShares(int amount);
-
+	void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
+	bool Remove_Company(string name);
+	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+	void Add_StockMarket(string name, int ID);
+	void Remove_StockMarket(string name, int ID);
 private:
 	string name;
 	string surname;

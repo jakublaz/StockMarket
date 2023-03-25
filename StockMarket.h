@@ -16,20 +16,21 @@ class Transaction;
 class StockMarket {
 public:
     StockMarket();
+    StockMarket(string name, int ID);
     ~StockMarket();
     void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
-    void Remove_Customer(Customer* customer);
+    void Remove_Customer(string name, string surname);
     void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
-    void Remove_Company(Company* company);
+    void Remove_Company(string name);
     void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);  //before adding
-    bool CheckTransaction(const Customer& customer, const Company& company, const int& ID);
-    void PrintTransactions(const string& name);	//from company or from customer
-    void PrintAllTransactions();
-    void PrintTransaction(const int& ID);
-    void SetName(string name);
-    void SetID(int ID);
-    int GetID();
-    string GetName();
+    bool Check_Transaction(const Customer& customer, const Company& company, const int& ID);
+    void Print_Transactions(const string& name);	//from company or from customer
+    void PrintAll_Transactions();
+    void Print_Transaction(const int& ID);
+    void Set_Name(string name);
+    void Set_ID(int ID);
+    int Get_ID();
+    string Get_Name();
 
 private:
     string name;

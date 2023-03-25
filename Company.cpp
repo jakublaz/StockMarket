@@ -19,28 +19,24 @@ Company::~Company(){
 
 }
 
-void Company::Add_Customer(Customer* customer) {
-    customers.push_back(customer);
+void Company::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
+
 }
 
-void Company::Remove_Customer(Customer* customer) {
-    customers.remove(customer);
+void Company::Remove_Customer(string name, string surname) {
+
 }
 
-void Company::Add_Transaction(Transaction* transaction) {
-    transactions.push_back(transaction);
+void Company::Add_Transaction(Customer* customer, int amountShares, Company* company, string type) {
+
 }
 
-void Company::Remove_Transaction(Transaction* transaction) {
-    transactions.remove(transaction);
+void Company::Add_StockMarket(string name, int ID){
+
 }
 
-void Company::Add_StockMarket(StockMarket* market)
-{
-}
+void Company::Remove_StockMarket(string name, int ID){
 
-void Company::Delete_StockMarket(StockMarket* stockmarket)
-{
 }
 
 string Company::Get_Name() {

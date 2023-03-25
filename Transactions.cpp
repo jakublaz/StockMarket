@@ -1,5 +1,9 @@
 #include "Transactions.h"
 
+Transaction::Transaction()
+{
+}
+
 Transaction::Transaction(int ID, int amount, int shares, Customer* customer, Company* company, StockMarket* stock_market) :
     customer(customer), company(company), stock_market(stock_market) {
     this->ID = ID;
@@ -10,11 +14,11 @@ Transaction::Transaction(int ID, int amount, int shares, Customer* customer, Com
     this->stock_market = stock_market;
 }
 
-int Transaction::GetID() {
+int Transaction::Get_ID() {
     return ID;
 }
 
-void Transaction::SetID(int ID) {
+void Transaction::Set_ID(int ID) {
     this->ID = ID;
 }
 
@@ -32,4 +36,8 @@ void Transaction::SetAmount(int amount) {
 
 void Transaction::SetShares(int shares) {
     this->shares = shares;
+}
+
+void Transaction::Print_Transaction()
+{
 }

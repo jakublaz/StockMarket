@@ -17,12 +17,11 @@ public:
     Company();
     Company(string name, int phoneNumber, double money = 0, int shares = 0);
     ~Company();
-    void Add_Customer(Customer* customer);
-    void Remove_Customer(Customer* customer);
-    void Add_Transaction(Transaction* transaction);
-    void Remove_Transaction(Transaction* transaction);
-    void Add_StockMarket(StockMarket* market);
-    void Delete_StockMarket(StockMarket* stockmarket);
+    void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
+    void Remove_Customer(string name, string surname);
+    void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+    void Add_StockMarket(string name, int ID);
+    void Remove_StockMarket(string name, int ID);
     double Get_Money();
     int Get_Shares();
     string Get_Name();
