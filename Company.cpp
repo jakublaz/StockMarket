@@ -1,6 +1,17 @@
 #include "Company.h"
 
 Company::Company() {
+	this->name = "";
+	this->phoneNumber = 0;
+	this->money = 0;
+	this->shares = 0;
+}
+
+Company::Company(string name, int phoneNumber, double money, int shares) {
+	this->name = name;
+	this->phoneNumber = phoneNumber;
+	this->money = money;
+	this->shares = shares;
 }
 
 Company::~Company(){
@@ -21,6 +32,14 @@ void Company::Add_Transaction(Transaction* transaction) {
 
 void Company::Remove_Transaction(Transaction* transaction) {
     transactions.remove(transaction);
+}
+
+void Company::Add_StockMarket(StockMarket* market)
+{
+}
+
+void Company::Delete_StockMarket(StockMarket* stockmarket)
+{
 }
 
 string Company::GetName() {

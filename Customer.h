@@ -37,9 +37,9 @@ private:
 
 	double investedMoney;
 	double pocketMoney;
-    list<Company*> ListCompany;
-	list<Transaction*> ListTransactions;
-	list<StockMarket*> ListMarkets;
+    list<Company*> companies;
+	list<Transaction*> transactions;
+	list<StockMarket*> stockmarkets;
 };
 
 #endif /* CUSTOMER_H */
