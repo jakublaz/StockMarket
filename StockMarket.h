@@ -40,9 +40,9 @@ private:
     int investedMoney;  
     int amountOfTransactions;
 
-    list<Customer*> customers;
-    list<Company*> companies;
-    list<Transaction*> transactions;
+    list<Customer> customers;
+    list<Company> companies;
+    list<Transaction> transactions;
 
     Company* FindCompany(string name);
     Customer* FindCustomer(string surname);
