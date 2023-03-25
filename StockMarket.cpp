@@ -63,7 +63,7 @@ string StockMarket::Get_Name()
     return name;
 }
 
-void StockMarket::Show_Info()
+void StockMarket::Show_Customers()
 {
 }
 
@@ -72,6 +72,10 @@ void StockMarket::Update_InvestedMoney()
 }
 
 void StockMarket::Update_AmountOfTransactions()
+{
+}
+
+void StockMarket::Show_Compnies()
 {
 }
 

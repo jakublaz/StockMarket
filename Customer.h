@@ -25,7 +25,7 @@ public:
 	*/
 	Customer(string name, string surname, int phoneNumber, double pocketMoney = 0);
 	/*
-	* Default deconstructor
+	* Default deconstructor, it should delete all lists
 	*/
 	~Customer();
 	/*

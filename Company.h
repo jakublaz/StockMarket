@@ -25,7 +25,7 @@ public:
     */
     Company(string name, int phoneNumber, double money = 0, int shares = 0);
     /*
-    * Default deconstructor
+    * Default deconstructor, it should delete all lists
     */
     ~Company();
     /*

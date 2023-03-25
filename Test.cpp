@@ -1,6 +1,6 @@
 #include "Test.h"
 
-void Scenario1() {
+void Test::Scenario1() {
 	//Adding Customers
 	//Adding Companies
 	//Doing trasactions the right way,without error
@@ -39,38 +39,38 @@ void Scenario1() {
 
 }
 
-void Scenario2() {
+void Test::Scenario2() {
 
 }
 
-void Scenario3() {
+void Test::Scenario3() {
 
 }
 
-void Scenario4() {
+void Test::Scenario4() {
 
 }
 
-void Scenario5() {
+void Test::Scenario5() {
 
 }
 
-void Scenario6() {
+void Test::Scenario6() {
 
 }
 
-void Scenario7() {
+void Test::Scenario7() {
 
 }
 
-void Scenario8() {
+void Test::Scenario8() {
 
 }
 
-void Scenario9() {
+void Test::Scenario9() {
 
 }
 
-void Scenario10() {
+void Test::Scenario10() {
 
 }
