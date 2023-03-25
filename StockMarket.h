@@ -2,6 +2,7 @@
 #define STOCKMARKET_H
 
 #include <list>
+#include<algorithm>	//for Find functions
 #include "Customer.h"
 #include "Company.h"
 #include "Transactions.h"

@@ -24,6 +24,7 @@ public:
     void SetShares(int shares);
     void Print_Transaction();
 private:
+
     int ID;
     int amount;
     int shares;

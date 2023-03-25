@@ -3,9 +3,11 @@
 
 #include <string>
 #include <list>
+#include<algorithm>	//for Find functions
 #include "Customer.h"
 #include "Transactions.h"
 #include "StockMarket.h"
+
 using namespace std;
 
 class Customer;

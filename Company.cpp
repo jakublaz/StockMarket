@@ -6,6 +6,7 @@ Company::Company() {
 	this->phoneNumber = 0;
 	this->money = 0;
 	this->shares = 0;
+	this->costShare = 0;
 }
 
 Company::Company(string name, int phoneNumber, double money, int shares) {
@@ -13,6 +14,7 @@ Company::Company(string name, int phoneNumber, double money, int shares) {
 	this->phoneNumber = phoneNumber;
 	this->money = money;
 	this->shares = shares;
+	Update_CostShare();
 }
 
 Company::~Company(){
