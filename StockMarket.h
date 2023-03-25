@@ -17,7 +17,7 @@ class Transaction;
 class StockMarket {
 public:
     StockMarket();
-    StockMarket(string name, int ID);
+    StockMarket(string name);
     ~StockMarket();
     void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
     void Remove_Customer(string name, string surname);
@@ -29,15 +29,15 @@ public:
     void PrintAll_Transactions();
     void Print_Transaction(const int& ID);
     void Set_Name(string name);
-    void Set_ID(int ID);
-    int Get_ID();
     string Get_Name();
+    void Show_Info();   //shows basic info
+    void Update_InvestedMoney();
+    void Update_AmountOfTransactions();
 
 private:
     string name;
-    int ID;
     //will be set using Add_Transaction()
-    int investedMoney;  
+    double investedMoney;  
     int amountOfTransactions;
 
     list<Customer> customers;

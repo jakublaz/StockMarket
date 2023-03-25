@@ -2,14 +2,12 @@
 
 StockMarket::StockMarket(){
     this->name = "";
-    this->ID = 0;
     this->amountOfTransactions = 0;
     this->investedMoney = 0;
 }
 
-StockMarket::StockMarket(string name, int ID){
+StockMarket::StockMarket(string name){
     this->name = name;
-    this->ID = ID;
     this->amountOfTransactions = 0;
     this->investedMoney = 0;
 }
@@ -60,19 +58,21 @@ void StockMarket::Set_Name(string name)
     this->name = name;
 }
 
-void StockMarket::Set_ID(int ID)
-{
-    this->ID = ID;
-}
-
-int StockMarket::Get_ID()
-{
-    return ID;
-}
-
 string StockMarket::Get_Name()
 {
     return name;
+}
+
+void StockMarket::Show_Info()
+{
+}
+
+void StockMarket::Update_InvestedMoney()
+{
+}
+
+void StockMarket::Update_AmountOfTransactions()
+{
 }
 
 Company* StockMarket::FindCompany(string name)

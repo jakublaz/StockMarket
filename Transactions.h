@@ -15,18 +15,20 @@ class StockMarket;
 class Transaction {
 public:
    Transaction();
-    Transaction(int ID, int amount, int shares,Customer* customer, Company* company, StockMarket* stock_market);
+    Transaction(int ID, double amount, int shares,Customer* customer, Company* company, StockMarket* stock_market);
     int Get_ID();
-    int GetAmount();
-    int GetShares();
+    double Get_Amount();
+    int Get_Shares();
+    string Get_Type();
+    void Set_Type(string type);
     void Set_ID(int ID);
-    void SetAmount(int amount);
-    void SetShares(int shares);
+    void Set_Amount(int amount);
+    void Set_Shares(int shares);
     void Print_Transaction();
 private:
 
     int ID;
-    int amount;
+    double amount;
     int shares;
     string type;
     Customer* customer;

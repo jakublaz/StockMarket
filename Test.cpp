@@ -23,7 +23,7 @@ void Scenario1() {
 	//a.AddCustomer("Jacek", "Zak", 990889675, 800000);
 	////test 2 functions with the same functionality
 	//a.AddCustomer("Anna", "Maria", 898954637);
-	//a.GetCustomer("Anna", "Maria")->SetpocketMoney(90000);
+	//a.GetCustomer("Anna", "Maria")->Set_PocketMoney(90000);
 	////Add Company with 2000 shares and 50000 in money
 	//a.AddCompany("Henkel", 983883001, 2000, 50000);
 

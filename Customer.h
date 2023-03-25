@@ -7,6 +7,7 @@
 #include<list>
 #include<string>
 #include<algorithm>	//for Find functions
+#include <utility>
 using namespace std;
 
 class Company;
@@ -18,15 +19,15 @@ public:
 	Customer(string name, string surname, int phoneNumber, double pocketMoney = 0);
 	~Customer();
 	void Set_Name(string name);
-	void SetSurname(string surname);
-	void SetPhoneNumber(int phoneNumber);
-	void SetInvestedMoney(double amount);
-	void SetpocketMoney(double amount);
-	double GetInvestedMoney();
-	double GetpocketMoney();
+	void Set_Surname(string surname);
+	void Set_PhoneNumber(int phoneNumber);
+	void Set_InvestedMoney(double amount);
+	void Set_PocketMoney(double amount);
+	double Get_InvestedMoney();
+	double Get_PocketMoney();
 	string Get_Name() const;
 	string GetSurname() const;
-	int GetPhoneNumber();
+	int Get_PhoneNumber();
 	bool BuyShares(int amount);
 	bool SellShares(int amount);
 	void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
@@ -41,7 +42,7 @@ private:
 
 	double investedMoney;
 	double pocketMoney;
-    list<Company*> companies;
+    list<pair<Company*,int>> companies;
 	list<Transaction*> transactions;
 	list<StockMarket*> stockmarkets;
 

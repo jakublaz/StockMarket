@@ -34,19 +34,19 @@ void Customer::Set_Name(string name) {
     this->name = name;
 }
 
-void Customer::SetSurname(string surname) {
+void Customer::Set_Surname(string surname) {
     this->surname = surname;
 }
 
-void Customer::SetPhoneNumber(int phoneNumber) {
+void Customer::Set_PhoneNumber(int phoneNumber) {
     this->phoneNumber = phoneNumber;
 }
 
-void Customer::SetInvestedMoney(double amount) {
+void Customer::Set_InvestedMoney(double amount) {
     this->investedMoney = amount;
 }
 
-void Customer::SetpocketMoney(double amount) {
+void Customer::Set_PocketMoney(double amount) {
     this->investedMoney = amount;
 }
 
@@ -54,11 +54,11 @@ string Customer::Get_Name() const {
     return this->name;
 }
 
-double Customer::GetInvestedMoney() {
+double Customer::Get_InvestedMoney() {
     return investedMoney;
 }
 
-double Customer::GetpocketMoney() {
+double Customer::Get_PocketMoney() {
     return pocketMoney;
 }
 
@@ -66,7 +66,7 @@ string Customer::GetSurname() const{
     return surname;
 }
 
-int Customer::GetPhoneNumber() {
+int Customer::Get_PhoneNumber() {
     return phoneNumber;
 }
 
