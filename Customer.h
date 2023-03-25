@@ -6,6 +6,7 @@
 #include "StockMarket.h"
 #include<list>
 #include<string>
+#include<algorithm>	//for Find functions
 using namespace std;
 
 class Company;
@@ -16,7 +17,6 @@ class Customer {
 public:
 	Customer(string name, string surname, int phoneNumber, double pocketMoney = 0);
 	~Customer();
-	bool FindCompany(string name);			//to check if i invested in this company(mo¿e mo¿na optymaliozowaæ)
 	void SetName(string name);
 	void SetSurname(string surname);
 	void SetPhoneNumber(int phoneNumber);
@@ -24,8 +24,8 @@ public:
 	void SetpocketMoney(double amount);
 	double GetInvestedMoney();
 	double GetpocketMoney();
-	string GetName();
-	string GetSurname();
+	string GetName() const;
+	string GetSurname() const;
 	int GetPhoneNumber();
 	bool BuyShares(int amount);
 	bool SellShares(int amount);
@@ -40,6 +40,12 @@ private:
     list<Company*> companies;
 	list<Transaction*> transactions;
 	list<StockMarket*> stockmarkets;
+
+	//this functions will be used to check if certain objects are not on the lists
+	//will return nullptr if not found and pointer to element if found
+	Company* Find_Company(string name);
+	Transaction* Find_Transaction(string nameCustomer, string nameCompany, int ID);
+	StockMarket* Find_StockMarket(string name);
 };
 
 #endif /* CUSTOMER_H */

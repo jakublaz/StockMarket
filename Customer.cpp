@@ -11,24 +11,24 @@ Customer::~Customer() {
 
 }
 
-bool Customer::FindCompany(string name) {
-    //list<Company*>::iterator it = ListCompanies.begin();
-    //// Loop through each element of the ListCompanies list
-    //for (list<Company*>::iterator it = ListCompanies.begin(); it != ListCompanies.end(); ++it) {
-    //    Company* company = *it;
-
-    //    // Compare the name of the current Company object with the name to find
-    //    if (company->GetName() == name) {
-    //        // The name was found
-    //        cout << "Found company with name " << name << endl;
-    //        return true;
-    //    }
-    //}
-
-    //// If the name was not found
-    //cout << "Could not find company with name " << name << endl;
-    return false;
-}
+//bool Customer::FindCompany(string name) {
+//    //list<Company*>::iterator it = ListCompanies.begin();
+//    //// Loop through each element of the ListCompanies list
+//    //for (list<Company*>::iterator it = ListCompanies.begin(); it != ListCompanies.end(); ++it) {
+//    //    Company* company = *it;
+//
+//    //    // Compare the name of the current Company object with the name to find
+//    //    if (company->GetName() == name) {
+//    //        // The name was found
+//    //        cout << "Found company with name " << name << endl;
+//    //        return true;
+//    //    }
+//    //}
+//
+//    //// If the name was not found
+//    //cout << "Could not find company with name " << name << endl;
+//    return false;
+//}
 
 void Customer::SetName(string name) {
     this->name = name;
@@ -50,7 +50,7 @@ void Customer::SetpocketMoney(double amount) {
     this->investedMoney = amount;
 }
 
-string Customer::GetName() {
+string Customer::GetName() const {
     return this->name;
 }
 
@@ -62,7 +62,7 @@ double Customer::GetpocketMoney() {
     return pocketMoney;
 }
 
-string Customer::GetSurname() {
+string Customer::GetSurname() const{
     return surname;
 }
 
@@ -83,4 +83,19 @@ bool Customer::SellShares(int amount) {
     //
     //
     return true;
+}
+
+Company* Customer::Find_Company(string name)
+{
+    return nullptr;
+}
+
+Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany, int ID)
+{
+    return nullptr;
+}
+
+StockMarket* Customer::Find_StockMarket(string name)
+{
+    return nullptr;
 }

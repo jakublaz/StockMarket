@@ -23,24 +23,34 @@ public:
     void Remove_Transaction(Transaction* transaction);
     void Add_StockMarket(StockMarket* market);
     void Delete_StockMarket(StockMarket* stockmarket);
-    double GetMoney();
-    int GetShares();
-    string GetName();
-    int GetPhoneNumber();
-    void SetMoney(double amount);
-    void SetShares(int shares);
-    void SetName(string name);
-    void SetPhoneNumber(int number);
+    double Get_Money();
+    int Get_Shares();
+    string Get_Name();
+    int Get_PhoneNumber();
+    void Set_Money(double amount);
+    void Set_Shares(int shares);
+    void Set_Name(string name);
+    void Set_PhoneNumber(int number);
+    void Update_CostShare();        //used in Update_Money();
+    void Update_Money(int shares, double money, string type);    //the price must be higher then the costShare if we buy, lower if we sell
+    bool Ok_Price(int shares,double money,string type); //used in Update_Money();
 
 private:
     string name;
     int phoneNumber;
     double money;
     int shares;
+    double costShare;
 
     list<Customer*> customers;
     list<Transaction*> transactions;
     list<StockMarket*> stockmarkets;
+
+    //this functions will be used to check if certain objects are not on the lists
+    //will return nullptr if not found and pointer to element if found
+    Customer* FindCustomer(string surname);
+    Transaction* FindTransaction(string nameCustomer, string nameCompany, int ID);
+    StockMarket* FindStockMarket(string name);
 };
 
 #endif /* COMPANY_H */

@@ -1,4 +1,5 @@
 #include "Company.h"
+using namespace std;
 
 Company::Company() {
 	this->name = "";
@@ -42,34 +43,80 @@ void Company::Delete_StockMarket(StockMarket* stockmarket)
 {
 }
 
-string Company::GetName() {
+string Company::Get_Name() {
 	return this->name;
 }
 
-double Company::GetMoney() {
+double Company::Get_Money() {
 	return money;
 }
 
-int Company::GetShares() {
+int Company::Get_Shares() {
 	return shares;
 }
 
-int Company::GetPhoneNumber() {
+int Company::Get_PhoneNumber() {
 	return phoneNumber;
 }
 
-void Company::SetMoney(double amount) {
+void Company::Set_Money(double amount) {
 	this->money = amount;
 }
 
-void Company::SetShares(int shares) {
+void Company::Set_Shares(int shares) {
 	this->shares = shares;
 }
 
-void Company::SetName(string name) {
+void Company::Set_Name(string name) {
 	this->name = name;
 }
 
-void Company::SetPhoneNumber(int number) {
+void Company::Set_PhoneNumber(int number) {
 	this->phoneNumber = number;
+}
+
+void Company::Update_CostShare()
+{
+	costShare = money / shares;
+}
+
+void Company::Update_Money(int shares, double money, string type)
+{
+	Ok_Price(shares, money, type);
+	double cost = shares * this->costShare;
+	double payed = shares * money;
+	this->money = this->money - cost + payed;
+	Update_CostShare();
+}
+
+bool Company::Ok_Price(int shares,double money, string type)
+{
+	double costPerShare = (double)money / shares;
+	if (type == "sell" && costPerShare<costShare) {
+		return true;
+	}
+	if (type == "buy" && costPerShare > costShare) {
+		return true;
+	}
+	return false;
+}
+
+Customer* Company::FindCustomer(string surname)	//do sprawdzenia
+{
+	for (auto& c : customers) {
+		if (c->GetSurname() == surname) {
+			return c;
+		}
+	}
+	return nullptr;
+}
+
+Transaction* Company::FindTransaction(string nameCustomer, string nameCompany, int ID)
+{
+	return nullptr;
+}
+
+StockMarket* Company::FindStockMarket(string name)
+{
+	return nullptr;
 }
