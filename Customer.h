@@ -10,6 +10,10 @@
 #include <utility>
 using namespace std;
 
+
+//if you want to buy for smaller  amount then sharecost you have to gamble
+//the same for selling for higher money
+
 class Company;
 class Transaction;
 class StockMarket;
@@ -32,7 +36,7 @@ public:
 	bool SellShares(int amount);
 	void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
 	bool Remove_Company(string name);
-	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);	//check
 	void Add_StockMarket(string name, int ID);
 	void Remove_StockMarket(string name, int ID);
 private:
