@@ -50,7 +50,7 @@ void Customer::Set_PocketMoney(double amount) {
     this->investedMoney = amount;
 }
 
-string Customer::Get_Name() const {
+string Customer::Get_Name(){
     return this->name;
 }
 
@@ -62,7 +62,7 @@ double Customer::Get_PocketMoney() {
     return pocketMoney;
 }
 
-string Customer::GetSurname() const{
+string Customer::GetSurname(){
     return surname;
 }
 
@@ -104,6 +104,11 @@ void Customer::Add_StockMarket(string name, int ID)
 
 void Customer::Remove_StockMarket(string name, int ID)
 {
+}
+
+void Customer::Add_Shares(int amount)
+{
+
 }
 
 Company* Customer::Find_Company(string name)
