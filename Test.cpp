@@ -43,41 +43,41 @@ void Test::Scenario1() {
 	}
 
 	//Companies
-	if (a.Get_Company("Henkel")->Sizeof_Customers() == 2) {
+	if (a.Get_Company("Henkel")->Sizeof_Customers() != 2) {
 		cerr << "# Wrong size of list Customers in Companies #" << endl;
 	}
 
-	if (a.Get_Company("Henkel")->Sizeof_Transactions() == 3) {
+	if (a.Get_Company("Henkel")->Sizeof_Transactions() != 3) {
 		cerr << "# Wrong size of list Customers in Companies #" << endl;
 	}
 
-	if (a.Get_Company("Henkel")->Sizeof_StockMarket() == 1) {
+	if (a.Get_Company("Henkel")->Sizeof_StockMarket() != 1) {
 		cerr << "# Wrong size of list Customers in Company #" << endl;
 	}
 
 	//Customers
-	if (a.Get_Customer("Anna", "Maria")->Sizeof_Companies() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Companies() == 1) {
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_Companies() != 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Companies() == 1) {
 		cerr << "# Wrong size of list of companies in Customer #" << endl;
 	}
 
-	if (a.Get_Customer("Anna", "Maria")->Sizeof_Transactions() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Transactions() == 2) {
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_Transactions() != 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Transactions() == 2) {
 		cerr << "# Wrong size of list of transactions in Customer #" << endl;
 	}
 
-	if (a.Get_Customer("Anna", "Maria")->Sizeof_StockMarkets() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_StockMarkets() == 1) {
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_StockMarkets() != 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_StockMarkets() == 1) {
 		cerr << "# Wrong size of list of transactions in Customer #" << endl;
 	}
 
 	//Transaction
-	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Customer() == a.Get_Customer("Jacek", "Zak")) {
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Customer() != a.Get_Customer("Jacek", "Zak")) {
 		cerr << "# Wrong person was assigned in a transaction 2 #" << endl;
 	}
 
-	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Company() == a.Get_Company("Henkel")) {
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Company() != a.Get_Company("Henkel")) {
 		cerr << "# Wrong company was assigned in a transaction 2 #" << endl;
 	}
 
-	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_StockMarket()->Get_Name() == a.Get_Name()) {
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_StockMarket()->Get_Name() != a.Get_Name()) {
 		cerr << "# Wrong stockmarket was assigned in a transaction 2 #" << endl;
 	}
 
@@ -85,6 +85,24 @@ void Test::Scenario1() {
 }
 
 void Test::Scenario2() {
+	/*
+	* We are going to try to add company with value less or equal to 5000 so that it cant be bought
+	* we will try to buy shares in it
+	*/
+
+	StockMarket a("GPW");
+
+	a.Add_Company("Henkel",900876448, 4800 , 100);
+
+	a.Add_Customer("Jacek", "Zak", 908335678, 20000);
+
+	a.Add_Transaction(1, a.Get_Customer("Jacek", "Zak"), 50, a.Get_Company("Henkel"),"buy");
+
+	//We should see in the console why the transaction was not succesfull
+
+	if (a.SizeOf_Transactions() != 0) {
+		cerr << "# Transaction was added  but it shouldn't have been #" << endl;
+	}
 
 }
 

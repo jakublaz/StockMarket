@@ -47,6 +47,7 @@ public:
     /*
     * Function to add transaction to list transactions
     * It has to be checked before adding a transaction
+    * If it can't add the transaction it will show it on the screen why
     */
     void Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type);
     /*

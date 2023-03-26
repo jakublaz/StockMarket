@@ -76,6 +76,7 @@ private:
     string type;
     /*
     * Pointer to customer buying or selling
+    * can be buy/sell
     */
     Customer* customer;
     /*
