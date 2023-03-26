@@ -8,6 +8,7 @@ void Test::Scenario1() {
 	//we check(using cerr) if the trasaction list has 3 structures transactions inside, 
 	//if each customer points only once to the company and has right amount of trasactions
 	//if company has a list with 2 customers
+	//if every list in every class has exact amount of objects as it should have
 
 
 	//Add Stock Market
