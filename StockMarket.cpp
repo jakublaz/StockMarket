@@ -31,7 +31,7 @@ void StockMarket::Remove_Company(string name) {
 
 }
 
-void StockMarket::Add_Transaction(Customer* customer, int amountShares, Company* company, string type) {
+void StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
 
 
 }
@@ -63,6 +63,21 @@ string StockMarket::Get_Name()
     return name;
 }
 
+Customer* StockMarket::Get_Customer(string name, string surname)
+{
+    return FindCustomer(name,surname);
+}
+
+Company* StockMarket::Get_Company(string name)
+{
+    return FindCompany(name);
+}
+
+Transaction* StockMarket::Get_Transaction(string surnameCustomer, string nameCompany, int ID)
+{
+    return FindTransaction(surnameCustomer, nameCompany, ID);
+}
+
 void StockMarket::Show_Customers()
 {
 }
@@ -79,12 +94,27 @@ void StockMarket::Show_Compnies()
 {
 }
 
+int StockMarket::SizeOf_Customers()
+{
+    return customers.size();
+}
+
+int StockMarket::SizeOf_Companies()
+{
+    return companies.size();
+}
+
+int StockMarket::SizeOf_Transactions()
+{
+    return transactions.size();
+}
+
 Company* StockMarket::FindCompany(string name)
 {
     return nullptr;
 }
 
-Customer* StockMarket::FindCustomer(string surname)
+Customer* StockMarket::FindCustomer(string name, string surname)
 {
     return nullptr;
 }

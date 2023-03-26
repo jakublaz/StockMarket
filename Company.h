@@ -25,7 +25,7 @@ public:
     */
     Company(string name, int phoneNumber, double money = 0, int shares = 0);
     /*
-    * Default deconstructor, it should delete all lists
+    * Default deconstructor, it should delete all lists, to ensure no memory leaks
     */
     ~Company();
     /*
@@ -101,6 +101,21 @@ public:
     * return 1 if price is too high
     */
     int Ok_Price(int shares,double money,string type); //used in Update_Money();
+    /*
+    * Test Function
+    * returns size of the list of customers
+    */
+    int Sizeof_Customers();
+    /*
+    * Test Function
+    * returns size of the list of transactions
+    */
+    int Sizeof_Transactions();
+    /*
+    * Test Function
+    * returns size of the list of stockmarkets
+    */
+    int Sizeof_StockMarket();
 
 private:
     /*

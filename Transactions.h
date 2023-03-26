@@ -45,7 +45,18 @@ public:
     * It is a function that will print all nessesary information about this transaction, amount, shares, Id, and parts involved
     */
     void Print_Transaction();
-    
+    /*
+    * It is a getter for customer
+    */
+    Customer* Get_Customer();
+    /*
+    * It is a getter for company
+    */
+    Company* Get_Company();
+    /*
+    * It is a getter for stock_market
+    */
+    StockMarket* Get_StockMarket();
 private:
     /*
     * Id of this transaction

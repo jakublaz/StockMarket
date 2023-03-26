@@ -96,6 +96,31 @@ public:
 	* Function to remove stockmarket from list stockmarkets
 	*/
 	void Remove_StockMarket(string name, int ID);
+	/*
+	* Function returns pointer to company if found
+	* if not returns nullptr
+	*/
+	Company* Get_Company(string name);
+	/*
+	* Function that goes throught companies list and looks for a company with name==name
+	* it returns second part of this pair
+	*/
+	int Get_SharesCompany(string name);
+	/*
+	* Test Function
+	* returns size of the list of companies
+	*/
+	int Sizeof_Companies();
+	/*
+	* Test Function
+	* returns size of the list of transactions
+	*/
+	int Sizeof_Transactions();
+	/*
+	* Test Function
+	* returns size of the list of stockmarkets
+	*/
+	int Sizeof_StockMarkets();
 private:
 	/*
 	* name of the customer

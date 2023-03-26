@@ -1,12 +1,6 @@
 #include "Test.h"
 
 void Test::Scenario1() {
-	//Adding Customers
-	//Adding Companies
-	//Doing trasactions the right way,without error
-	//functionform StockMarket GetCustomer, GetCompany
-
-
 
 	//in this Scenario we add a Stock Market
 	//then we add 2 customers 1 company and do 3 trasactions
@@ -17,24 +11,74 @@ void Test::Scenario1() {
 
 
 	//Add Stock Market
-	//StockMarket a(1, "GPW");
+	StockMarket a("GPW");
 
-	////Add 2 Customers
-	//a.AddCustomer("Jacek", "Zak", 990889675, 800000);
-	////test 2 functions with the same functionality
-	//a.AddCustomer("Anna", "Maria", 898954637);
-	//a.GetCustomer("Anna", "Maria")->Set_PocketMoney(90000);
-	////Add Company with 2000 shares and 50000 in money
-	//a.AddCompany("Henkel", 983883001, 2000, 50000);
+	//Add 2 Customers
+	a.Add_Customer("Jacek", "Zak", 990889675, 800000);
+	//test 2 functions with the same functionality
+	a.Add_Customer("Anna", "Maria", 898954637);
+	a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
+	//Add Company with 2000 shares and 50000 in money
+	a.Add_Company("Henkel", 983883001, 2000, 50000);
 
-	////Add trasaction done by Jacek Zak with Helkel on 10 stocks
-	//a.AddTransaction(a.GetCustomer("Jacek","Zak"),10,a.GetCompany("Henkel"));
+	//Add trasaction done by Jacek Zak with Helkel on 10 stocks
+	a.Add_Transaction(1,a.Get_Customer("Jacek","Zak"),10,a.Get_Company("Henkel"),"buy");
 
-	////Add trasaction done by Jacek Zak with Helkel on 100 stocks
-	//a.AddTransaction(a.GetCustomer("Jacek", "Zak"), 100, a.GetCompany("Henkel"));
+	//Add trasaction done by Jacek Zak with Helkel on 100 stocks
+	a.Add_Transaction(2,a.Get_Customer("Jacek", "Zak"), 100, a.Get_Company("Henkel"),"buy");
 
-	//////Add trasaction done by Anna Maria with Helkel on 56 stocks
-	//a.AddTransaction(a.GetCustomer("Anna", "Maria"), 56, a.GetCompany("Henkel"));
+	//Add trasaction done by Anna Maria with Helkel on 56 stocks
+	a.Add_Transaction(3,a.Get_Customer("Anna", "Maria"), 56, a.Get_Company("Henkel"),"buy");
+
+	//StockMarket
+	if (a.SizeOf_Companies() != 1) {
+		cerr << "# Wrong size of list Companies in StockMarket #" << endl;
+	}
+	if (a.SizeOf_Customers() != 2) {
+		cerr << "# Wrong size of list Customers in StockMarket #" << endl;
+	}
+	if (a.SizeOf_Transactions() != 3) {
+		cerr << "# Wrong size of list Transactions in StockMarket #" << endl;
+	}
+
+	//Companies
+	if (a.Get_Company("Henkel")->Sizeof_Customers() == 2) {
+		cerr << "# Wrong size of list Customers in Companies #" << endl;
+	}
+
+	if (a.Get_Company("Henkel")->Sizeof_Transactions() == 3) {
+		cerr << "# Wrong size of list Customers in Companies #" << endl;
+	}
+
+	if (a.Get_Company("Henkel")->Sizeof_StockMarket() == 1) {
+		cerr << "# Wrong size of list Customers in Company #" << endl;
+	}
+
+	//Customers
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_Companies() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Companies() == 1) {
+		cerr << "# Wrong size of list of companies in Customer #" << endl;
+	}
+
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_Transactions() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_Transactions() == 2) {
+		cerr << "# Wrong size of list of transactions in Customer #" << endl;
+	}
+
+	if (a.Get_Customer("Anna", "Maria")->Sizeof_StockMarkets() == 1 && a.Get_Customer("Jacek", "Zak")->Sizeof_StockMarkets() == 1) {
+		cerr << "# Wrong size of list of transactions in Customer #" << endl;
+	}
+
+	//Transaction
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Customer() == a.Get_Customer("Jacek", "Zak")) {
+		cerr << "# Wrong person was assigned in a transaction 2 #" << endl;
+	}
+
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_Company() == a.Get_Company("Henkel")) {
+		cerr << "# Wrong company was assigned in a transaction 2 #" << endl;
+	}
+
+	if (a.Get_Transaction("Zak", "Henkel", 2)->Get_StockMarket()->Get_Name() == a.Get_Name()) {
+		cerr << "# Wrong stockmarket was assigned in a transaction 2 #" << endl;
+	}
 
 
 }

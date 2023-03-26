@@ -38,3 +38,18 @@ void Transaction::Print_Transaction()
 {
 
 }
+
+Customer* Transaction::Get_Customer()
+{
+    return customer;
+}
+
+Company* Transaction::Get_Company()
+{
+    return company;
+}
+
+StockMarket* Transaction::Get_StockMarket()
+{
+    return stock_market;
+}

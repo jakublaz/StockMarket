@@ -48,7 +48,7 @@ public:
     * Function to add transaction to list transactions
     * It has to be checked before adding a transaction
     */
-    void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+    void Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type);
     /*
     * Function to check if all limitations are met
     */
@@ -74,6 +74,21 @@ public:
     */
     string Get_Name();
     /*
+    * returns pointer to customer if found, uses function FindCustomer(string name, string surname)
+    * if not found returns nullptr
+    */
+    Customer* Get_Customer(string name,string surname);
+    /*
+    * returns pointer to company if found, uses function FindCompany(string name)
+    * if not found returns nullptr
+    */
+    Company* Get_Company(string name);
+    /*
+    * returns pointer to transaction if found, uses function FindTransaction(string surnameCustomer, string nameCompany, int ID)
+    * if not found returns nullptr
+    */
+    Transaction* Get_Transaction(string surnameCustomer, string nameCompany, int ID);
+    /*
     * Function to show basic info about every customer
     */
     void Show_Customers();
@@ -81,6 +96,21 @@ public:
     * Function to show basic info about each customer
     */
     void Show_Compnies();
+    /*
+    * Test Function
+    * returns size of the list of customers
+    */
+    int SizeOf_Customers();
+    /*
+    * Test Function
+    * returns size of the list of companies
+    */
+    int SizeOf_Companies();
+    /*
+    * Test Function
+    * returns size of the list of transactions
+    */
+    int SizeOf_Transactions();
 
 private:
     /*
@@ -120,8 +150,8 @@ private:
     //this functions will be used to check if certain objects are not on the lists
     //will return nullptr if not found and pointer to element if found
     Company* FindCompany(string name);
-    Customer* FindCustomer(string surname);
-    Transaction* FindTransaction(string nameCustomer, string nameCompany, int ID);
+    Customer* FindCustomer(string name,string surname);
+    Transaction* FindTransaction(string surnameCustomer, string nameCompany, int ID);
 };
 
 #endif /* STOCKMARKET_H */

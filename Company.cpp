@@ -99,6 +99,21 @@ int Company::Ok_Price(int shares,double money, string type)
 	return false;
 }
 
+int Company::Sizeof_Customers()
+{
+	return customers.size();
+}
+
+int Company::Sizeof_Transactions()
+{
+	return transactions.size();
+}
+
+int Company::Sizeof_StockMarket()
+{
+	return stockmarkets.size();
+}
+
 Customer* Company::FindCustomer(string surname)	//do sprawdzenia
 {
 	for (auto& c : customers) {

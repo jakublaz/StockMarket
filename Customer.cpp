@@ -106,6 +106,31 @@ void Customer::Remove_StockMarket(string name, int ID)
 {
 }
 
+Company* Customer::Get_Company(string name)
+{
+    return Find_Company(name);
+}
+
+int Customer::Get_SharesCompany(string name)
+{
+    return 0;
+}
+
+int Customer::Sizeof_Companies()
+{
+    return companies.size();
+}
+
+int Customer::Sizeof_Transactions()
+{
+    return transactions.size();
+}
+
+int Customer::Sizeof_StockMarkets()
+{
+    return stockmarkets.size();
+}
+
 void Customer::Add_Shares(int amount)
 {
 
