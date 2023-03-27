@@ -31,25 +31,25 @@ public:
     /*
     * Function to add customer to list customers
     */
-    void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
+    bool Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
     /*
     * Function to remove customer from list customers
     */
-    void Remove_Customer(string name, string surname);
+    bool Remove_Customer(string name, string surname);
     /*
     * Function to add company to list ccompanies
     */
-    void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
+    bool Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
     /*
     * Function to remove company from list ccompanies
     */
-    void Remove_Company(string name);
+    bool Remove_Company(string name);
     /*
     * Function to add transaction to list transactions
     * It has to be checked before adding a transaction
     * If it can't add the transaction it will show it on the screen why
     */
-    void Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type);
+    bool Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type);
     /*
     * Function to check if all limitations are met
     */

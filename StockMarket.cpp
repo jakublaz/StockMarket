@@ -16,23 +16,24 @@ StockMarket::~StockMarket(){
 
 }
 
-void StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
+bool StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
+    return false;
 }
 
-void StockMarket::Remove_Customer(string name, string surname) {
-
+bool StockMarket::Remove_Customer(string name, string surname) {
+    return false;
 }
 
-void StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
-
+bool StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
+    return false;
 }
 
-void StockMarket::Remove_Company(string name) {
-
+bool StockMarket::Remove_Company(string name) {
+    return false;
 }
 
-void StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
-
+bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
+    return false;
 
 }
 

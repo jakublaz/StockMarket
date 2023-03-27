@@ -2,6 +2,7 @@
 #include<string>
 #include<list>
 #include<iostream>
+#include<exception>
 #include"Company.h"
 #include "Customer.h"
 #include "StockMarket.h"
@@ -49,20 +50,20 @@ class Test
 	*/
 	void EstablishCompany_Less5000Euro();
 	/*
-	* Test size of lists and their change
+	* Test if  yoou can buy a company with value per stock less then 2 Euro
 	*/
-
+	void ValuePerShare_Less2Euro();
+	/*
+	* Test if a company is buncrupt, and return to investors
+	*/
+	void IsBankrupt();
 	/*
 	* Test size of lists and their change
 	*/
-
+	void Transaction_Over10Euro();
 	/*
 	* Test size of lists and their change
 	*/
-
-	/*
-	* Test size of lists and their change
-	*/
-	void SizeOfLists();
+	void The_SameName();
 
 };

@@ -6,7 +6,7 @@ void Test::Add_Customer_StockMarket() {
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
 	Customer* customer = market.Get_Customer("John", "Doe");
 	if (customer != nullptr) {
-		cerr << "Test adding a customer to the stock market failed." << endl;
+		cerr << "# Test adding a customer to the stock market failed. #" << endl;
 	}
 }
 
@@ -15,7 +15,7 @@ void Test::Add_Company_StockMarket() {
 	market.Add_Company("Company A", 1234567890, 10000, 1000);
 	Company* company = market.Get_Company("Company A");
 	if (company == nullptr) {
-		cerr << "Test adding a company to the stock market failed." << endl;
+		cerr << "# Test adding a company to the stock market failed. #" << endl;
 	}
 }
 
@@ -24,7 +24,7 @@ void Test::Add_Customer_InvalidNameCustomer() {
 	market.Add_Company("Company A", 1234567890, 10000, 1000);
 	market.Add_Transaction(1, market.Get_Customer("Invalid", "Name"), 10, market.Get_Company("Company A"), "buy");
 	if (market.SizeOf_Transactions() != 0) {
-		cerr << "Test adding a transaction to the stock market with invalid customer name failed." << endl;
+		cerr << "# Test adding a transaction to the stock market with invalid customer name failed. #" << endl;
 	}
 }
 
@@ -33,7 +33,7 @@ void Test::Add_Customer_InvalidNameCompany(){
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
 	market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Invalid"), "buy");
 	if (market.SizeOf_Transactions() != 0) {
-		cerr << "Test adding a transaction to the stock market with invalid company name failed." << endl;
+		cerr << "# Test adding a transaction to the stock market with invalid company name failed. #" << endl;
 	}
 }
 
@@ -43,7 +43,7 @@ void Test::Remove_Customer_StockMarket() {
 	market.Remove_Customer("John", "Doe");
 	Customer* customer = market.Get_Customer("John", "Doe");
 	if (customer != nullptr) {
-		cerr << "Test removing a customer from the stock market failed." << endl;
+		cerr << "# Test removing a customer from the stock market failed. #" << endl;
 	}
 }
 
@@ -53,7 +53,7 @@ void Test::Remove_Company_StockMarket() {
 	market.Remove_Company("Company A");
 	Company* company = market.Get_Company("Company A");
 	if (company != nullptr) {
-		cerr << "Test removing a company from the stock market failed." << endl;
+		cerr << "# Test removing a company from the stock market failed. #" << endl;
 	}
 }
 
@@ -62,7 +62,7 @@ void Test::Get_Customer_StockMarket() {
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
 	Customer* customer = market.Get_Customer("John", "Doe");
 	if (customer == nullptr) {
-		cerr << "Test getting a customer from the stock market failed." << endl;
+		cerr << "# Test getting a customer from the stock market failed. #" << endl;
 	}
 }
 
@@ -71,8 +71,60 @@ void Test::Get_Company_StockMarket() {
 	market.Add_Company("Company A", 1234567890, 10000, 1000);
 	Company* company = market.Get_Company("Company A");
 	if (company == nullptr) {
-		cerr << "Test getting a company from the stock market failed." << endl;
+		cerr << "# Test getting a company from the stock market failed. #" << endl;
 	}
+}
+
+void Test::EstablishCompany_Less5000Euro()
+{
+	StockMarket market("aa");
+	market.Add_Customer("John", "Doe", 1234567890, 5000);
+	market.Add_Company("ABC Company",908443122, 4000,100);
+	if (market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy") != 0) {
+		cerr << "# Test establishing a company with value less than 5000 Euro #" << endl;
+	}
+}
+
+void Test::ValuePerShare_Less2Euro() {
+
+	StockMarket market("aa");
+	market.Add_Customer("John", "Doe", 1234567890, 5000);
+	market.Add_Company("ABC Company", 908443122, 6000, 4000);
+	if (market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 500, market.Get_Company("ABC Company"), "buy") != 0) {
+		cerr << "# Test buying a Company with less than 2 Euro Per Stock #" << endl;
+	}
+}
+
+void IsBankrupt() {
+
+}
+
+void Transaction_Over10Euro() {
+
+}
+
+void Test::The_SameName() {
+	int a = 0;
+	StockMarket market;
+	market.Add_Customer("John", "Doe", 1234567890, 5000);
+	market.Add_Company("ABC Company", 908443122, 6000, 200);
+	try {
+		market.Add_Customer("John", "Doe", 1234567890, 5000);
+	}
+	catch (exception ex) {
+		a += 1;
+	}
+
+	try {
+		market.Add_Company("ABC Company", 908443122, 6000, 200);
+	}
+	catch (exception ex) {
+		a += 1;
+	}
+	if (a != 2) {
+		cerr << "# Test with the Same Names failed #" << endl;
+	}
+
 }
 
 void Test::Get_Transaction_StockMarket() {
@@ -88,7 +140,7 @@ void Test::Get_Transaction_StockMarket() {
 	if (transaction == nullptr || transaction->Get_Type() != "buy" ||
 		transaction->Get_Company() != company || transaction->Get_Shares() != 100 ||
 		transaction->Get_Customer() != &customer) {
-		cerr << "Test getting a transaction from the stock market failed." << endl;
+		cerr << "# Test getting a transaction from the stock market failed. #" << endl;
 	}
 
 	// Sell shares
@@ -97,13 +149,13 @@ void Test::Get_Transaction_StockMarket() {
 	if (transaction == nullptr || transaction->Get_Type() != "sell" ||
 		transaction->Get_Company() != company || transaction->Get_Shares() != 50 ||
 		transaction->Get_Customer() != &customer) {
-		cerr << "Test getting a transaction from the stock market failed." << endl;
+		cerr << "# Test getting a transaction from the stock market failed. #" << endl;
 	}
 
 	// Invalid ID
 	transaction = market.Get_Transaction(3);
 	if (transaction != nullptr) {
-		cerr << "Test getting a transaction from the stock market failed." << endl;
+		cerr << "# Test getting a transaction from the stock market failed. #" << endl;
 	}
 }
 

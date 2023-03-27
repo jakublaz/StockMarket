@@ -123,7 +123,7 @@ int Customer::Sizeof_Companies()
 
 int Customer::Sizeof_Transactions()
 {
-    return transactions.size();
+    return (int)transactions.size();
 }
 
 int Customer::Sizeof_StockMarkets()
