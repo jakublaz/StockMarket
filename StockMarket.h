@@ -112,6 +112,10 @@ public:
     * returns size of the list of transactions
     */
     int SizeOf_Transactions();
+    /*
+    * Function returning pointer to transaction with specyfic id
+    */
+    Transaction* Get_Transaction(int ID);
 
 private:
     /*

@@ -8,15 +8,61 @@
 #include "Transactions.h"
 class Test
 {
-	void Scenario1();
-	void Scenario2();
-	void Scenario3();
-	void Scenario4();
-	void Scenario5();
-	void Scenario6();
-	void Scenario7();
-	void Scenario8();
-	void Scenario9();
-	void Scenario10();
-};
+	/*
+	* Test adding a customer to the stock market
+	*/
+	void Add_Customer_StockMarket();
+	/*
+	* Test adding a company to the stock market
+	*/
+	void Add_Company_StockMarket();
+	/*
+	* Test adding a transaction to the stock market with invalid customer name
+	*/
+	void Add_Customer_InvalidNameCustomer();
+	/*
+	* Test adding a transaction to the stock market with invalid company name
+	*/
+	void Add_Customer_InvalidNameCompany();
+	/*
+	* Test removing a customer from the stock market
+	*/
+	void Remove_Customer_StockMarket();
+	/*
+	* Test removing a company from the stock market
+	*/
+	void Remove_Company_StockMarket();
+	/*
+	* Test getting a customer from the stock market
+	*/
+	void Get_Customer_StockMarket();
+	/*
+	* Test getting a company from the stock market
+	*/
+	void Get_Company_StockMarket();
+	/*
+	* Test getting a transaction from the stock market
+	*/
+	void Get_Transaction_StockMarket();
+	/*
+	* Test if you can establish company having less then 5000 Euro
+	*/
+	void EstablishCompany_Less5000Euro();
+	/*
+	* Test size of lists and their change
+	*/
 
+	/*
+	* Test size of lists and their change
+	*/
+
+	/*
+	* Test size of lists and their change
+	*/
+
+	/*
+	* Test size of lists and their change
+	*/
+	void SizeOfLists();
+
+};

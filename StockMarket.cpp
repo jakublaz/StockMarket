@@ -109,6 +109,11 @@ int StockMarket::SizeOf_Transactions()
     return transactions.size();
 }
 
+Transaction* StockMarket::Get_Transaction(int ID)
+{
+    return nullptr;
+}
+
 Company* StockMarket::FindCompany(string name)
 {
     return nullptr;

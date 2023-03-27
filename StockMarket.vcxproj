@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="Company.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="gtest.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="StockMarket.cpp" />
     <ClCompile Include="Test.cpp" />
