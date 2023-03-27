@@ -75,6 +75,37 @@ void Test::Get_Company_StockMarket() {
 	}
 }
 
+void Test::Get_Transaction_StockMarket() {
+	StockMarket market("aa");
+	market.Add_Company("Company A", 1234567890, 10000, 1000);
+
+	Customer customer("John", "Doe", 1000);
+	Company* company = market.Get_Company("Company A");
+
+	// Buy shares
+	market.Add_Transaction(1, &customer, 100, company, "buy");
+	Transaction* transaction = market.Get_Transaction(1);
+	if (transaction == nullptr || transaction->Get_Type() != "buy" ||
+		transaction->Get_Company() != company || transaction->Get_Shares() != 100 ||
+		transaction->Get_Customer() != &customer) {
+		cerr << "Test getting a transaction from the stock market failed." << endl;
+	}
+
+	// Sell shares
+	market.Add_Transaction(2, &customer, 50, company, "sell");
+	transaction = market.Get_Transaction(2);
+	if (transaction == nullptr || transaction->Get_Type() != "sell" ||
+		transaction->Get_Company() != company || transaction->Get_Shares() != 50 ||
+		transaction->Get_Customer() != &customer) {
+		cerr << "Test getting a transaction from the stock market failed." << endl;
+	}
+
+	// Invalid ID
+	transaction = market.Get_Transaction(3);
+	if (transaction != nullptr) {
+		cerr << "Test getting a transaction from the stock market failed." << endl;
+	}
+}
 
 
 
