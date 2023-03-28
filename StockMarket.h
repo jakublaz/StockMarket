@@ -96,7 +96,11 @@ public:
     /*
     * Function to show basic info about each customer
     */
-    void Show_Compnies();
+    void Show_Companies();
+    /*
+    * Function that will take actions when function IsBancrupt() returns true, divides the assects of bucrupt company
+    */
+    void Bancrupt_Company();
     /*
     * Test Function
     * returns size of the list of customers

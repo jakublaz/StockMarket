@@ -116,7 +116,10 @@ public:
     * returns size of the list of stockmarkets
     */
     int Sizeof_StockMarket();
-
+    /*
+    * checks if the companys costPerShare is lover than 0.5
+    */
+    bool IsBancrupt();
 private:
     /*
     * name of the customer

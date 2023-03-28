@@ -114,6 +114,11 @@ int Company::Sizeof_StockMarket()
 	return (int)stockmarkets.size();
 }
 
+bool Company::IsBancrupt()
+{
+	return false;
+}
+
 Customer* Company::FindCustomer(string surname)	//do sprawdzenia
 {
 	for (auto& c : customers) {

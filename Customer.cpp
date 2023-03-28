@@ -11,25 +11,6 @@ Customer::~Customer() {
 
 }
 
-//bool Customer::FindCompany(string name) {
-//    //list<Company*>::iterator it = ListCompanies.begin();
-//    //// Loop through each element of the ListCompanies list
-//    //for (list<Company*>::iterator it = ListCompanies.begin(); it != ListCompanies.end(); ++it) {
-//    //    Company* company = *it;
-//
-//    //    // Compare the name of the current Company object with the name to find
-//    //    if (company->GetName() == name) {
-//    //        // The name was found
-//    //        cout << "Found company with name " << name << endl;
-//    //        return true;
-//    //    }
-//    //}
-//
-//    //// If the name was not found
-//    //cout << "Could not find company with name " << name << endl;
-//    return false;
-//}
-
 void Customer::Set_Name(string name) {
     this->name = name;
 }
@@ -136,6 +117,26 @@ Company* Customer::Find_Company(string name)
 {
     return nullptr;
 }
+
+
+//bool Customer::FindCompany(string name) {
+//    //list<Company*>::iterator it = ListCompanies.begin();
+//    //// Loop through each element of the ListCompanies list
+//    //for (list<Company*>::iterator it = ListCompanies.begin(); it != ListCompanies.end(); ++it) {
+//    //    Company* company = *it;
+//
+//    //    // Compare the name of the current Company object with the name to find
+//    //    if (company->GetName() == name) {
+//    //        // The name was found
+//    //        cout << "Found company with name " << name << endl;
+//    //        return true;
+//    //    }
+//    //}
+//
+//    //// If the name was not found
+//    //cout << "Could not find company with name " << name << endl;
+//    return false;
+//}
 
 Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany, int ID)
 {

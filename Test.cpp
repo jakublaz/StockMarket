@@ -95,7 +95,7 @@ void Test::ValuePerShare_Less2Euro() {
 	}
 }
 
-void IsBankrupt() {
+void Bankrupt() {
 
 }
 
@@ -167,17 +167,7 @@ void Test::SellShares() {
 
 }
 
-
 void Test::SizeOfLists() {
-
-	//in this Scenario we add a Stock Market
-	//then we add 2 customers 1 company and do 3 trasactions
-	//all should be valid
-	//we check(using cerr) if the trasaction list has 3 structures transactions inside, 
-	//if each customer points only once to the company and has right amount of trasactions
-	//if company has a list with 2 customers
-	//if every list in every class has exact amount of objects as it should have
-
 
 	//Add Stock Market
 	StockMarket a("GPW");
@@ -250,4 +240,8 @@ void Test::SizeOfLists() {
 	}
 
 
+}
+
+void Test::SameID_OfTransaction()
+{
 }

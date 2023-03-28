@@ -91,7 +91,11 @@ void StockMarket::Update_AmountOfTransactions()
 {
 }
 
-void StockMarket::Show_Compnies()
+void StockMarket::Show_Companies()
+{
+}
+
+void StockMarket::Bancrupt_Company()
 {
 }
 

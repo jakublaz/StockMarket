@@ -7,6 +7,12 @@
 #include "Customer.h"
 #include "StockMarket.h"
 #include "Transactions.h"
+
+//buing more shares then max amount there is 
+//buying for more money thaen you have
+//customer with less money then 500Euro
+//sprzedawanie sharów niemaj¹c ich
+//za niska/wysoka cena kupna sprezeda¿y
 class Test
 {
 	/*
@@ -47,10 +53,12 @@ class Test
 	void Get_Transaction_StockMarket();
 	/*
 	* Test if you can establish company having less then 5000 Euro
+	* posibble
 	*/
 	void EstablishCompany_Less5000Euro();
 	/*
-	* Test if  yoou can buy a company with value per stock less then 2 Euro
+	* Test if you can buy a company with value per stock less then 2 Euro
+	* not possible
 	*/
 	void ValuePerShare_Less2Euro();
 	/*
@@ -62,19 +70,25 @@ class Test
 	*/
 	void Transaction_Over10Euro();
 	/*
-	* Test size of lists and their change
-	*/
-	void The_SameName();
-	/*
 	* Test if you are able to buy shares using method in customer
+	* possible
 	*/
 	void BuyShares();
 	/*
 	* Test if you are able to sell shares using method in customer
 	*/
 	void SellShares();
-
+	/*
+	* Test if all sizes of the lists in diffrent clases are ok with right values
+	*/
 	void SizeOfLists();
-
+	/*
+	* Checks if a company/customer can have the same name as other company/customer
+	*/
+	void The_SameName();
+	/*
+	* Test if after adding 2 transactions with the same id, the 1 one should be added
+	* the second one should be ignored
+	*/
 	void SameID_OfTransaction();
 };
