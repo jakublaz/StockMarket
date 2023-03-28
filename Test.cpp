@@ -245,3 +245,19 @@ void Test::SizeOfLists() {
 void Test::SameID_OfTransaction()
 {
 }
+
+void Test::BuyingMoreShares_ThenExist()
+{
+}
+
+void Test::NotEnought_Money()
+{
+}
+
+void Test::SellingShares_NotHavingIT()
+{
+}
+
+void Test::LessThen_500Euro()
+{
+}

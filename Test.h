@@ -8,10 +8,6 @@
 #include "StockMarket.h"
 #include "Transactions.h"
 
-//buing more shares then max amount there is 
-//buying for more money thaen you have
-//customer with less money then 500Euro
-//sprzedawanie sharów niemaj¹c ich
 //za niska/wysoka cena kupna sprezeda¿y
 class Test
 {
@@ -91,4 +87,24 @@ class Test
 	* the second one should be ignored
 	*/
 	void SameID_OfTransaction();
+	/*
+	* Test buing more shares then max amount there is 
+	* not posible
+	*/
+	void BuyingMoreShares_ThenExist();
+	/*
+	* Test buying for more money then you have
+	* not posible
+	*/
+	void NotEnought_Money();
+	/*
+	* Test selling shares when you dont have enought shares bouoght
+	* not posible
+	*/
+	void SellingShares_NotHavingIT();
+	/*
+	* Test adding a transaction when customer don't have 500Euro at least
+	* not posible
+	*/
+	void LessThen_500Euro();
 };
