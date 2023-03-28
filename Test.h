@@ -12,15 +12,18 @@
 class Test
 {
 	/*
-	* Test adding a customer to the stock market
+	* Tests the ability to add a customer to a stock market
 	*/
 	void Add_Customer_StockMarket();
 	/*
-	* Test adding a company to the stock market
+	* Adds a company to the stock market and checks if the company was added successfully.
 	*/
 	void Add_Company_StockMarket();
 	/*
-	* Test adding a transaction to the stock market with invalid customer name
+	* This code tests the ability to add a transaction to the stock market with an invalid customer name.
+	* It creates a StockMarket object with a valid company name, adds a company to the stock market,
+	* and then attempts to add a transaction with an invalid customer name.
+	* If the size of the transactions is not 0, then the test fails and an error message is printed.
 	*/
 	void Add_Customer_InvalidNameCustomer();
 	/*
