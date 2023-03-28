@@ -70,19 +70,15 @@ int Customer::Get_PhoneNumber() {
     return phoneNumber;
 }
 
-bool Customer::BuyShares(int amount) {
-    //trzeba coœ tu dodac
-    //
-    //
-    //
-    return true;
+bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* market)
+{
+    return false;
 }
-bool Customer::SellShares(int amount) {
-    //trzeba coœ tu dodac
-    //
-    //
-    //
-    return true;
+
+
+bool Customer::SellShares(int ID, int amount, Company* company, StockMarket* market)
+{
+    return false;
 }
 
 void Customer::Add_Company(string name, int phoneNumber, int money, int shares)
@@ -118,7 +114,7 @@ int Customer::Get_SharesCompany(string name)
 
 int Customer::Sizeof_Companies()
 {
-    return companies.size();
+    return (int)companies.size();
 }
 
 int Customer::Sizeof_Transactions()
@@ -128,7 +124,7 @@ int Customer::Sizeof_Transactions()
 
 int Customer::Sizeof_StockMarkets()
 {
-    return stockmarkets.size();
+    return (int)stockmarkets.size();
 }
 
 void Customer::Add_Shares(int amount)

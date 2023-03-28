@@ -65,5 +65,16 @@ class Test
 	* Test size of lists and their change
 	*/
 	void The_SameName();
+	/*
+	* Test if you are able to buy shares using method in customer
+	*/
+	void BuyShares();
+	/*
+	* Test if you are able to sell shares using method in customer
+	*/
+	void SellShares();
 
+	void SizeOfLists();
+
+	void SameID_OfTransaction();
 };

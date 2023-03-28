@@ -97,17 +97,17 @@ void StockMarket::Show_Compnies()
 
 int StockMarket::SizeOf_Customers()
 {
-    return customers.size();
+    return (int)customers.size();
 }
 
 int StockMarket::SizeOf_Companies()
 {
-    return companies.size();
+    return (int)companies.size();
 }
 
 int StockMarket::SizeOf_Transactions()
 {
-    return transactions.size();
+    return (int)transactions.size();
 }
 
 Transaction* StockMarket::Get_Transaction(int ID)
