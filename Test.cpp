@@ -31,7 +31,7 @@ void Test::Add_Company_StockMarket() {
 	}
 }
 
-//This code tests the ability to add a transaction to the stock market with an invalid customer name. 
+//This code tests the ability to add a transaction to the stock market with an invalid company name. 
 //It creates a StockMarket object with a valid company name, adds a company to the stock market, 
 //and then attempts to add a transaction with an invalid customer name. 
 //If the size of the transactions is not 0, then the test fails and an error message is printed. 
@@ -279,6 +279,8 @@ void Test::SellingShares_NotHavingIT()
 
 void Test::LessThen_500Euro()
 {
-
+	StockMarket market;
+	market.Add_Customer("John", "Doe", 1234567890, 480);
+	market.Add_Company("Henkel", 903338291, 5000,1000);
 }
 
