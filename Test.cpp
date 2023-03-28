@@ -28,7 +28,7 @@ void Test::Add_Customer_InvalidNameCustomer() {
 	}
 }
 
-void Test::Add_Customer_InvalidNameCompany(){
+void Test::Add_Customer_InvalidNameCompany() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
 	market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Invalid"), "buy");
@@ -79,7 +79,7 @@ void Test::EstablishCompany_Less5000Euro()
 {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
-	market.Add_Company("ABC Company",908443122, 4000,100);
+	market.Add_Company("ABC Company", 908443122, 4000, 100);
 	if (market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy") != 0) {
 		cerr << "# Test establishing a company with value less than 5000 Euro #" << endl;
 	}
@@ -181,13 +181,13 @@ void Test::SizeOfLists() {
 	a.Add_Company("Henkel", 983883001, 2000, 50000);
 
 	//Add trasaction done by Jacek Zak with Helkel on 10 stocks
-	a.Add_Transaction(1,a.Get_Customer("Jacek","Zak"),10,a.Get_Company("Henkel"),"buy");
+	a.Add_Transaction(1, a.Get_Customer("Jacek", "Zak"), 10, a.Get_Company("Henkel"), "buy");
 
 	//Add trasaction done by Jacek Zak with Helkel on 100 stocks
-	a.Add_Transaction(2,a.Get_Customer("Jacek", "Zak"), 100, a.Get_Company("Henkel"),"buy");
+	a.Add_Transaction(2, a.Get_Customer("Jacek", "Zak"), 100, a.Get_Company("Henkel"), "buy");
 
 	//Add trasaction done by Anna Maria with Helkel on 56 stocks
-	a.Add_Transaction(3,a.Get_Customer("Anna", "Maria"), 56, a.Get_Company("Henkel"),"buy");
+	a.Add_Transaction(3, a.Get_Customer("Anna", "Maria"), 56, a.Get_Company("Henkel"), "buy");
 
 	//StockMarket
 	if (a.SizeOf_Companies() != 1) {

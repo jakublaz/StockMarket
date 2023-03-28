@@ -88,7 +88,7 @@ class Test
 	*/
 	void SameID_OfTransaction();
 	/*
-	* Test buing more shares then max amount there is 
+	* Test buing more shares then max amount there is
 	* not posible
 	*/
 	void BuyingMoreShares_ThenExist();

@@ -131,7 +131,6 @@
     <ClInclude Include="Customer.h" />
     <ClInclude Include="StockMarket.h" />
     <ClInclude Include="Test.h" />
-    <ClInclude Include="Testy.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="Transactions.h" />
   </ItemGroup>
