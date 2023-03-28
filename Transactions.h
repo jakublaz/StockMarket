@@ -19,7 +19,7 @@ public:
     /*
     * Constructor for this class, it sets id, amount, shares and pointers to customer, company, strock market
     */
-    Transaction(int ID, double amount, int shares,Customer* customer, Company* company, StockMarket* stock_market);
+    Transaction(int ID, int shares,Customer* customer, Company* company, StockMarket* stock_market);
     /*
     *Default Deconstructor
     */

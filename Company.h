@@ -120,6 +120,10 @@ public:
 	* checks if the companys costPerShare is lover than 0.5
 	*/
 	bool IsBancrupt();
+	/*
+	* getter for share cost
+	*/
+	double Get_ShareCost();
 private:
     /*
     * name of the customer

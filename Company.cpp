@@ -138,3 +138,7 @@ StockMarket* Company::FindStockMarket(string name)
 {
 	return nullptr;
 }
+
+double Company::Get_ShareCost() {
+	return costShare;
+}

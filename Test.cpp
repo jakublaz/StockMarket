@@ -31,6 +31,17 @@ void Test::Add_Company_StockMarket() {
 	}
 }
 
+void Test::Add_Customer_InvalidNameCustomer()
+{
+	StockMarket market("aa");
+	market.Add_Customer("Invalid", "Name", 1234567890, 5000);
+	market.Get_Company("Henkel");
+	market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Henkel"), "buy");
+	if (market.SizeOf_Transactions() != 0) {
+		cerr << "# Test adding a transaction to the stock market with invalid customer name failed. #" << endl;
+	}
+}
+
 //This code tests the ability to add a transaction to the stock market with an invalid company name. 
 //It creates a StockMarket object with a valid company name, adds a company to the stock market, 
 //and then attempts to add a transaction with an invalid customer name. 
@@ -38,6 +49,7 @@ void Test::Add_Company_StockMarket() {
 void Test::Add_Customer_InvalidNameCompany() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
+	market.Get_Company("Henkel");
 	market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Invalid"), "buy");
 	if (market.SizeOf_Transactions() != 0) {
 		cerr << "# Test adding a transaction to the stock market with invalid company name failed. #" << endl;
@@ -102,7 +114,7 @@ void Test::The_SameName() {
 	int a = 0;
 
 	// Create a StockMarket object
-	StockMarket market;
+	StockMarket market("aa");
 
 	// Add a customer to the market
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
@@ -178,6 +190,11 @@ void Test::Get_Transaction_StockMarket() {
 }
 
 void Test::BuyShares() {
+	StockMarket market("aa");
+	StockMarket* ptr = &market;
+	market.Add_Customer("John", "Doe", 901882716, 7800);
+	market.Add_Company("ABC Company", 908443122, 6000, 200);
+	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"),ptr);
 
 }
 

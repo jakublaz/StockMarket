@@ -71,7 +71,7 @@ public:
 	/*
 	* Function enabling you to buy shares, uses amount, as how much shares
 	*/
-	bool BuyShares(int ID,int amount, Company* company, StockMarket* market);
+	bool BuyShares(int ID,int shares, Company* company, StockMarket* market);
 	/*
 	* Function enabling you to sell shares, uses amount, as how much shares
 	*/

@@ -1,9 +1,9 @@
 #include "Transactions.h"
 
-Transaction::Transaction(int ID, double amount, int shares, Customer* customer, Company* company, StockMarket* stock_market) :
+Transaction::Transaction(int ID, int shares, Customer* customer, Company* company, StockMarket* stock_market) :
     customer(customer), company(company), stock_market(stock_market) {
     this->ID = ID;
-    this->amount = amount;
+    this->amount = company->Get_ShareCost() * shares;
     this->shares = shares;
     this->company = company;
     this->customer = customer;
