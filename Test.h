@@ -9,8 +9,7 @@
 #include "Transactions.h"
 
 //za niska/wysoka cena kupna sprezeda¿y
-class Test
-{
+
 	/*
 	* Tests the ability to add a customer to a stock market
 	*/
@@ -108,4 +107,3 @@ class Test
 	void LessThen_500Euro();
 
 	void Scenario1();
-};

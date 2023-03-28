@@ -131,6 +131,12 @@ Company* StockMarket::FindCompany(string name)
 
 Customer* StockMarket::FindCustomer(string name, string surname)
 {
+    for (auto& c : customers) {
+        if (c.GetSurname() == surname) {
+            Customer* ptr = &c;
+            return ptr;
+        }
+    }
     return nullptr;
 }
 
@@ -143,6 +149,15 @@ void StockMarket::Print_Customer(string name,string surname)
 {
     cout << "Name : " << name << endl;
     cout << "Surname : " << surname << endl;
-    cout << "Phone number : " << Get_Customer(name,surname)->Get_PhoneNumber() << endl;
+    cout << "Phone number : " << Get_Customer(name,surname)->Get_PhoneNumber()<< endl;
     cout << "Pocket money : " << Get_Customer(name, surname)->Get_PocketMoney() << endl;
+}
+
+void StockMarket::Print_Company(string name)
+{
+    cout << "Name : " << name << endl;
+    cout << "Phone number : " << Get_Company(name)->Get_PhoneNumber() << endl;
+    cout << "Money : " << Get_Company(name)->Get_Money();
+    cout << "Shares : " << Get_Company(name)->Get_Shares();
+
 }

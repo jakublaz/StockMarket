@@ -40,15 +40,15 @@ double Customer::Get_InvestedMoney() {
 }
 
 double Customer::Get_PocketMoney() {
-    return pocketMoney;
+    return this->pocketMoney;
 }
 
 string Customer::GetSurname(){
-    return surname;
+    return this->surname;
 }
 
 int Customer::Get_PhoneNumber() {
-    return phoneNumber;
+    return this->phoneNumber;
 }
 
 bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* market)

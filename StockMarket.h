@@ -128,6 +128,10 @@ public:
 	* Writes to the console info about customer
 	*/
 	void Print_Customer(string name, string surname);
+	/*
+	* Writes to the console info about company
+	*/
+	void Print_Company(string name);
 
 private:
 	/*

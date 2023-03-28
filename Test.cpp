@@ -1,7 +1,7 @@
 #include "Test.h"
 
 
-void Test::Add_Customer_StockMarket() {
+void Add_Customer_StockMarket() {
 	//Create a stock market object with the symbol "aa" 
 	StockMarket market("aa");
 	//Add a customer to the stock market with the name "John Doe", ID 1234567890, and a balance of 5000. 
@@ -15,7 +15,7 @@ void Test::Add_Customer_StockMarket() {
 }
 
 
-void Test::Add_Company_StockMarket() {
+void Add_Company_StockMarket() {
 	//Create a StockMarket object with the name "aa"
 	StockMarket market("aa");
 
@@ -31,7 +31,7 @@ void Test::Add_Company_StockMarket() {
 	}
 }
 
-void Test::Add_Customer_InvalidNameCustomer()
+void Add_Customer_InvalidNameCustomer()
 {
 	StockMarket market("aa");
 	market.Add_Customer("Invalid", "Name", 1234567890, 5000);
@@ -46,7 +46,7 @@ void Test::Add_Customer_InvalidNameCustomer()
 //It creates a StockMarket object with a valid company name, adds a company to the stock market, 
 //and then attempts to add a transaction with an invalid customer name. 
 //If the size of the transactions is not 0, then the test fails and an error message is printed. 
-void Test::Add_Customer_InvalidNameCompany() {
+void Add_Customer_InvalidNameCompany() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
 	market.Get_Company("Henkel");
@@ -60,7 +60,7 @@ void Test::Add_Customer_InvalidNameCompany() {
 //It creates a StockMarket object and adds a customer to it. 
 //It then attempts to remove the customer and checks if the customer is still present in the stock market. 
 //If the customer is still present, an error message is printed. 
-void Test::Remove_Customer_StockMarket() {
+void Remove_Customer_StockMarket() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000); //Add customer to stock market
 	market.Remove_Customer("John", "Doe"); //Attempt to remove customer
@@ -70,7 +70,7 @@ void Test::Remove_Customer_StockMarket() {
 	}
 }
 
-void Test::Remove_Company_StockMarket()
+void Remove_Company_StockMarket()
 {
 	StockMarket market("aa");
 	market.Add_Company("ABC Company", 908443122, 4000, 100);
@@ -81,7 +81,7 @@ void Test::Remove_Company_StockMarket()
 }
 
 //This code tests the ability to get a customer from the stock market.
-void Test::Get_Customer_StockMarket() {
+void Get_Customer_StockMarket() {
 	//Create a StockMarket object with the symbol "aa"
 	StockMarket market("aa");
 
@@ -97,7 +97,7 @@ void Test::Get_Customer_StockMarket() {
 	}
 }
 
-void Test::Get_Company_StockMarket()
+void Get_Company_StockMarket()
 {
 	StockMarket market("aa");
 	market.Add_Company("ABC Company", 908443122, 4000, 100);
@@ -110,7 +110,7 @@ void Test::Get_Company_StockMarket()
 //It creates a StockMarket object called "market" and adds a customer with the name "John Doe" and a value of 5000. 
 //It then adds a company called "ABC Company" with a value of 4000 and 100 shares. 
 //Finally, it attempts to add a transaction with the customer and company, and if it fails, it prints an error message. 
-void Test::EstablishCompany_Less5000Euro()
+void EstablishCompany_Less5000Euro()
 {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 1234567890, 5000);
@@ -120,7 +120,7 @@ void Test::EstablishCompany_Less5000Euro()
 	}
 }
 
-void Test::The_SameName() {
+void The_SameName() {
 	// Initialize a variable to store the number of exceptions thrown
 	int a = 0;
 
@@ -160,7 +160,7 @@ void Test::The_SameName() {
 
 }
 
-void Test::Get_Transaction_StockMarket() {
+void Get_Transaction_StockMarket() {
 	// Create a StockMarket object and add a company
 	StockMarket market("aa");
 	market.Add_Company("Company A", 1234567890, 10000, 1000);
@@ -200,7 +200,7 @@ void Test::Get_Transaction_StockMarket() {
 	}
 }
 
-void Test::ValuePerShare_Less2Euro()
+void ValuePerShare_Less2Euro()
 {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 901882716, 7800);
@@ -212,12 +212,12 @@ void Test::ValuePerShare_Less2Euro()
 	}
 }
 
-void Test::IsBankrupt()
+void IsBankrupt()
 {
 
 }
 
-void Test::BuyShares() {
+void BuyShares() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 901882716, 7800);
 	market.Add_Company("ABC Company", 908443122, 6000, 200);
@@ -229,7 +229,7 @@ void Test::BuyShares() {
 
 }
 
-void Test::SellShares() {
+void SellShares() {
 	StockMarket market("aa");
 	market.Add_Customer("John", "Doe", 901882716, 7800);
 	market.Add_Company("ABC Company", 908443122, 6000, 200);
@@ -241,7 +241,7 @@ void Test::SellShares() {
 	}
 }
 
-void Test::SizeOfLists() {
+void SizeOfLists() {
 
 	//Add Stock Market
 	StockMarket a("GPW");
@@ -316,7 +316,7 @@ void Test::SizeOfLists() {
 
 }
 
-void Test::SameID_OfTransaction()
+void SameID_OfTransaction()
 {
 	StockMarket market("aa");
 	market.Add_Company("Company A", 1234567890, 10000, 1000);
@@ -335,7 +335,7 @@ void Test::SameID_OfTransaction()
 	}
 }
 
-void Test::BuyingMoreShares_ThenExist()
+void BuyingMoreShares_ThenExist()
 {
 	StockMarket market("aa");
 	market.Add_Company("Company A", 1234567890, 10000, 100);
@@ -354,7 +354,7 @@ void Test::BuyingMoreShares_ThenExist()
 
 }
 
-void Test::NotEnought_Money()
+void NotEnought_Money()
 {
 	StockMarket market("aa");
 	market.Add_Company("Company A", 1234567890, 10000, 100);
@@ -372,7 +372,7 @@ void Test::NotEnought_Money()
 	}
 }
 
-void Test::SellingShares_NotHavingIT()
+void SellingShares_NotHavingIT()
 {
 	StockMarket market("aa");
 	market.Add_Company("Company A", 1234567890, 10000, 100);
@@ -390,17 +390,21 @@ void Test::SellingShares_NotHavingIT()
 	}
 }
 
-void Test::LessThen_500Euro()
+void LessThen_500Euro()
 {
 	StockMarket market;
 	market.Add_Customer("John", "Doe", 1234567890, 480);
 	market.Add_Company("Henkel", 903338291, 5000,1000);
 }
 
-void Test::Scenario1()
+void Scenario1()
 {
 	StockMarket market("GPW");
 	market.Add_Customer("John", "Doe", 908115627, 10000);
 	market.Print_Customer("John","Doe");
+	market.Add_Company("ABC Company", 908116272, 10009, 120);
+	market.Print_Company("ABC Company");
+	market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy");
+	market.Print_Transaction(1);
 }
 
