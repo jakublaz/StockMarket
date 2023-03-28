@@ -120,6 +120,14 @@ public:
 	* Function returning pointer to transaction with specyfic id
 	*/
 	Transaction* Get_Transaction(int ID);
+	/*
+	* Returns pointer to itself
+	*/
+	StockMarket* Get_StockMarket();
+	/*
+	* Writes to the console info about customer
+	*/
+	void Print_Customer(string name, string surname);
 
 private:
 	/*

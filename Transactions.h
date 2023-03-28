@@ -5,6 +5,9 @@
 #include "Company.h"
 #include "StockMarket.h"
 #include<string>
+//check if money is over 10 Euros for a transaction
+//buing more shares then there exists
+//buying for more moeny then you have
 
 using namespace std;
 
@@ -57,6 +60,13 @@ public:
     * It is a getter for stock_market
     */
     StockMarket* Get_StockMarket();
+    /*
+    * 
+    */
+    bool HaveEnough_Money();
+
+
+    bool HaveEnough_Shares();
 private:
     /*
     * Id of this transaction

@@ -65,10 +65,6 @@ class Test
 	*/
 	void IsBankrupt();
 	/*
-	* Test size of lists and their change
-	*/
-	void Transaction_Over10Euro();
-	/*
 	* Test if you are able to buy shares using method in customer
 	* possible
 	*/
@@ -110,4 +106,6 @@ class Test
 	* not posible
 	*/
 	void LessThen_500Euro();
+
+	void Scenario1();
 };

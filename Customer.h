@@ -4,6 +4,7 @@
 #include "Company.h"
 #include "Transactions.h"
 #include "StockMarket.h"
+#include<iostream>
 #include<list>
 #include<string>
 #include<algorithm>	//for Find functions
@@ -75,7 +76,7 @@ public:
 	/*
 	* Function enabling you to sell shares, uses amount, as how much shares
 	*/
-	bool SellShares(int ID, int amount, Company* company, StockMarket* market);
+	bool SellShares(int ID, int shares, Company* company, StockMarket* market);
 	/*
 	* Function to add company to list companies
 	*/

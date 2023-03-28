@@ -53,3 +53,15 @@ StockMarket* Transaction::Get_StockMarket()
 {
     return stock_market;
 }
+
+bool Transaction::HaveEnough_Money()
+{
+    return false;
+}
+
+bool Transaction::HaveEnough_Shares()
+{
+    return false;
+}
+
+

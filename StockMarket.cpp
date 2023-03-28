@@ -119,6 +119,11 @@ Transaction* StockMarket::Get_Transaction(int ID)
     return nullptr;
 }
 
+StockMarket* StockMarket::Get_StockMarket()
+{
+    return this;
+}
+
 Company* StockMarket::FindCompany(string name)
 {
     return nullptr;
@@ -132,4 +137,12 @@ Customer* StockMarket::FindCustomer(string name, string surname)
 Transaction* StockMarket::FindTransaction(string nameCustomer, string nameCompany, int ID)
 {
     return nullptr;
+}
+
+void StockMarket::Print_Customer(string name,string surname)
+{
+    cout << "Name : " << name << endl;
+    cout << "Surname : " << surname << endl;
+    cout << "Phone number : " << Get_Customer(name,surname)->Get_PhoneNumber() << endl;
+    cout << "Pocket money : " << Get_Customer(name, surname)->Get_PocketMoney() << endl;
 }

@@ -70,6 +70,16 @@ void Test::Remove_Customer_StockMarket() {
 	}
 }
 
+void Test::Remove_Company_StockMarket()
+{
+	StockMarket market("aa");
+	market.Add_Company("ABC Company", 908443122, 4000, 100);
+	market.Remove_Company("ABC Company");
+	if (market.SizeOf_Companies()!=0) {
+		cerr << "# Test Removing company from stock market #" << endl;
+	}
+}
+
 //This code tests the ability to get a customer from the stock market.
 void Test::Get_Customer_StockMarket() {
 	//Create a StockMarket object with the symbol "aa"
@@ -87,6 +97,15 @@ void Test::Get_Customer_StockMarket() {
 	}
 }
 
+void Test::Get_Company_StockMarket()
+{
+	StockMarket market("aa");
+	market.Add_Company("ABC Company", 908443122, 4000, 100);
+	if (market.Get_Company("ABC Company")->Get_PhoneNumber() != 908443122) {
+		cerr << "# Test Getting company from stock market #" << endl;
+	}
+}
+
 //This code tests the ability to establish a company with a value of less than 5000 Euro. 
 //It creates a StockMarket object called "market" and adds a customer with the name "John Doe" and a value of 5000. 
 //It then adds a company called "ABC Company" with a value of 4000 and 100 shares. 
@@ -99,14 +118,6 @@ void Test::EstablishCompany_Less5000Euro()
 	if (market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy") != 0) {
 		cerr << "# Test establishing a company with value less than 5000 Euro #" << endl;
 	}
-}
-
-void Bankrupt() {
-
-}
-
-void Transaction_Over10Euro() {
-
 }
 
 void Test::The_SameName() {
@@ -189,17 +200,45 @@ void Test::Get_Transaction_StockMarket() {
 	}
 }
 
-void Test::BuyShares() {
+void Test::ValuePerShare_Less2Euro()
+{
 	StockMarket market("aa");
-	StockMarket* ptr = &market;
 	market.Add_Customer("John", "Doe", 901882716, 7800);
 	market.Add_Company("ABC Company", 908443122, 6000, 200);
-	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"),ptr);
+	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+
+	if (market.SizeOf_Transactions() != 1) {
+		cerr << "# Test buying shares using Customer class #" << endl;
+	}
+}
+
+void Test::IsBankrupt()
+{
+
+}
+
+void Test::BuyShares() {
+	StockMarket market("aa");
+	market.Add_Customer("John", "Doe", 901882716, 7800);
+	market.Add_Company("ABC Company", 908443122, 6000, 200);
+	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"),market.Get_StockMarket());
+
+	if (market.SizeOf_Transactions() != 1) {
+		cerr << "# Test buying shares using Customer class #" << endl;
+	}
 
 }
 
 void Test::SellShares() {
+	StockMarket market("aa");
+	market.Add_Customer("John", "Doe", 901882716, 7800);
+	market.Add_Company("ABC Company", 908443122, 6000, 200);
+	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+	market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
 
+	if (market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company") != 25) {
+		cerr << "# Test selling shares using Customer class #" << endl;
+	}
 }
 
 void Test::SizeOfLists() {
@@ -279,19 +318,76 @@ void Test::SizeOfLists() {
 
 void Test::SameID_OfTransaction()
 {
+	StockMarket market("aa");
+	market.Add_Company("Company A", 1234567890, 10000, 1000);
+
+	// Create a Customer object
+	Customer customer("John", "Doe", 1000);
+	Company* company = market.Get_Company("Company A");
+
+	// Buy shares
+	// Add a transaction to the stock market and get the transaction
+	market.Add_Transaction(1, &customer, 100, company, "buy");
+	market.Add_Transaction(1, &customer, 20, company, "buy");
+
+	if (market.SizeOf_Transactions() != 1) {
+		cerr << "# Test same ID transaction #" << endl;
+	}
 }
 
 void Test::BuyingMoreShares_ThenExist()
 {
+	StockMarket market("aa");
+	market.Add_Company("Company A", 1234567890, 10000, 100);
+
+	// Create a Customer object
+	Customer customer("John", "Doe", 100000);
+	Company* company = market.Get_Company("Company A");
+
+	// Buy shares
+	// Add a transaction to the stock market and get the transaction
+	market.Add_Transaction(1, &customer, 120, company, "buy");
+
+	if (market.SizeOf_Transactions() != 0) {
+		cerr << "# Test Buing more shares then there exist #" << endl;
+	}
+
 }
 
 void Test::NotEnought_Money()
 {
+	StockMarket market("aa");
+	market.Add_Company("Company A", 1234567890, 10000, 100);
+
+	// Create a Customer object
+	Customer customer("John", "Doe", 980);
+	Company* company = market.Get_Company("Company A");
+
+	// Buy shares
+	// Add a transaction to the stock market and get the transaction
+	market.Add_Transaction(1, &customer, 100, company, "buy");
+
+	if (market.SizeOf_Transactions() != 0) {
+		cerr << "# Test Not having enough money #" << endl;
+	}
 }
 
 void Test::SellingShares_NotHavingIT()
 {
+	StockMarket market("aa");
+	market.Add_Company("Company A", 1234567890, 10000, 100);
 
+	// Create a Customer object
+	Customer customer("John", "Doe", 450000);
+	Company* company = market.Get_Company("Company A");
+
+	// Buy shares
+	// Add a transaction to the stock market and get the transaction
+	market.Add_Transaction(1, &customer, 100, company, "sell");
+
+	if (market.SizeOf_Transactions() != 0) {
+		cerr << "# Test Not having enough shares #" << endl;
+	}
 }
 
 void Test::LessThen_500Euro()
@@ -299,5 +395,12 @@ void Test::LessThen_500Euro()
 	StockMarket market;
 	market.Add_Customer("John", "Doe", 1234567890, 480);
 	market.Add_Company("Henkel", 903338291, 5000,1000);
+}
+
+void Test::Scenario1()
+{
+	StockMarket market("GPW");
+	market.Add_Customer("John", "Doe", 908115627, 10000);
+	market.Print_Customer("John","Doe");
 }
 
