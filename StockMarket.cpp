@@ -17,7 +17,8 @@ StockMarket::~StockMarket(){
 }
 
 bool StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
-    return false;
+    customers.emplace_back(name, surname, phoneNumber, pocketMoney);
+    return true;
 }
 
 bool StockMarket::Remove_Customer(string name, string surname) {
@@ -25,7 +26,8 @@ bool StockMarket::Remove_Customer(string name, string surname) {
 }
 
 bool StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
-    return false;
+    companies.emplace_back(name, phoneNumber, money, shares);
+    return true;
 }
 
 bool StockMarket::Remove_Company(string name) {
@@ -126,6 +128,12 @@ StockMarket* StockMarket::Get_StockMarket()
 
 Company* StockMarket::FindCompany(string name)
 {
+    for (auto& c : companies) {
+        if (c.Get_Name() == name) {
+            Company* ptr = &c;
+            return ptr;
+        }
+    }
     return nullptr;
 }
 

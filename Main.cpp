@@ -7,6 +7,6 @@
 #include "Test.h"
 
 int main() {
-	/*Scenario1();*/
+	Scenario1();
 
 }
