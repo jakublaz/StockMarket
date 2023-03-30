@@ -267,7 +267,7 @@ namespace Tests
 
             Assert::AreEqual(a.SizeOf_Companies(), 1);
             Assert::AreEqual(a.SizeOf_Customers(), 2);
-            //Assert::AreEqual(a.SizeOf_Transactions(), 3);   //nie dzia³a nie ustawiona funkcja
+            Assert::AreEqual(a.SizeOf_Transactions(), 3);   //nie dzia³a nie ustawiona funkcja
 
             Assert::AreEqual(a.Get_Company("Henkel")->Sizeof_Customers(), 2);
             Assert::AreEqual(a.Get_Company("Henkel")->Sizeof_Transactions(), 3);

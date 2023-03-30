@@ -35,7 +35,8 @@ bool StockMarket::Remove_Company(string name) {
 }
 
 bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
-    return false;
+    transactions.emplace_back(ID, amountShares, customer, company, this);
+    return true;
 
 }
 

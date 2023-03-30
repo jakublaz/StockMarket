@@ -12,9 +12,6 @@ Transaction::Transaction(int ID, int shares, Customer* customer, Company* compan
 
 Transaction::~Transaction()
 {
-    delete company;
-    delete customer;
-    delete stock_market;
 }
 
 int Transaction::Get_ID() {
