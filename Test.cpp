@@ -13,46 +13,6 @@ void EstablishCompany_Less5000Euro()
 	}
 }
 
-void The_SameName() {
-	// Initialize a variable to store the number of exceptions thrown
-	int a = 0;
-
-	// Create a StockMarket object
-	StockMarket market("aa");
-
-	// Add a customer to the market
-	market.Add_Customer("John", "Doe", 1234567890, 5000);
-
-	// Add a company to the market
-	market.Add_Company("ABC Company", 908443122, 6000, 200);
-
-	// Try to add the same customer again
-	try {
-		market.Add_Customer("John", "Doe", 1234567890, 5000);
-	}
-	// Catch any exceptions thrown
-	catch (exception ex) {
-		// Increment the exception counter
-		a += 1;
-	}
-
-	// Try to add the same company again
-	try {
-		market.Add_Company("ABC Company", 908443122, 6000, 200);
-	}
-	// Catch any exceptions thrown
-	catch (exception ex) {
-		// Increment the exception counter
-		a += 1;
-	}
-
-	// If both attempts to add the same customer and company failed, print an error message
-	if (a != 2) {
-		cerr << "# Test with the Same Names failed #" << endl;
-	}
-
-}
-
 void Get_Transaction_StockMarket() {
 	// Create a StockMarket object and add a company
 	StockMarket market("aa");
@@ -93,45 +53,9 @@ void Get_Transaction_StockMarket() {
 	}
 }
 
-void ValuePerShare_Less2Euro()
-{
-	StockMarket market("aa");
-	market.Add_Customer("John", "Doe", 901882716, 7800);
-	market.Add_Company("ABC Company", 908443122, 6000, 200);
-	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
-
-	if (market.SizeOf_Transactions() != 1) {
-		cerr << "# Test buying shares using Customer class #" << endl;
-	}
-}
-
 void IsBankrupt()
 {
 
-}
-
-void BuyShares() {
-	StockMarket market("aa");
-	market.Add_Customer("John", "Doe", 901882716, 7800);
-	market.Add_Company("ABC Company", 908443122, 6000, 200);
-	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"),market.Get_StockMarket());
-
-	if (market.SizeOf_Transactions() != 1) {
-		cerr << "# Test buying shares using Customer class #" << endl;
-	}
-
-}
-
-void SellShares() {
-	StockMarket market("aa");
-	market.Add_Customer("John", "Doe", 901882716, 7800);
-	market.Add_Company("ABC Company", 908443122, 6000, 200);
-	market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
-	market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
-
-	if (market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company") != 25) {
-		cerr << "# Test selling shares using Customer class #" << endl;
-	}
 }
 
 void SizeOfLists() {
@@ -208,81 +132,6 @@ void SizeOfLists() {
 
 
 }
-
-void SameID_OfTransaction()
-{
-	StockMarket market("aa");
-	market.Add_Company("Company A", 1234567890, 10000, 1000);
-
-	// Create a Customer object
-	Customer customer("John", "Doe", 1000);
-	Company* company = market.Get_Company("Company A");
-
-	// Buy shares
-	// Add a transaction to the stock market and get the transaction
-	market.Add_Transaction(1, &customer, 100, company, "buy");
-	market.Add_Transaction(1, &customer, 20, company, "buy");
-
-	if (market.SizeOf_Transactions() != 1) {
-		cerr << "# Test same ID transaction #" << endl;
-	}
-}
-
-void BuyingMoreShares_ThenExist()
-{
-	StockMarket market("aa");
-	market.Add_Company("Company A", 1234567890, 10000, 100);
-
-	// Create a Customer object
-	Customer customer("John", "Doe", 100000);
-	Company* company = market.Get_Company("Company A");
-
-	// Buy shares
-	// Add a transaction to the stock market and get the transaction
-	market.Add_Transaction(1, &customer, 120, company, "buy");
-
-	if (market.SizeOf_Transactions() != 0) {
-		cerr << "# Test Buing more shares then there exist #" << endl;
-	}
-
-}
-
-void NotEnought_Money()
-{
-	StockMarket market("aa");
-	market.Add_Company("Company A", 1234567890, 10000, 100);
-
-	// Create a Customer object
-	Customer customer("John", "Doe", 980);
-	Company* company = market.Get_Company("Company A");
-
-	// Buy shares
-	// Add a transaction to the stock market and get the transaction
-	market.Add_Transaction(1, &customer, 100, company, "buy");
-
-	if (market.SizeOf_Transactions() != 0) {
-		cerr << "# Test Not having enough money #" << endl;
-	}
-}
-
-void SellingShares_NotHavingIT()
-{
-	StockMarket market("aa");
-	market.Add_Company("Company A", 1234567890, 10000, 100);
-
-	// Create a Customer object
-	Customer customer("John", "Doe", 450000);
-	Company* company = market.Get_Company("Company A");
-
-	// Buy shares
-	// Add a transaction to the stock market and get the transaction
-	market.Add_Transaction(1, &customer, 100, company, "sell");
-
-	if (market.SizeOf_Transactions() != 0) {
-		cerr << "# Test Not having enough shares #" << endl;
-	}
-}
-
 void LessThen_500Euro()
 {
 	StockMarket market;

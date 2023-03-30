@@ -113,6 +113,122 @@ namespace Tests
             Assert::IsNotNull(company);
         }
         
+        TEST_METHOD(The_SameName) {
+            StockMarket market("aa");
+            market.Add_Customer("John", "Doe", 1234567890, 5000);
+            market.Add_Company("ABC Company", 908443122, 6000, 200);
 
+            market.Add_Customer("John", "Doe", 1234567890, 5000);
+            market.Add_Company("ABC Company", 908443122, 6000, 200);
+
+            Assert::AreEqual(market.SizeOf_Companies(), 1);
+            Assert::AreEqual(market.SizeOf_Customers(), 1);
+        }
+
+        TEST_METHOD(ValuePerShare_Less2Euro) {
+            StockMarket market("aa");
+            market.Add_Customer("John", "Doe", 901882716, 7800);
+            market.Add_Company("ABC Company", 908443122, 3000, 2000);
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 0);
+        }
+
+        TEST_METHOD(Buy_Shares) {
+            StockMarket market("aa");
+            market.Add_Customer("John", "Doe", 901882716, 7800);
+            market.Add_Company("ABC Company", 908443122, 6000, 200);
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 1);
+        }
+
+        TEST_METHOD(Sell_Shares) {
+            StockMarket market("aa");
+            market.Add_Customer("John", "Doe", 901882716, 7800);
+            market.Add_Company("ABC Company", 908443122, 6000, 200);
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+            market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
+
+            Assert::AreEqual(market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company"), 25);
+        }
+
+        TEST_METHOD(Same_IDTransacion) {
+            StockMarket market("aa");
+            market.Add_Company("Company A", 1234567890, 10000, 1000);
+
+            // Create a Customer object
+            Customer customer("John", "Doe", 1000);
+            Company* company = market.Get_Company("Company A");
+
+            // Buy shares
+            // Add a transaction to the stock market and get the transaction
+            market.Add_Transaction(1, &customer, 100, company, "buy");
+            market.Add_Transaction(1, &customer, 20, company, "buy");
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 1);
+        }
+
+        TEST_METHOD(BuyingMoreShares_ThenExist) {
+            StockMarket market("aa");
+            market.Add_Company("Company A", 1234567890, 10000, 100);
+
+            // Create a Customer object
+            Customer customer("John", "Doe", 100000);
+            Company* company = market.Get_Company("Company A");
+
+            // Buy shares
+            // Add a transaction to the stock market and get the transaction
+            market.Add_Transaction(1, &customer, 120, company, "buy");
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 0);
+        }
+
+        TEST_METHOD(Customer_NotEnought_Money) {
+            StockMarket market("aa");
+            market.Add_Company("Company A", 1234567890, 10000, 100);
+
+            // Create a Customer object
+            Customer customer("John", "Doe", 980);
+            Company* company = market.Get_Company("Company A");
+
+            // Buy shares
+            // Add a transaction to the stock market and get the transaction
+            market.Add_Transaction(1, &customer, 100, company, "buy");
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 0);
+        }
+
+        TEST_METHOD(SellingShares_NotHavingIT) {
+            StockMarket market("aa");
+            market.Add_Company("Company A", 1234567890, 10000, 100);
+
+            // Create a Customer object
+            Customer customer("John", "Doe", 450000);
+            Company* company = market.Get_Company("Company A");
+
+            // Buy shares
+            // Add a transaction to the stock market and get the transaction
+            market.Add_Transaction(1, &customer, 100, company, "sell");
+
+            Assert::AreEqual(market.SizeOf_Transactions(), 0);
+        }
+
+        TEST_METHOD(Scenario_1) {
+            StockMarket market("GPW");
+            market.Add_Customer("John", "Doe", 908115627, 10000);
+            market.Add_Company("ABC Company", 908116272, 10009, 120);
+            market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy");
+
+            Customer* customer = market.Get_Customer("John", "Doe");
+            Company* company = market.Get_Company("ABC Company");
+            Transaction* transaction = market.Get_Transaction(1);
+
+            Assert::AreEqual((string)customer->Get_Name(), (string)"John");
+            Assert::AreEqual((string)customer->Get_Surname(), (string)"Doe");
+            Assert::AreEqual(customer->Get_PhoneNumber(), 908115627);
+            Assert::AreEqual(customer->Get_PocketMoney(), (double)10000);
+
+        }
 	};
 }
