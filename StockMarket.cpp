@@ -118,6 +118,12 @@ int StockMarket::SizeOf_Transactions()
 
 Transaction* StockMarket::Get_Transaction(int ID)
 {
+    for (auto& c : transactions) {
+        if (c.Get_ID() == ID) {
+            Transaction* ptr = &c;
+            return ptr;
+        }
+    }
     return nullptr;
 }
 
@@ -150,6 +156,12 @@ Customer* StockMarket::FindCustomer(string name, string surname)
 
 Transaction* StockMarket::FindTransaction(string nameCustomer, string nameCompany, int ID)
 {
+    for (auto& c : transactions) {
+        if (c.Get_ID() == ID) {
+            Transaction* ptr = &c;
+            return &c;
+        }
+    }
     return nullptr;
 }
 

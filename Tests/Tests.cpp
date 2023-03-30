@@ -11,6 +11,8 @@
 #include "D:/aa  studia/sem2/EOOP/projekt/StockMarket/Transactions.cpp"
 #include "D:/aa  studia/sem2/EOOP/projekt/StockMarket/timer.cpp"
 
+#include<cmath>
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 
@@ -222,13 +224,70 @@ namespace Tests
 
             Customer* customer = market.Get_Customer("John", "Doe");
             Company* company = market.Get_Company("ABC Company");
-            Transaction* transaction = market.Get_Transaction(1);
+            Transaction* transaction = market.Get_Transaction("Doe", "ABC Company", 1);
 
+            Assert::IsNotNull(customer);
             Assert::AreEqual((string)customer->Get_Name(), (string)"John");
             Assert::AreEqual((string)customer->Get_Surname(), (string)"Doe");
             Assert::AreEqual(customer->Get_PhoneNumber(), 908115627);
             Assert::AreEqual(customer->Get_PocketMoney(), (double)10000);
 
+            Assert::IsNotNull(company);
+            Assert::AreEqual((string)company->Get_Name(),(string)"ABC Company");
+            Assert::AreEqual(company->Get_Money(), (double)10009);
+            Assert::AreEqual(company->Get_Shares(), 120);
+
+            //narazie nie bêdzie dzia³a³o bo nie jest zdefiniowane dodawanie tranzakcji
+            Assert::IsNotNull(transaction);
+            Assert::AreEqual(transaction->Get_ID(), 1);
+            Assert::AreEqual(ceil(transaction->Get_Amount()),(double)835);
+            Assert::AreEqual(transaction->Get_Shares(), 10);
+            Assert::AreEqual((string)transaction->Get_Type(),(string)"buy");
+        }
+
+        TEST_METHOD(SizeOfList) {
+            StockMarket a("GPW");
+
+            //Add 2 Customers
+            a.Add_Customer("Jacek", "Zak", 990889675, 800000);
+            //test 2 functions with the same functionality
+            a.Add_Customer("Anna", "Maria", 898954637);
+            a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
+            //Add Company with 2000 shares and 50000 in money
+            a.Add_Company("Henkel", 983883001, 2000, 50000);
+
+            //Add trasaction done by Jacek Zak with Helkel on 10 stocks
+            a.Add_Transaction(1, a.Get_Customer("Jacek", "Zak"), 10, a.Get_Company("Henkel"), "buy");
+
+            //Add trasaction done by Jacek Zak with Helkel on 100 stocks
+            a.Add_Transaction(2, a.Get_Customer("Jacek", "Zak"), 100, a.Get_Company("Henkel"), "buy");
+
+            //Add trasaction done by Anna Maria with Helkel on 56 stocks
+            a.Add_Transaction(3, a.Get_Customer("Anna", "Maria"), 56, a.Get_Company("Henkel"), "buy");
+
+            Assert::AreEqual(a.SizeOf_Companies(), 1);
+            Assert::AreEqual(a.SizeOf_Customers(), 2);
+            //Assert::AreEqual(a.SizeOf_Transactions(), 3);   //nie dzia³a nie ustawiona funkcja
+
+            Assert::AreEqual(a.Get_Company("Henkel")->Sizeof_Customers(), 2);
+            Assert::AreEqual(a.Get_Company("Henkel")->Sizeof_Transactions(), 3);
+            Assert::AreEqual(a.Get_Company("Henkel")->Sizeof_StockMarket(), 1);
+
+            Assert::AreEqual(a.Get_Customer("Anna", "Maria")->Sizeof_Companies(), 1);
+            Assert::AreEqual(a.Get_Customer("Anna", "Maria")->Sizeof_Transactions(), 1);
+            Assert::AreEqual(a.Get_Customer("Anna", "Maria")->Sizeof_StockMarkets(), 1);
+
+            Assert::AreEqual(a.Get_Customer("Jacek", "Zak")->Sizeof_Companies(), 1);
+            Assert::AreEqual(a.Get_Customer("Jacek", "Zak")->Sizeof_Transactions(), 2);
+            Assert::AreEqual(a.Get_Customer("Jacek", "Zak")->Sizeof_StockMarkets(), 1);
+
+            Assert::AreEqual(a.Get_Transaction("Zak", "Henkel", 2)->Get_StockMarket()->Get_Name(), a.Get_Name());
+            Assert::AreEqual(a.Get_Transaction("Zak", "Henkel", 2)->Get_Customer()->Get_Name(), a.Get_Customer("Jacek", "Zak")->Get_Name());
+            Assert::AreEqual(a.Get_Transaction("Zak", "Henkel", 2)->Get_Company()->Get_Name(), a.Get_Company("Henkel")->Get_Name());
+        }
+
+        TEST_METHOD(Bancrupt) {
+            Assert::AreEqual(1, 0);
         }
 	};
 }
