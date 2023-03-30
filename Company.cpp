@@ -122,7 +122,7 @@ bool Company::IsBancrupt()
 Customer* Company::FindCustomer(string surname)	//do sprawdzenia
 {
 	for (auto& c : customers) {
-		if (c->GetSurname() == surname) {
+		if (c->Get_Surname() == surname) {
 			return c;
 		}
 	}

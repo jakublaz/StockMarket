@@ -43,7 +43,7 @@ double Customer::Get_PocketMoney() {
     return this->pocketMoney;
 }
 
-string Customer::GetSurname(){
+string Customer::Get_Surname(){
     return this->surname;
 }
 

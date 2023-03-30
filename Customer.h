@@ -64,7 +64,7 @@ public:
 	/*
 	* Getter for surname
 	*/
-	string GetSurname();
+	string Get_Surname();
 	/*
 	* Getter for phoneNumber
 	*/

@@ -140,7 +140,7 @@ Company* StockMarket::FindCompany(string name)
 Customer* StockMarket::FindCustomer(string name, string surname)
 {
     for (auto& c : customers) {
-        if (c.GetSurname() == surname) {
+        if (c.Get_Surname() == surname) {
             Customer* ptr = &c;
             return ptr;
         }
