@@ -33,6 +33,10 @@ public:
 	*/
 	bool Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
 	/*
+	* Function to add customer to list customers, as a copy constructor
+	*/
+	bool Add_Customer(Customer add);
+	/*
 	* Function to remove customer from list customers
 	*/
 	bool Remove_Customer(string name, string surname);

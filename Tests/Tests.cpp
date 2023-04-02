@@ -289,5 +289,13 @@ namespace Tests
         TEST_METHOD(Bancrupt) {
             Assert::AreEqual(1, 0);
         }
+
+        TEST_METHOD(Add2Markets_1Customer) {
+            StockMarket market("aaa");
+            StockMarket market2("bbb");
+            market.Add_Customer("John", "Doe", 908773647, 12000);
+
+            
+        }
 	};
 }

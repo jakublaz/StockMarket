@@ -21,6 +21,11 @@ bool StockMarket::Add_Customer(string name, string surname, int phoneNumber, int
     return true;
 }
 
+bool StockMarket::Add_Customer(Customer add) {
+    customers.emplace_back(add.Get_Name(),add.Get_Surname(),add.Get_PhoneNumber(),add.Get_PocketMoney());
+    return true;
+}
+
 bool StockMarket::Remove_Customer(string name, string surname) {
     return false;
 }
@@ -35,7 +40,7 @@ bool StockMarket::Remove_Company(string name) {
 }
 
 bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
-    transactions.emplace_back(ID, amountShares, customer, company, this);
+    transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;
 
 }
