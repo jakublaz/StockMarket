@@ -36,6 +36,7 @@ bool Company::Add_Transaction(Transaction* transaction) {
 
 bool Company::Add_StockMarket(StockMarket* stockmarket){
 	stockmarkets.emplace_back(stockmarket);
+	return true;
 }
 
 void Company::Remove_StockMarket(string name, int ID){

@@ -166,12 +166,17 @@ private:
 	* Function that updates amount of operations in this stockmarket
 	*/
 	void Update_AmountOfTransactions();
+	/*
+	* 
+	*/
+	bool FindID(int ID);
 
 	//this functions will be used to check if certain objects are not on the lists
 	//will return nullptr if not found and pointer to element if found
 	Company* FindCompany(string name);
 	Customer* FindCustomer(string name, string surname);
-	Transaction* FindTransaction(string surnameCustomer, string nameCompany, int ID);
+	Transaction* FindTransaction(int ID);
+
 };
 
 #endif /* STOCKMARKET_H */

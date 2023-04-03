@@ -51,8 +51,10 @@ int Customer::Get_PhoneNumber() {
     return this->phoneNumber;
 }
 
-bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* market)
+bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* market, string type)
 {
+    Transaction transaction(ID, amount, this, company, market, type);
+    /*market->Add_Transaction(transaction);*/
     return false;
 }
 

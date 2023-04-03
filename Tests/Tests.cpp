@@ -94,6 +94,7 @@ namespace Tests
             Customer* customer = market.Get_Customer("John", "Doe");
 
             Assert::IsNull(customer);
+            
         }
 
         TEST_METHOD(Remove_Company_StockMarket) {
@@ -134,7 +135,7 @@ namespace Tests
             market.Add_Customer(newCustomer);
             market.Add_Company(newCompany);
 
-            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 0);
         }
@@ -145,7 +146,7 @@ namespace Tests
             Company newCompany("ABC Company", 908443122, 6000, 200);
             market.Add_Customer(newCustomer);
             market.Add_Company(newCompany);
-            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 1);
         }
@@ -156,7 +157,7 @@ namespace Tests
             Company newCompany("ABC Company", 908443122, 6000, 200);
             market.Add_Customer(newCustomer);
             market.Add_Company(newCompany);
-            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
+            market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
             market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
 
             Assert::AreEqual(market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company"), 25);
@@ -177,7 +178,7 @@ namespace Tests
             market.Add_Transaction(1, market.Get_Customer("John","Doe"), 100, market.Get_Company("Company A"), "buy");
             market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 20, market.Get_Company("Company A"), "buy");
 
-            Assert::AreEqual(market.SizeOf_Transactions(), 1);
+            Assert::AreEqual(market.SizeOf_Transactions(), 1);  //zwraca 0
         }
 
         TEST_METHOD(BuyingMoreShares_ThenExist) {

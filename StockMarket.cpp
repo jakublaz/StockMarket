@@ -22,6 +22,12 @@ bool StockMarket::Add_Customer(Customer &customer) {
 }
 
 bool StockMarket::Remove_Customer(string name, string surname) {
+    for (auto it = customers.begin(); it != customers.end(); ++it) {
+        if (it->Get_Name() == name && it->Get_Surname() == surname) {
+            customers.erase(it);
+            return true; // exit the function after removing the customer
+        }
+    }
     return false;
 }
 
@@ -31,10 +37,22 @@ bool StockMarket::Add_Company(Company &company) {
 }
 
 bool StockMarket::Remove_Company(string name) {
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        if (it->Get_Name() == name) {
+            companies.erase(it);
+            return true; // exit the function after removing the customer
+        }
+    }
     return false;
 }
 
 bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
+    if (FindTransaction(ID) != nullptr) {
+        return false;
+    }
+    if (FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {
+        return false;
+    }
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;
 
@@ -79,7 +97,7 @@ Company* StockMarket::Get_Company(string name)
 
 Transaction* StockMarket::Get_Transaction(string surnameCustomer, string nameCompany, int ID)
 {
-    return FindTransaction(surnameCustomer, nameCompany, ID);
+    return FindTransaction(ID);
 }
 
 void StockMarket::Show_Customers()
@@ -155,7 +173,7 @@ Customer* StockMarket::FindCustomer(string name, string surname)
     return nullptr;
 }
 
-Transaction* StockMarket::FindTransaction(string nameCustomer, string nameCompany, int ID)
+Transaction* StockMarket::FindTransaction(int ID)
 {
     for (auto& c : transactions) {
         if (c.Get_ID() == ID) {
