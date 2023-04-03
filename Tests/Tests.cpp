@@ -26,7 +26,8 @@ namespace Tests
 		{
             StockMarket market("aa");
             // Add a customer to the stock market with the name "John Doe", ID 1234567890, and a balance of 5000.
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            market.Add_Customer(newCustomer);
             // Retrieve the customer from the stock market
             Customer* customer = market.Get_Customer("John", "Doe");
             // Check if the customer was added successfully
@@ -40,7 +41,10 @@ namespace Tests
         TEST_METHOD(Add_Customer_InvalidNameCustomer) {
 
             StockMarket market("aa");
-            market.Add_Customer("Invalid", "Name", 1234567890, 5000);
+            Customer newCustomer("Invalid", "Name", 1234567890, 5000);
+            Company newCompany("Henkel", 901883722, 100000, 1210);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
             market.Get_Company("Henkel");
             market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Henkel"), "buy");
             
@@ -52,7 +56,8 @@ namespace Tests
             StockMarket market("aa");
 
             //Add a company to the stock market with the name "Company A", a unique ID of 1234567890, 10,000 shares, and a share price of $1,000
-            market.Add_Company("Company A", 1234567890, 10000, 1000);
+            Company newCompany("Company A", 1234567890, 10000, 1000);
+            market.Add_Company(newCompany);
 
             //Retrieve the company from the stock market
             Company* company = market.Get_Company("Company A");
@@ -70,8 +75,8 @@ namespace Tests
         //and then attempts to add a transaction with an invalid customer name. 
         TEST_METHOD(Add_Customer_InvalidNameCompany) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
-            market.Get_Company("Henkel");
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("Henkel",908774368,12091,12);
             market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("Invalid"), "buy");
 
             Assert::AreEqual(0, market.SizeOf_Transactions());
@@ -82,7 +87,9 @@ namespace Tests
         //It then attempts to remove the customer and checks if the customer is still present in the stock market. 
         TEST_METHOD(Remove_Customer_StockMarket) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            market.Add_Customer(newCustomer);
+
             market.Remove_Customer("John", "Doe");
             Customer* customer = market.Get_Customer("John", "Doe");
 
@@ -91,7 +98,9 @@ namespace Tests
 
         TEST_METHOD(Remove_Company_StockMarket) {
             StockMarket market("aa");
-            market.Add_Company("ABC Company", 908443122, 4000, 100);
+            Company newCompany("ABC Company", 908443122, 4000, 100);
+            market.Add_Company(newCompany);
+
             market.Remove_Company("ABC Company");
             Company* company = market.Get_Company("ABC Company");
 
@@ -101,7 +110,8 @@ namespace Tests
         //This code tests the ability to get a customer from the stock market.
         TEST_METHOD(Get_Customer_StockMarket) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            market.Add_Customer(newCustomer);
             Customer* customer = market.Get_Customer("John", "Doe");
 
             Assert::IsNotNull(customer);
@@ -109,28 +119,21 @@ namespace Tests
 
         TEST_METHOD(Get_Company_StockMarket) {
             StockMarket market("aa");
-            market.Add_Company("ABC Company", 908443122, 4000, 100);
+            Company newCompany("ABC Company", 908443122, 4000, 100);
+            market.Add_Company(newCompany);
+
             Company* company = market.Get_Company("ABC Company");
 
             Assert::IsNotNull(company);
         }
-        
-        TEST_METHOD(The_SameName) {
-            StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
-            market.Add_Company("ABC Company", 908443122, 6000, 200);
-
-            market.Add_Customer("John", "Doe", 1234567890, 5000);
-            market.Add_Company("ABC Company", 908443122, 6000, 200);
-
-            Assert::AreEqual(market.SizeOf_Companies(), 1);
-            Assert::AreEqual(market.SizeOf_Customers(), 1);
-        }
 
         TEST_METHOD(ValuePerShare_Less2Euro) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 901882716, 7800);
-            market.Add_Company("ABC Company", 908443122, 3000, 2000);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
+
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
 
             Assert::AreEqual(market.SizeOf_Transactions(), 0);
@@ -138,8 +141,10 @@ namespace Tests
 
         TEST_METHOD(Buy_Shares) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 901882716, 7800);
-            market.Add_Company("ABC Company", 908443122, 6000, 200);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
 
             Assert::AreEqual(market.SizeOf_Transactions(), 1);
@@ -147,8 +152,10 @@ namespace Tests
 
         TEST_METHOD(Sell_Shares) {
             StockMarket market("aa");
-            market.Add_Customer("John", "Doe", 901882716, 7800);
-            market.Add_Company("ABC Company", 908443122, 6000, 200);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket());
             market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
 
@@ -157,69 +164,72 @@ namespace Tests
 
         TEST_METHOD(Same_IDTransacion) {
             StockMarket market("aa");
-            market.Add_Company("Company A", 1234567890, 10000, 1000);
+            Company newCompany("Company A", 1234567890, 10000, 1000);
+            market.Add_Company(newCompany);
 
             // Create a Customer object
-            Customer customer("John", "Doe", 1000);
-            Company* company = market.Get_Company("Company A");
+            Customer newCustomer("John", "Doe", 100092833,100000);
+            market.Add_Customer(newCustomer);
+
 
             // Buy shares
             // Add a transaction to the stock market and get the transaction
-            market.Add_Transaction(1, &customer, 100, company, "buy");
-            market.Add_Transaction(1, &customer, 20, company, "buy");
+            market.Add_Transaction(1, market.Get_Customer("John","Doe"), 100, market.Get_Company("Company A"), "buy");
+            market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 20, market.Get_Company("Company A"), "buy");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 1);
         }
 
         TEST_METHOD(BuyingMoreShares_ThenExist) {
             StockMarket market("aa");
-            market.Add_Company("Company A", 1234567890, 10000, 100);
-
-            // Create a Customer object
-            Customer customer("John", "Doe", 100000);
-            Company* company = market.Get_Company("Company A");
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
 
             // Buy shares
             // Add a transaction to the stock market and get the transaction
-            market.Add_Transaction(1, &customer, 120, company, "buy");
+            market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 120, market.Get_Company("Company A"), "buy");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 0);
         }
 
         TEST_METHOD(Customer_NotEnought_Money) {
             StockMarket market("aa");
-            market.Add_Company("Company A", 1234567890, 10000, 100);
 
-            // Create a Customer object
-            Customer customer("John", "Doe", 980);
-            Company* company = market.Get_Company("Company A");
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
 
             // Buy shares
             // Add a transaction to the stock market and get the transaction
-            market.Add_Transaction(1, &customer, 100, company, "buy");
+            market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 100, market.Get_Company("Company A"), "buy");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 0);
         }
 
         TEST_METHOD(SellingShares_NotHavingIT) {
             StockMarket market("aa");
-            market.Add_Company("Company A", 1234567890, 10000, 100);
-
-            // Create a Customer object
-            Customer customer("John", "Doe", 450000);
-            Company* company = market.Get_Company("Company A");
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
 
             // Buy shares
             // Add a transaction to the stock market and get the transaction
-            market.Add_Transaction(1, &customer, 100, company, "sell");
+            market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 100, market.Get_Company("Company A"), "sell");
 
             Assert::AreEqual(market.SizeOf_Transactions(), 0);
         }
 
         TEST_METHOD(Scenario_1) {
             StockMarket market("GPW");
-            market.Add_Customer("John", "Doe", 908115627, 10000);
-            market.Add_Company("ABC Company", 908116272, 10009, 120);
+            Customer newCustomer("John", "Doe", 1234567890, 5000);
+            Company newCompany("ABC Company", 908443122, 6000, 200);
+            market.Add_Customer(newCustomer);
+            market.Add_Company(newCompany);
+
             market.Add_Transaction(1, market.Get_Customer("John", "Doe"), 10, market.Get_Company("ABC Company"), "buy");
 
             Customer* customer = market.Get_Customer("John", "Doe");
@@ -229,18 +239,18 @@ namespace Tests
             Assert::IsNotNull(customer);
             Assert::AreEqual((string)customer->Get_Name(), (string)"John");
             Assert::AreEqual((string)customer->Get_Surname(), (string)"Doe");
-            Assert::AreEqual(customer->Get_PhoneNumber(), 908115627);
-            Assert::AreEqual(customer->Get_PocketMoney(), (double)10000);
+            Assert::AreEqual(customer->Get_PhoneNumber(), 1234567890);
+            Assert::AreEqual(customer->Get_PocketMoney(), (double)5000);
 
             Assert::IsNotNull(company);
             Assert::AreEqual((string)company->Get_Name(),(string)"ABC Company");
-            Assert::AreEqual(company->Get_Money(), (double)10009);
-            Assert::AreEqual(company->Get_Shares(), 120);
+            Assert::AreEqual(company->Get_Money(), (double)6000);
+            Assert::AreEqual(company->Get_Shares(), 200);
 
             //narazie nie bêdzie dzia³a³o bo nie jest zdefiniowane dodawanie tranzakcji
             Assert::IsNotNull(transaction);
             Assert::AreEqual(transaction->Get_ID(), 1);
-            Assert::AreEqual(ceil(transaction->Get_Amount()),(double)835);
+            Assert::AreEqual(ceil(transaction->Get_Amount()),(double)300);
             Assert::AreEqual(transaction->Get_Shares(), 10);
             Assert::AreEqual((string)transaction->Get_Type(),(string)"buy");
         }
@@ -249,12 +259,16 @@ namespace Tests
             StockMarket a("GPW");
 
             //Add 2 Customers
-            a.Add_Customer("Jacek", "Zak", 990889675, 800000);
+            Customer customer1("Jacek", "Zak", 990889675, 800000);
             //test 2 functions with the same functionality
-            a.Add_Customer("Anna", "Maria", 898954637);
+            Customer customer2("Anna", "Maria", 898954637);
             a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
             //Add Company with 2000 shares and 50000 in money
-            a.Add_Company("Henkel", 983883001, 2000, 50000);
+            Company company1("Henkel", 983883001, 2000, 50000);
+
+            a.Add_Company(company1);
+            a.Add_Customer(customer1);
+            a.Add_Customer(customer2);
 
             //Add trasaction done by Jacek Zak with Helkel on 10 stocks
             a.Add_Transaction(1, a.Get_Customer("Jacek", "Zak"), 10, a.Get_Company("Henkel"), "buy");

@@ -13,7 +13,6 @@ class Customer;
 class Company;
 class Transaction;
 
-
 class StockMarket {
 public:
 	/*
@@ -31,11 +30,7 @@ public:
 	/*
 	* Function to add customer to list customers
 	*/
-	bool Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
-	/*
-	* Function to add customer to list customers, as a copy constructor
-	*/
-	bool Add_Customer(Customer add);
+	bool Add_Customer(Customer &customer);
 	/*
 	* Function to remove customer from list customers
 	*/
@@ -43,7 +38,7 @@ public:
 	/*
 	* Function to add company to list ccompanies
 	*/
-	bool Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
+	bool Add_Company(Company &company);
 	/*
 	* Function to remove company from list ccompanies
 	*/

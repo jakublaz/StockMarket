@@ -16,13 +16,8 @@ StockMarket::~StockMarket(){
 
 }
 
-bool StockMarket::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
-    customers.emplace_back(name, surname, phoneNumber, pocketMoney);
-    return true;
-}
-
-bool StockMarket::Add_Customer(Customer add) {
-    customers.emplace_back(add.Get_Name(),add.Get_Surname(),add.Get_PhoneNumber(),add.Get_PocketMoney());
+bool StockMarket::Add_Customer(Customer &customer) {
+    customers.emplace_back(customer);
     return true;
 }
 
@@ -30,8 +25,8 @@ bool StockMarket::Remove_Customer(string name, string surname) {
     return false;
 }
 
-bool StockMarket::Add_Company(string name, int phoneNumber, int money, int shares) {
-    companies.emplace_back(name, phoneNumber, money, shares);
+bool StockMarket::Add_Company(Company &company) {
+    companies.emplace_back(company);
     return true;
 }
 

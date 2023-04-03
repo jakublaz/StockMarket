@@ -31,7 +31,7 @@ public:
 	/*
 	* Function to add customer to list customers
 	*/
-	void Add_Customer(string name, string surname, int phoneNumber, int pocketMoney = 0);
+	void Add_Customer(Customer* newCustomer);
 	/*
 	* Function to remove customer from list customers
 	*/
@@ -39,11 +39,11 @@ public:
 	/*
 	* Function to add transaction to list transactions
 	*/
-	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);
+	bool Add_Transaction(Transaction* transaction);
 	/*
 	* Function to add stockmarket to list stockmarkets
 	*/
-	void Add_StockMarket(string name, int ID);
+	bool Add_StockMarket(StockMarket* stockmarket);
 	/*
 	* Function to remove stockmarket from list stockmarkets
 	*/

@@ -21,7 +21,7 @@ Company::~Company(){
 
 }
 
-void Company::Add_Customer(string name, string surname, int phoneNumber, int pocketMoney) {
+void Company::Add_Customer(Customer* newCustomer) {
 
 }
 
@@ -29,12 +29,13 @@ void Company::Remove_Customer(string name, string surname) {
 
 }
 
-void Company::Add_Transaction(Customer* customer, int amountShares, Company* company, string type) {
-
+bool Company::Add_Transaction(Transaction* transaction) {
+	transactions.emplace_back(transaction);
+	return true;
 }
 
-void Company::Add_StockMarket(string name, int ID){
-
+bool Company::Add_StockMarket(StockMarket* stockmarket){
+	stockmarkets.emplace_back(stockmarket);
 }
 
 void Company::Remove_StockMarket(string name, int ID){
