@@ -122,6 +122,8 @@ public:
 	* returns size of the list of stockmarkets
 	*/
 	int Sizeof_StockMarkets();
+
+	double All_Money();
 private:
 	/*
 	* name of the customer

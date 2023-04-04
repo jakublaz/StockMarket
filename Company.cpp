@@ -77,6 +77,10 @@ void Company::Set_PhoneNumber(int number) {
 
 void Company::Update_CostShare()
 {
+	if (shares == 0) {
+		costShare = 0;
+		return;
+	}
 	costShare = money / shares;
 }
 

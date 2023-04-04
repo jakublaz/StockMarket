@@ -53,9 +53,11 @@ int Customer::Get_PhoneNumber() {
 
 bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* market, string type)
 {
-    Transaction transaction(ID, amount, this, company, market, type);
-    /*market->Add_Transaction(transaction);*/
-    return false;
+    if (market == nullptr) {
+        return false;
+    }
+    market->Add_Transaction(ID,this,amount,company,type);
+    return true;
 }
 
 
@@ -148,4 +150,8 @@ Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany,
 StockMarket* Customer::Find_StockMarket(string name)
 {
     return nullptr;
+}
+
+double Customer::All_Money() {
+    return investedMoney + pocketMoney;
 }

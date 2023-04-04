@@ -51,6 +51,12 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     if (FindTransaction(ID) != nullptr) {   //there is the same id
         return false;
     }
+    if (customer==nullptr || FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {  // add customer if there is not
+        return false;
+    }
+    if (company==nullptr || FindCompany(company->Get_Name()) == nullptr) {  //add company if there is not
+        return false;
+    }
     if (company->Get_ShareCost() < 2) { //share lover then 2Euro
         return false;
     }
@@ -60,12 +66,10 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     if (company->Get_Money() < 5000) {  //company does not have enought money to be able to be bought
         return false;
     }
-    if (FindCustomer(customer->Get_Name(),customer->Get_Surname())==nullptr) {  // add customer if there is not
-        Add_Customer(*customer);
+    if (customer->All_Money() < 500) {
+        return false;
     }
-    if (FindCompany(company->Get_Name()) == nullptr) {  //add company if there is not
-        Add_Company(*company);
-    }
+    
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;
 }
