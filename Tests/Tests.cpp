@@ -248,7 +248,6 @@ namespace Tests
             Assert::AreEqual(company->Get_Money(), (double)6000);
             Assert::AreEqual(company->Get_Shares(), 200);
 
-            //narazie nie bêdzie dzia³a³o bo nie jest zdefiniowane dodawanie tranzakcji
             Assert::IsNotNull(transaction);
             Assert::AreEqual(transaction->Get_ID(), 1);
             Assert::AreEqual(ceil(transaction->Get_Amount()),(double)300);

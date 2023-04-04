@@ -46,16 +46,28 @@ bool StockMarket::Remove_Company(string name) {
     return false;
 }
 
+//dzia³a
 bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
-    if (FindTransaction(ID) != nullptr) {
+    if (FindTransaction(ID) != nullptr) {   //there is the same id
         return false;
     }
-    if (FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {
+    if (company->Get_ShareCost() < 2) { //share lover then 2Euro
         return false;
+    }
+    if (company->Get_ShareCost() * amountShares < 10) { //transaction is for less then 10 Euro
+        return false;
+    }
+    if (company->Get_Money() < 5000) {  //company does not have enought money to be able to be bought
+        return false;
+    }
+    if (FindCustomer(customer->Get_Name(),customer->Get_Surname())==nullptr) {  // add customer if there is not
+        Add_Customer(*customer);
+    }
+    if (FindCompany(company->Get_Name()) == nullptr) {  //add company if there is not
+        Add_Company(*company);
     }
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;
-
 }
 
 bool StockMarket::Check_Transaction(const Customer& customer, const Company& company, const int& ID)
