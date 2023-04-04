@@ -61,30 +61,66 @@ bool Customer::BuyShares(int ID, int amount, Company* company, StockMarket* mark
 }
 
 
-bool Customer::SellShares(int ID, int amount, Company* company, StockMarket* market)
+bool Customer::SellShares(int ID, int amount, Company* company, StockMarket* market,string type)
 {
-    return false;
+    //sprawdziæ czy mamy odpowiednio du¿o sharów
+    market->Add_Transaction(ID, this, amount, company, type);
+    return true;
 }
 
-void Customer::Add_Company(string name, int phoneNumber, int money, int shares)
-{
+bool Customer::Add_Company(Company* company) {
+    if (company == nullptr) {
+        return false;
+    }
+    companies.emplace_back(company, 0);
+    return true;
 }
 
 bool Customer::Remove_Company(string name)
 {
+    if (Find_Company(name) == nullptr) {
+        return false;
+    }
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        if (it->first->Get_Name()==name) {
+            companies.erase(it);
+            return true; // exit the function after removing the customer
+        }
+    }
     return false;
 }
 
-void Customer::Add_Transaction(Customer* customer, int amountShares, Company* company, string type)
+bool Customer::Add_Transaction(Transaction* transaction)
 {
+    if (transaction==nullptr) {
+        return false;
+    }
+    transactions.emplace_back(transaction);
+    return false;
+
 }
 
-void Customer::Add_StockMarket(string name, int ID)
+bool Customer::Add_StockMarket(StockMarket* stockmarket)
 {
+    if (stockmarket == nullptr) {
+        return false;
+    }
+    stockmarkets.emplace_back(stockmarket);
+    return true;
 }
 
-void Customer::Remove_StockMarket(string name, int ID)
+bool Customer::Remove_StockMarket(string name)
 {
+    if (Find_StockMarket(name) == nullptr) {
+        return false;
+    }
+    for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+        if ((*it)->Get_Name() == name) {
+            stockmarkets.erase(it);
+            return true; // exit the function after removing the customer
+        }
+    }
+    return false;
 }
 
 Company* Customer::Get_Company(string name)
@@ -94,6 +130,11 @@ Company* Customer::Get_Company(string name)
 
 int Customer::Get_SharesCompany(string name)
 {
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        if (it->first->Get_Name() == name) {
+            return it->second; // exit the function after removing the customer
+        }
+    }
     return 0;
 }
 

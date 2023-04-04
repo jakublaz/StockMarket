@@ -131,13 +131,13 @@ namespace Tests
         TEST_METHOD(ValuePerShare_Less2Euro) {
             StockMarket market("aa");
             Customer newCustomer("John", "Doe", 1234567890, 5000);
-            Company newCompany("ABC Company", 908443122, 6000, 200);
+            Company newCompany("ABC Company", 908443122, 6000,4000);
             market.Add_Customer(newCustomer);
             market.Add_Company(newCompany);
 
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
 
-            Assert::AreEqual(market.SizeOf_Transactions(), 0);
+            Assert::AreEqual(0,market.SizeOf_Transactions());
         }
 
         TEST_METHOD(Buy_Shares) {
@@ -158,7 +158,7 @@ namespace Tests
             market.Add_Customer(newCustomer);
             market.Add_Company(newCompany);
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
-            market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket());
+            market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket(), "sell");
 
             Assert::AreEqual(market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company"), 25);
         }

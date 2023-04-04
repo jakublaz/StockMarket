@@ -69,6 +69,9 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     if (customer->All_Money() < 500) {
         return false;
     }
+    if (customer->Get_PocketMoney() < company->Get_ShareCost() * amountShares) {
+        return false;
+    }
     
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;

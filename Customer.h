@@ -76,11 +76,11 @@ public:
 	/*
 	* Function enabling you to sell shares, uses amount, as how much shares
 	*/
-	bool SellShares(int ID, int shares, Company* company, StockMarket* market);
+	bool SellShares(int ID, int shares, Company* company, StockMarket* market, string type);
 	/*
 	* Function to add company to list companies
 	*/
-	void Add_Company(string name, int phoneNumber, int money = 0, int shares = 0);
+	bool Add_Company(Company* company);
 	/*
 	* Function to remove company to list companies
 	*/
@@ -88,15 +88,15 @@ public:
 	/*
 	* Function to add transaction from list transactions
 	*/
-	void Add_Transaction(Customer* customer, int amountShares, Company* company, string type);	//check if  the limits are ok
+	bool Add_Transaction(Transaction* transaction);	//check if  the limits are ok
 	/*
 	* Function to add stockmarket to list stockmarkets
 	*/
-	void Add_StockMarket(string name, int ID);
+	bool Add_StockMarket(StockMarket* stockmarket);
 	/*
 	* Function to remove stockmarket from list stockmarkets
 	*/
-	void Remove_StockMarket(string name, int ID);
+	bool Remove_StockMarket(string name);
 	/*
 	* Function returns pointer to company if found
 	* if not returns nullptr
