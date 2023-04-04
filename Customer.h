@@ -168,7 +168,7 @@ private:
 	* Function that should help function Add company to manage copmpanies list, adds shares to the second part of it
 	* It modifies earlier value
 	*/
-	void Add_Shares(int amount);
+	bool Add_Shares(string name,int amount);
 
 	//this functions will be used to check if certain objects are not on the lists
 	//will return nullptr if not found and pointer to element if found

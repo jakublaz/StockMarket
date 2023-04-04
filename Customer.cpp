@@ -8,7 +8,11 @@ Customer::Customer(string name, string surname, int phoneNumber, double pocketMo
 }
 
 Customer::~Customer() {
-
+    //napisaæ lepiej t¹ funkcje
+    //aby usuwa³a z powi¹zanych miejsc te¿
+    stockmarkets.clear();
+    companies.clear();
+    transactions.clear();
 }
 
 void Customer::Set_Name(string name) {
@@ -153,44 +157,43 @@ int Customer::Sizeof_StockMarkets()
     return (int)stockmarkets.size();
 }
 
-void Customer::Add_Shares(int amount)
+bool Customer::Add_Shares(string name,int amount)
 {
-
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        if (it->first->Get_Name() == name) {
+            it->second += amount;
+            return true;
+        }
+    }
+    return false;
 }
 
 Company* Customer::Find_Company(string name)
 {
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        if (it->first->Get_Name()==name) {
+            return it->first;
+        }
+    }
     return nullptr;
 }
 
-
-//bool Customer::FindCompany(string name) {
-//    //list<Company*>::iterator it = ListCompanies.begin();
-//    //// Loop through each element of the ListCompanies list
-//    //for (list<Company*>::iterator it = ListCompanies.begin(); it != ListCompanies.end(); ++it) {
-//    //    Company* company = *it;
-//
-//    //    // Compare the name of the current Company object with the name to find
-//    //    if (company->GetName() == name) {
-//    //        // The name was found
-//    //        cout << "Found company with name " << name << endl;
-//    //        return true;
-//    //    }
-//    //}
-//
-//    //// If the name was not found
-//    //cout << "Could not find company with name " << name << endl;
-//    return false;
-//}
-
 Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany, int ID)
 {
-    return nullptr;
+    for (auto it = transactions.begin(); it != transactions.end(); ++it) {
+        if ((*it)->Get_Company()->Get_Name()==nameCompany && (*it)->Get_Customer()->Get_Name()==nameCustomer) {
+            return *it;
+        }
+    }
 }
 
 StockMarket* Customer::Find_StockMarket(string name)
 {
-    return nullptr;
+    for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+        if ((*it)->Get_Name() == name) {
+            return *it;
+        }
+    }
 }
 
 double Customer::All_Money() {
