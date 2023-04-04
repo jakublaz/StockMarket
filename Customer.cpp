@@ -185,6 +185,7 @@ Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany,
             return *it;
         }
     }
+    return nullptr;
 }
 
 StockMarket* Customer::Find_StockMarket(string name)
@@ -194,6 +195,7 @@ StockMarket* Customer::Find_StockMarket(string name)
             return *it;
         }
     }
+    return nullptr;
 }
 
 double Customer::All_Money() {
