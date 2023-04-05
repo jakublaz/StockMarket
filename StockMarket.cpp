@@ -17,14 +17,14 @@ StockMarket::~StockMarket(){
     transactions.clear();
 }
 
-bool StockMarket::Add_Customer(Customer &customer) {
+bool StockMarket::Add_Customer(Customer* customer) {
     customers.emplace_back(customer);
     return true;
 }
 
 bool StockMarket::Remove_Customer(string name, string surname) {
     for (auto it = customers.begin(); it != customers.end(); ++it) {
-        if (it->Get_Name() == name && it->Get_Surname() == surname) {
+        if ((*it)->Get_Name() == name && (*it)->Get_Surname() == surname) {
             customers.erase(it);
             return true; // exit the function after removing the customer
         }
@@ -32,14 +32,14 @@ bool StockMarket::Remove_Customer(string name, string surname) {
     return false;
 }
 
-bool StockMarket::Add_Company(Company &company) {
+bool StockMarket::Add_Company(Company* company) {
     companies.emplace_back(company);
     return true;
 }
 
 bool StockMarket::Remove_Company(string name) {
     for (auto it = companies.begin(); it != companies.end(); ++it) {
-        if (it->Get_Name() == name) {
+        if ((*it)->Get_Name() == name) {
             companies.erase(it);
             return true; // exit the function after removing the customer
         }
@@ -53,7 +53,6 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
         return false;
     }
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
-
     if (type == "buy") {
         Update_InvestedMoney(company->Get_ShareCost()*amountShares);
     }
@@ -62,6 +61,8 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     }
     //add poinetrs
     Add_Pointers(customer, company, this, this->Get_Transaction(ID),amountShares,type);
+    cout << "HH";
+    cout << customer->Sizeof_Transactions() << endl;
     return true;
 }
 
@@ -86,7 +87,7 @@ void StockMarket::Add_Pointers(Customer* customer, Company* company, StockMarket
 
 bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares,Company* company, string type)
 {
-    if (FindTransaction(ID) != nullptr) {   //there is the same id
+    if (FindTransaction(ID) != nullptr && FindTransaction(ID)->Get_StockMarket() == this) {   //there is the same id
         return false;
     }
     if (customer == nullptr || FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {  // add customer if there is not
@@ -111,6 +112,7 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
         return false;
     }
     if (type != "buy" && type != "sell") {
+
         return false;
     }
     return true;
@@ -197,12 +199,12 @@ Transaction* StockMarket::Get_Transaction(string surnameCustomer, string nameCom
 void StockMarket::Show_Customers()
 {
     for (auto& c : customers) {
-        cout << "Name : " << c.Get_Name() << endl;
-        cout << "Surname : " << c.Get_Surname() << endl;
-        cout << "Phone number" << c.Get_PhoneNumber() << endl;
-        cout << "Amount of transactions : " << c.Sizeof_Transactions() << endl;
-        cout << "Amount of companies" << c.Sizeof_Companies() << endl;
-        cout << "Amount of Stockmarkets" << c.Sizeof_StockMarkets() << endl;
+        cout << "Name : " << c->Get_Name() << endl;
+        cout << "Surname : " << c->Get_Surname() << endl;
+        cout << "Phone number" << c->Get_PhoneNumber() << endl;
+        cout << "Amount of transactions : " << c->Sizeof_Transactions() << endl;
+        cout << "Amount of companies" << c->Sizeof_Companies() << endl;
+        cout << "Amount of Stockmarkets" << c->Sizeof_StockMarkets() << endl;
         cout << endl << endl;
     }
 }
@@ -215,11 +217,11 @@ void StockMarket::Update_InvestedMoney(double money)
 void StockMarket::Show_Companies()
 {
     for (auto& c : companies) {
-        cout << "Name : " << c.Get_Name() << endl;
-        cout << "Phone number : " << c.Get_PhoneNumber() << endl;
-        cout << "Money : " << c.Get_Money() << endl;
-        cout << "Shares : " << c.Get_Shares() << endl;
-        cout << "Price per share : " << c.Get_ShareCost() << endl;
+        cout << "Name : " << c->Get_Name() << endl;
+        cout << "Phone number : " << c->Get_PhoneNumber() << endl;
+        cout << "Money : " << c->Get_Money() << endl;
+        cout << "Shares : " << c->Get_Shares() << endl;
+        cout << "Price per share : " << c->Get_ShareCost() << endl;
         cout << endl << endl;
     }
 }
@@ -263,9 +265,8 @@ StockMarket* StockMarket::Get_StockMarket()
 Company* StockMarket::FindCompany(string name)
 {
     for (auto& c : companies) {
-        if (c.Get_Name() == name) {
-            Company* ptr = &c;
-            return ptr;
+        if (c->Get_Name() == name) {
+            return c;
         }
     }
     return nullptr;
@@ -274,9 +275,8 @@ Company* StockMarket::FindCompany(string name)
 Customer* StockMarket::FindCustomer(string name, string surname)
 {
     for (auto& c : customers) {
-        if (c.Get_Surname() == surname) {
-            Customer* ptr = &c;
-            return ptr;
+        if (c->Get_Surname() == surname) {
+            return c;
         }
     }
     return nullptr;

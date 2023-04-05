@@ -30,7 +30,7 @@ public:
 	/*
 	* Function to add customer to list customers
 	*/
-	bool Add_Customer(Customer &customer);
+	bool Add_Customer(Customer* customer);
 	/*
 	* Function to remove customer from list customers
 	*/
@@ -38,7 +38,7 @@ public:
 	/*
 	* Function to add company to list ccompanies
 	*/
-	bool Add_Company(Company &company);
+	bool Add_Company(Company* company);
 	/*
 	* Function to remove company from list ccompanies
 	*/
@@ -148,11 +148,11 @@ private:
 	/*
 	* list of customers in this market
 	*/
-	list<Customer> customers;
+	list<Customer*> customers;
 	/*
 	* list of companies in this market
 	*/
-	list<Company> companies;
+	list<Company*> companies;
 	/*
 	* list of transactions done in this market
 	*/

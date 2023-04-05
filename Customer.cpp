@@ -102,8 +102,10 @@ bool Customer::Add_Transaction(Transaction* transaction)
     if (transaction==nullptr) {
         return false;
     }
-    if (Find_Transaction(transaction->Get_Customer()->Get_Name(), transaction->Get_Company()->Get_Name(), transaction->Get_ID())) {
-        return false;
+    if (Find_Transaction(transaction->Get_Customer()->Get_Name(), transaction->Get_Company()->Get_Name(), transaction->Get_ID()))  {
+        if (transaction->Get_StockMarket() == Find_Transaction(transaction->Get_Customer()->Get_Name(), transaction->Get_Company()->Get_Name(), transaction->Get_ID())->Get_StockMarket()) {
+            return false;
+        }
     }
     transactions.emplace_back(transaction);
     return false;
