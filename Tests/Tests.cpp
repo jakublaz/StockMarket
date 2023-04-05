@@ -238,15 +238,18 @@ namespace Tests
             Transaction* transaction = market.Get_Transaction("Doe", "ABC Company", 1);
 
             Assert::IsNotNull(customer);
-            Assert::AreEqual((string)customer->Get_Name(), (string)"John");
-            Assert::AreEqual((string)customer->Get_Surname(), (string)"Doe");
-            Assert::AreEqual(customer->Get_PhoneNumber(), 1234567890);
-            Assert::AreEqual(customer->Get_PocketMoney(), (double)5000);
+            Assert::AreEqual((string)"John", (string)customer->Get_Name());
+            Assert::AreEqual((string)"Doe", (string)customer->Get_Surname());
+            Assert::AreEqual(1234567890, customer->Get_PhoneNumber());
+            Assert::AreEqual((double)4700, customer->Get_PocketMoney());
+            Assert::AreEqual((double)300, customer->Get_InvestedMoney());
 
             Assert::IsNotNull(company);
-            Assert::AreEqual((string)company->Get_Name(),(string)"ABC Company");
-            Assert::AreEqual(company->Get_Money(), (double)6000);
-            Assert::AreEqual(company->Get_Shares(), 200);
+            Assert::AreEqual((string)"ABC Company", (string)company->Get_Name());
+            Assert::AreEqual((double)6000, company->Get_Money());
+            Assert::AreEqual(200, company->Get_Shares());
+            Assert::AreEqual(10, company->Get_SoldShares());
+            Assert::AreEqual(190, company->Get_FreeShares());
 
             Assert::IsNotNull(transaction);
             Assert::AreEqual(transaction->Get_ID(), 1);

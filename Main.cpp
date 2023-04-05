@@ -11,4 +11,5 @@ int main() {
 
 	//w jakiœ sposób muszê spisywaæ ile ju¿ sprzeda³em sharów
 	//jakiœ test
+	//sprzedaæ wiêcej sharów ni¿ mam
 }

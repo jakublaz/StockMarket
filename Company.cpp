@@ -193,3 +193,22 @@ StockMarket* Company::FindStockMarket(string name)
 double Company::Get_ShareCost() {
 	return costShare;
 }
+
+int Company::Get_SoldShares()
+{
+	return soldshares;
+}
+
+void Company::Set_SoldShares(int amount)
+{
+	this->soldshares = amount;
+}
+
+void Company::Update_SoldShares(int amount) {
+	this->soldshares += amount;
+}
+
+int Company::Get_FreeShares()
+{
+	return shares - soldshares;
+}

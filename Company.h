@@ -124,6 +124,22 @@ public:
 	* getter for share cost
 	*/
 	double Get_ShareCost();
+	/*
+	* Getter for sold shares
+	*/
+	int Get_SoldShares();
+	/*
+	* Setter for sold shares
+	*/
+	void Set_SoldShares(int amount);
+	/*
+	* Updates sold shares
+	*/
+	void Update_SoldShares(int amount);
+	/*
+	* returns amount of not-bought shares
+	*/
+	int Get_FreeShares();
 private:
     /*
     * name of the customer
@@ -138,9 +154,13 @@ private:
     */
     double money;
     /*
-    * amount of shares, that are being distributed
+    * amount of shares, that are being distributed(all)
     */
     int shares;
+	/*
+	* To keep track of the shares  that were sold
+	*/
+	int soldshares;
     /*
     * amount of money you have to pay for 1 share
     */

@@ -63,11 +63,13 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
         Update_InvestedMoney(company->Get_ShareCost()*amountShares);
         customer->Set_InvestedMoney(customer->Get_InvestedMoney() + amountShares * company->Get_ShareCost());
         customer->Set_PocketMoney(customer->Get_PocketMoney() - amountShares * company->Get_ShareCost());
+        company->Update_SoldShares(amountShares);
     }
     else {
         Update_InvestedMoney(company->Get_ShareCost() * amountShares*(-1));
         customer->Set_InvestedMoney(customer->Get_InvestedMoney() - amountShares * company->Get_ShareCost());
         customer->Set_PocketMoney(customer->Get_PocketMoney() + amountShares * company->Get_ShareCost());
+        company->Update_SoldShares(amountShares*(-1));
     }
     //add poinetrs
     Add_Pointers(customer, company, this, this->Get_Transaction(ID),amountShares,type);
@@ -113,14 +115,17 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
     if (company->Get_Money() < 5000) {  //company does not have enought money to be able to be bought
         return false;
     }
-    if (customer->All_Money() < 500) {
+    if (customer->All_Money() < 500) {  //am i reach enought?
         return false;
     }
     if (customer->Get_PocketMoney() < company->Get_ShareCost() * amountShares) {
         return false;
     }
-    if (type != "buy" && type != "sell") {
+    if (type != "buy" && type != "sell") {      //proper name?
 
+        return false;
+    }
+    if (company->Get_FreeShares() < amountShares) {    //enought shares?
         return false;
     }
     return true;
