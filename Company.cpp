@@ -146,12 +146,12 @@ int Company::Sizeof_StockMarket()
 	return (int)stockmarkets.size();
 }
 
-bool Company::IsBancrupt()
+bool Company::IsBancrupt()	////do napisania
 {
 	return false;
 }
 
-Customer* Company::FindCustomer(string surname)	//do sprawdzenia
+Customer* Company::FindCustomer(string surname)
 {
 	for (auto& c : customers) {
 		if (c->Get_Surname() == surname) {
@@ -163,11 +163,21 @@ Customer* Company::FindCustomer(string surname)	//do sprawdzenia
 
 Transaction* Company::FindTransaction(string nameCustomer, string nameCompany, int ID)
 {
+	for (auto& c : transactions) {
+		if (c->Get_Customer()->Get_Name() == nameCustomer && c->Get_Company()->Get_Name() == nameCompany && c->Get_ID() == ID) {
+			return c;
+		}
+	}
 	return nullptr;
 }
 
 StockMarket* Company::FindStockMarket(string name)
 {
+	for (auto& c : stockmarkets) {
+		if (c->Get_Name() == name) {
+			return c;
+		}
+	}
 	return nullptr;
 }
 
