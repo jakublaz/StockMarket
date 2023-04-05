@@ -142,10 +142,6 @@ private:
 	*/
 	double investedMoney;
 	/*
-	* amount of transactions in this market
-	*/
-	int amountOfTransactions;
-	/*
 	* list of customers in this market
 	*/
 	list<Customer> customers;
@@ -161,15 +157,7 @@ private:
 	/*
 	* Function that updates money invested in this stockmarket
 	*/
-	void Update_InvestedMoney();
-	/*
-	* Function that updates amount of operations in this stockmarket
-	*/
-	void Update_AmountOfTransactions();
-	/*
-	* 
-	*/
-	bool FindID(int ID);
+	void Update_InvestedMoney(double money);
 
 	//this functions will be used to check if certain objects are not on the lists
 	//will return nullptr if not found and pointer to element if found

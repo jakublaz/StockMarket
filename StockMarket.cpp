@@ -2,13 +2,11 @@
 
 StockMarket::StockMarket(){
     this->name = "";
-    this->amountOfTransactions = 0;
     this->investedMoney = 0;
 }
 
 StockMarket::StockMarket(string name){
     this->name = name;
-    this->amountOfTransactions = 0;
     this->investedMoney = 0;
 }
 
@@ -91,14 +89,54 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
 
 void StockMarket::Print_Transactions(const string& name)
 {
+    for (auto it = transactions.begin(); it != transactions.end(); ++it) {
+        if (it->Get_Company()->Get_Name() == name) {
+            cout << "ID : " << it->Get_ID() << endl;
+            cout << "Customer : " << it->Get_Customer()->Get_Name() << " " << it->Get_Customer()->Get_Surname() << endl;
+            cout << "Company : " << it->Get_Company()->Get_Name() << endl;
+            cout << "Money : " << it->Get_Amount() << endl;
+            cout << "Shares : " << it->Get_Shares() << endl;
+            cout << "Price per share : " << (double)it->Get_Amount() / it->Get_Shares() << endl;
+            cout << endl << endl;
+        }
+        if (it->Get_Customer()->Get_Name() == name) {
+            cout << "ID : " << it->Get_ID() << endl;
+            cout << "Customer : " << it->Get_Customer()->Get_Name() << " " << it->Get_Customer()->Get_Surname() << endl;
+            cout << "Company : " << it->Get_Company()->Get_Name() << endl;
+            cout << "Money : " << it->Get_Amount() << endl;
+            cout << "Shares : " << it->Get_Shares() << endl;
+            cout << "Price per share : " << (double)it->Get_Amount() / it->Get_Shares() << endl;
+            cout << endl << endl;
+        }
+    }
 }
 
 void StockMarket::PrintAll_Transactions()
 {
+    for (auto it = transactions.begin(); it != transactions.end(); ++it) {
+            cout << "ID : " << it->Get_ID() << endl;
+            cout << "Customer : " << it->Get_Customer()->Get_Name() << " " << it->Get_Customer()->Get_Surname() << endl;
+            cout << "Company : " << it->Get_Company()->Get_Name() << endl;
+            cout << "Money : " << it->Get_Amount() << endl;
+            cout << "Shares : " << it->Get_Shares() << endl;
+            cout << "Price per share : " << (double)it->Get_Amount() / it->Get_Shares() << endl;
+            cout << endl << endl;
+    }
 }
 
 void StockMarket::Print_Transaction(const int& ID)
 {
+    for (auto it = transactions.begin(); it != transactions.end(); ++it) {
+        if (it->Get_ID() == ID) {
+            cout << "ID : " << ID << endl;
+            cout << "Customer : " << it->Get_Customer()->Get_Name() << " " << it->Get_Customer()->Get_Surname() << endl;
+            cout << "Company : " << it->Get_Company()->Get_Name() << endl;
+            cout << "Money : " << it->Get_Amount() << endl;
+            cout << "Shares : " << it->Get_Shares() << endl;
+            cout << "Price per share : " <<(double) it->Get_Amount() / it->Get_Shares() << endl;
+            return;
+        }
+    }
 }
 
 void StockMarket::Set_Name(string name)
@@ -128,22 +166,35 @@ Transaction* StockMarket::Get_Transaction(string surnameCustomer, string nameCom
 
 void StockMarket::Show_Customers()
 {
+    for (auto& c : customers) {
+        cout << "Name : " << c.Get_Name() << endl;
+        cout << "Surname : " << c.Get_Surname() << endl;
+        cout << "Phone number" << c.Get_PhoneNumber() << endl;
+        cout << "Amount of transactions : " << c.Sizeof_Transactions() << endl;
+        cout << "Amount of companies" << c.Sizeof_Companies() << endl;
+        cout << "Amount of Stockmarkets" << c.Sizeof_StockMarkets() << endl;
+        cout << endl << endl;
+    }
 }
 
-void StockMarket::Update_InvestedMoney()
+void StockMarket::Update_InvestedMoney(double money)
 {
-}
-
-void StockMarket::Update_AmountOfTransactions()
-{
+    investedMoney += money;
 }
 
 void StockMarket::Show_Companies()
 {
+    for (auto& c : companies) {
+        cout << "Name : " << c.Get_Name() << endl;
+        cout << "Phone number : " << c.Get_PhoneNumber() << endl;
+        cout << "Money : " << c.Get_Money() << endl;
+
+    }
 }
 
 void StockMarket::Bancrupt_Company()
 {
+    //
 }
 
 int StockMarket::SizeOf_Customers()
