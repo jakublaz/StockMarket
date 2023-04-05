@@ -304,7 +304,7 @@ namespace Tests
             Assert::AreEqual(1, 0);
         }
 
-        TEST_METHOD(Scenario2) {
+        TEST_METHOD(Scenario_2) {
             //1 customer in 2 diffrent stock markets, with 2 diffrent companies
             StockMarket a("GPW");
             StockMarket b("PWG");
@@ -331,6 +331,9 @@ namespace Tests
             Assert::AreEqual(3, customer1.Sizeof_Transactions());
             Assert::AreEqual(2, customer1.Sizeof_Companies());
             Assert::AreEqual(2, customer1.Sizeof_StockMarkets());
+
+            Assert::AreEqual((double)250, b.GetInvestedMoney());
+            Assert::AreEqual((double)2050, a.GetInvestedMoney());
         }
 	};
 }

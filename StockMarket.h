@@ -135,6 +135,10 @@ public:
 	* Writes to the console info about company
 	*/
 	void Print_Company(string name);
+	/*
+	* Getter for invested money
+	*/
+	double GetInvestedMoney();
 
 private:
 	/*

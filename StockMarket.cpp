@@ -18,6 +18,9 @@ StockMarket::~StockMarket(){
 }
 
 bool StockMarket::Add_Customer(Customer* customer) {
+    if (customer == nullptr) {
+        return false;
+    }
     customers.emplace_back(customer);
     return true;
 }
@@ -33,6 +36,9 @@ bool StockMarket::Remove_Customer(string name, string surname) {
 }
 
 bool StockMarket::Add_Company(Company* company) {
+    if (company == nullptr) {
+        return false;
+    }
     companies.emplace_back(company);
     return true;
 }
@@ -61,8 +67,6 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     }
     //add poinetrs
     Add_Pointers(customer, company, this, this->Get_Transaction(ID),amountShares,type);
-    cout << "HH";
-    cout << customer->Sizeof_Transactions() << endl;
     return true;
 }
 
@@ -307,4 +311,9 @@ void StockMarket::Print_Company(string name)
     cout << "Money : " << Get_Company(name)->Get_Money();
     cout << "Shares : " << Get_Company(name)->Get_Shares();
 
+}
+
+double StockMarket::GetInvestedMoney()
+{
+    return investedMoney;
 }
