@@ -131,6 +131,10 @@ public:
 	* It modifies earlier value
 	*/
 	bool Add_Shares(string name, int amount);
+	/*
+	* Setter for investedMoney, it is private because only a function can set invests
+	*/
+	void Set_InvestedMoney(double amount);
 private:
 	/*
 	* name of the customer
@@ -166,11 +170,6 @@ private:
 	* list of stock markets you are in
 	*/
 	list<StockMarket*> stockmarkets;
-
-	/*
-	* Setter for investedMoney, it is private because only a function can set invests
-	*/
-	void Set_InvestedMoney(double amount);
 
 	//this functions will be used to check if certain objects are not on the lists
 	//will return nullptr if not found and pointer to element if found

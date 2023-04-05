@@ -61,9 +61,13 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
     if (type == "buy") {
         Update_InvestedMoney(company->Get_ShareCost()*amountShares);
+        customer->Set_InvestedMoney(customer->Get_InvestedMoney() + amountShares * company->Get_ShareCost());
+        customer->Set_PocketMoney(customer->Get_PocketMoney() - amountShares * company->Get_ShareCost());
     }
     else {
         Update_InvestedMoney(company->Get_ShareCost() * amountShares*(-1));
+        customer->Set_InvestedMoney(customer->Get_InvestedMoney() - amountShares * company->Get_ShareCost());
+        customer->Set_PocketMoney(customer->Get_PocketMoney() + amountShares * company->Get_ShareCost());
     }
     //add poinetrs
     Add_Pointers(customer, company, this, this->Get_Transaction(ID),amountShares,type);

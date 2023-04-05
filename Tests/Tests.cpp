@@ -310,7 +310,7 @@ namespace Tests
             StockMarket b("PWG");
 
             //Add 2 Customers
-            Customer customer1("Jacek", "Zak", 990889675, 800000);
+            Customer customer1("Jacek", "Zak", 990889675, 80000);
             //test 2 functions with the same functionality
             Company company2("ABC Company", 898954637, 90000, 1000);
             //a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
@@ -334,6 +334,9 @@ namespace Tests
 
             Assert::AreEqual((double)250, b.GetInvestedMoney());
             Assert::AreEqual((double)2050, a.GetInvestedMoney());
+
+            Assert::AreEqual((double)77700, customer1.Get_PocketMoney());
+            Assert::AreEqual((double)2300, customer1.Get_InvestedMoney());
         }
 	};
 }
