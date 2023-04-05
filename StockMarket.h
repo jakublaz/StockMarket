@@ -52,7 +52,7 @@ public:
 	/*
 	* Function to check if all limitations are met
 	*/
-	bool Check_Transaction(const Customer& customer, const Company& company, const int& ID);
+	bool Check_Transaction(int ID, Customer* customer, int amountShares, Company* company, string type);
 	/*
 	* Prints all transactions where name equals company or customer
 	*/

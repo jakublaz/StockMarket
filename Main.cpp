@@ -6,5 +6,5 @@
 #include "Transactions.h"
 
 int main() {
-
+	//is bacrupt nit napisane w company.cpp
 }

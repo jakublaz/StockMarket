@@ -13,7 +13,10 @@ StockMarket::StockMarket(string name){
 }
 
 StockMarket::~StockMarket(){
-
+    //do napisania czegoœ wiêcej
+    customers.clear();
+    companies.clear();
+    transactions.clear();
 }
 
 bool StockMarket::Add_Customer(Customer &customer) {
@@ -48,13 +51,23 @@ bool StockMarket::Remove_Company(string name) {
 
 //dzia³a
 bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, Company* company, string type) {
+    if (!Check_Transaction(ID, customer, amountShares, company, type)) {
+        return false;
+    }
+    transactions.emplace_back(ID, amountShares, customer, company, this, type);
+    //dodaæ pointery odpowiednio
+    return true;
+}
+
+bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares,Company* company, string type)
+{
     if (FindTransaction(ID) != nullptr) {   //there is the same id
         return false;
     }
-    if (customer==nullptr || FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {  // add customer if there is not
+    if (customer == nullptr || FindCustomer(customer->Get_Name(), customer->Get_Surname()) == nullptr) {  // add customer if there is not
         return false;
     }
-    if (company==nullptr || FindCompany(company->Get_Name()) == nullptr) {  //add company if there is not
+    if (company == nullptr || FindCompany(company->Get_Name()) == nullptr) {  //add company if there is not
         return false;
     }
     if (company->Get_ShareCost() < 2) { //share lover then 2Euro
@@ -72,15 +85,9 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
     if (customer->Get_PocketMoney() < company->Get_ShareCost() * amountShares) {
         return false;
     }
-    
-    transactions.emplace_back(ID, amountShares, customer, company, this, type);
     return true;
 }
 
-bool StockMarket::Check_Transaction(const Customer& customer, const Company& company, const int& ID)
-{
-    return false;
-}
 
 void StockMarket::Print_Transactions(const string& name)
 {
