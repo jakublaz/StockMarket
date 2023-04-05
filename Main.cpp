@@ -9,7 +9,7 @@ int main() {
 	//is bacrupt nit napisane w company.cpp
 	//test bancrupt
 
-	//w jakiœ sposób muszê spisywaæ ile ju¿ sprzeda³em sharów
-	//jakiœ test
-	//sprzedaæ wiêcej sharów ni¿ mam
+	//napisanie funkcji które bêd¹ zmienia³y wartoœci ceny firmy
+
+	//trzeba przetestowaæ funkcjê losuj¹c¹ szansê na udanie sie tranzakcji
 }

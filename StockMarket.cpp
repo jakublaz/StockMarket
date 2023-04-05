@@ -97,6 +97,10 @@ void StockMarket::Add_Pointers(Customer* customer, Company* company, StockMarket
 
 bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares,Company* company, string type)
 {
+    //if (company->IsBancrupt()) {    //if the company is bancrupt
+    //    Bancrupt_Company(company);
+    //    return false;
+    //}
     if (FindTransaction(ID) != nullptr && FindTransaction(ID)->Get_StockMarket() == this) {   //there is the same id
         return false;
     }
@@ -122,10 +126,12 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
         return false;
     }
     if (type != "buy" && type != "sell") {      //proper name?
-
         return false;
     }
-    if (company->Get_FreeShares() < amountShares) {    //enought shares?
+    if (company->Get_FreeShares() < amountShares && type == "buy") {    //enought shares for buying?
+        return false;
+    }
+    if (company->Get_SoldShares() < amountShares && type == "sold") {   //enought shares  for selling?
         return false;
     }
     return true;
@@ -239,9 +245,10 @@ void StockMarket::Show_Companies()
     }
 }
 
-void StockMarket::Bancrupt_Company()
+void StockMarket::Bancrupt_Company(Company* company)
 {
-    //
+    //do nappisania
+    return;
 }
 
 int StockMarket::SizeOf_Customers()

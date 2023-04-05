@@ -100,7 +100,7 @@ public:
 	* return 0 if price is ok
 	* return 1 if price is too high
 	*/
-	int Ok_Price(int shares, double money, string type); //used in Update_Money();
+	bool Ok_Price(int shares, double money, string type); //used in Update_Money();
 	/*
 	* Test Function
 	* returns size of the list of customers

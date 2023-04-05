@@ -103,7 +103,7 @@ public:
 	/*
 	* Function that will take actions when function IsBancrupt() returns true, divides the assects of bucrupt company
 	*/
-	void Bancrupt_Company();
+	void Bancrupt_Company(Company* company);
 	/*
 	* Test Function
 	* returns size of the list of customers

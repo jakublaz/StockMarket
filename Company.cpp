@@ -119,22 +119,35 @@ void Company::Update_CostShare()
 	costShare = money / shares;
 }
 
-void Company::Update_Money(int shares, double money, string type)
+void Company::Update_Money(int shares, double money, string type)// po co to jest?
 {
-	Ok_Price(shares, money, type);
+	Ok_Price(shares, money, type);	//po co?
 	double cost = shares * this->costShare;
 	double payed = shares * money;
 	this->money = this->money - cost + payed;
 	Update_CostShare();
 }
 
-int Company::Ok_Price(int shares,double money, string type)
+bool Company::Ok_Price(int shares,double money, string type)
 {
-	double costPerShare = (double)money / shares;
-	if (type == "sell" && costPerShare<costShare) {
+	double price = money / (double)shares;
+	double random = (rand() % 11)/10;
+	if (type == "buy") {
+		if (price < this->costShare) {
+			if (random >= price / costShare + 0.1) {
+				return true;
+			}
+			return false;
+		}
 		return true;
 	}
-	if (type == "buy" && costPerShare > costShare) {
+	else {
+		if (price > this->costShare) {
+			if (random >= costShare / price + 0.1) {
+				return true;
+			}
+			return false;
+		}
 		return true;
 	}
 	return false;
@@ -157,6 +170,9 @@ int Company::Sizeof_StockMarket()
 
 bool Company::IsBancrupt()	////do napisania
 {
+	if (costShare < 1) {
+		return true;
+	}
 	return false;
 }
 
