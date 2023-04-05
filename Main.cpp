@@ -8,4 +8,7 @@
 int main() {
 	//is bacrupt nit napisane w company.cpp
 	//test bancrupt
+
+	//w jakiœ sposób muszê spisywaæ ile ju¿ sprzeda³em sharów
+	//jakiœ test
 }

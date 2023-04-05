@@ -328,15 +328,16 @@ namespace Tests
             a.Add_Transaction(2, &customer1, 20, &company2, "buy");
             b.Add_Transaction(1, &customer1, 10, &company1, "buy");
 
+            //customer
             Assert::AreEqual(3, customer1.Sizeof_Transactions());
             Assert::AreEqual(2, customer1.Sizeof_Companies());
             Assert::AreEqual(2, customer1.Sizeof_StockMarkets());
-
-            Assert::AreEqual((double)250, b.GetInvestedMoney());
-            Assert::AreEqual((double)2050, a.GetInvestedMoney());
-
             Assert::AreEqual((double)77700, customer1.Get_PocketMoney());
             Assert::AreEqual((double)2300, customer1.Get_InvestedMoney());
+
+            //stockmarket
+            Assert::AreEqual((double)250, b.GetInvestedMoney());
+            Assert::AreEqual((double)2050, a.GetInvestedMoney());
         }
 	};
 }
