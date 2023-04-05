@@ -29,6 +29,9 @@ bool Company::Add_Customer(Customer* newCustomer) {
 	if (newCustomer == nullptr) {
 		return false;
 	}
+	if (FindCustomer(newCustomer->Get_Surname())) {
+		return false;
+	}
 	customers.emplace_back(newCustomer);
 	return true;
 }
@@ -45,6 +48,9 @@ bool Company::Remove_Customer(string name, string surname) {
 
 bool Company::Add_Transaction(Transaction* transaction) {
 	if (transaction == nullptr) {
+		return false;
+	}
+	if (FindTransaction(transaction->Get_Customer()->Get_Name(), transaction->Get_Company()->Get_Name(), transaction->Get_ID())) {
 		return false;
 	}
 	transactions.emplace_back(transaction);

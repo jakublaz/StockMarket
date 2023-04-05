@@ -76,6 +76,9 @@ bool Customer::Add_Company(Company* company) {
     if (company == nullptr) {
         return false;
     }
+    if (Find_Company(company->Get_Name())) {
+        return false;
+    }
     companies.emplace_back(company, 0);
     return true;
 }
@@ -99,6 +102,9 @@ bool Customer::Add_Transaction(Transaction* transaction)
     if (transaction==nullptr) {
         return false;
     }
+    if (Find_Transaction(transaction->Get_Customer()->Get_Name(), transaction->Get_Company()->Get_Name(), transaction->Get_ID())) {
+        return false;
+    }
     transactions.emplace_back(transaction);
     return false;
 
@@ -107,6 +113,9 @@ bool Customer::Add_Transaction(Transaction* transaction)
 bool Customer::Add_StockMarket(StockMarket* stockmarket)
 {
     if (stockmarket == nullptr) {
+        return false;
+    }
+    if (Find_StockMarket(stockmarket->Get_Name())) {
         return false;
     }
     stockmarkets.emplace_back(stockmarket);

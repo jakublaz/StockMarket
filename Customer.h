@@ -122,8 +122,15 @@ public:
 	* returns size of the list of stockmarkets
 	*/
 	int Sizeof_StockMarkets();
-
+	/*
+	* returns all the money a person have
+	*/
 	double All_Money();
+	/*
+	* Function that should help function Add company to manage copmpanies list, adds shares to the second part of it
+	* It modifies earlier value
+	*/
+	bool Add_Shares(string name, int amount);
 private:
 	/*
 	* name of the customer
@@ -164,11 +171,6 @@ private:
 	* Setter for investedMoney, it is private because only a function can set invests
 	*/
 	void Set_InvestedMoney(double amount);
-	/*
-	* Function that should help function Add company to manage copmpanies list, adds shares to the second part of it
-	* It modifies earlier value
-	*/
-	bool Add_Shares(string name,int amount);
 
 	//this functions will be used to check if certain objects are not on the lists
 	//will return nullptr if not found and pointer to element if found

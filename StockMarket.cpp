@@ -53,8 +53,33 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
         return false;
     }
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
-    //dodaæ pointery odpowiednio
+    if (type == "buy") {
+        Update_InvestedMoney(company->Get_ShareCost()*amountShares);
+    }
+    else {
+        Update_InvestedMoney(company->Get_ShareCost() * amountShares*(-1));
+    }
+    //add poinetrs
+    Add_Pointers(customer, company, this, this->Get_Transaction(ID),amountShares,type);
     return true;
+}
+
+void StockMarket::Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type) {
+    //pointers to customer
+    customer->Add_Company(company);
+    customer->Add_StockMarket(market);
+    customer->Add_Transaction(transaction);
+    if (type == "buy") {
+        customer->Add_Shares(company->Get_Name(), shares);
+    }
+    else {
+        customer->Add_Shares(company->Get_Name(), shares*(-1));
+    }
+
+    //pointers to company
+    company->Add_Customer(customer);
+    company->Add_StockMarket(market);
+    company->Add_Transaction(transaction);
 }
 
 bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares,Company* company, string type)
@@ -81,6 +106,9 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
         return false;
     }
     if (customer->Get_PocketMoney() < company->Get_ShareCost() * amountShares) {
+        return false;
+    }
+    if (type != "buy" && type != "sell") {
         return false;
     }
     return true;
@@ -188,7 +216,9 @@ void StockMarket::Show_Companies()
         cout << "Name : " << c.Get_Name() << endl;
         cout << "Phone number : " << c.Get_PhoneNumber() << endl;
         cout << "Money : " << c.Get_Money() << endl;
-
+        cout << "Shares : " << c.Get_Shares() << endl;
+        cout << "Price per share : " << c.Get_ShareCost() << endl;
+        cout << endl << endl;
     }
 }
 

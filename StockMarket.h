@@ -44,6 +44,10 @@ public:
 	*/
 	bool Remove_Company(string name);
 	/*
+	* function is used in adding pointers after adding a transaction
+	*/
+	void Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type);
+	/*
 	* Function to add transaction to list transactions
 	* It has to be checked before adding a transaction
 	* If it can't add the transaction it will show it on the screen why
