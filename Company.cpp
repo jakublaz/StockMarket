@@ -18,29 +18,55 @@ Company::Company(string name, int phoneNumber, double money, int shares) {
 }
 
 Company::~Company(){
-
+	//napisaæ lepiej t¹ funkcje
+	//aby usuwa³a z powi¹zanych miejsc te¿
+	stockmarkets.clear();
+	customers.clear();
+	transactions.clear();
 }
 
-void Company::Add_Customer(Customer* newCustomer) {
-
+bool Company::Add_Customer(Customer* newCustomer) {
+	if (newCustomer == nullptr) {
+		return false;
+	}
+	customers.emplace_back(newCustomer);
+	return true;
 }
 
-void Company::Remove_Customer(string name, string surname) {
-
+bool Company::Remove_Customer(string name, string surname) {
+	for (auto it = customers.begin(); it != customers.end(); ++it) {
+		if ((*it)->Get_Name() == name && (*it)->Get_Surname() == surname) {
+			customers.erase(it);
+			return true;
+		}
+	}
+	return false;
 }
 
 bool Company::Add_Transaction(Transaction* transaction) {
+	if (transaction == nullptr) {
+		return false;
+	}
 	transactions.emplace_back(transaction);
 	return true;
 }
 
 bool Company::Add_StockMarket(StockMarket* stockmarket){
+	if (stockmarket == nullptr) {
+		return false;
+	}
 	stockmarkets.emplace_back(stockmarket);
 	return true;
 }
 
-void Company::Remove_StockMarket(string name, int ID){
-
+bool Company::Remove_StockMarket(string name){
+	for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+		if ((*it)->Get_Name()==name) {
+			stockmarkets.erase(it);
+			return true;
+		}
+	}
+	return false;
 }
 
 string Company::Get_Name() {

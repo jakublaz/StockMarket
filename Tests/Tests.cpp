@@ -160,7 +160,7 @@ namespace Tests
             market.Get_Customer("John", "Doe")->BuyShares(1, 50, market.Get_Company("ABC Company"), market.Get_StockMarket(),"buy");
             market.Get_Customer("John", "Doe")->SellShares(2, 25, market.Get_Company("ABC Company"), market.Get_StockMarket(), "sell");
 
-            Assert::AreEqual(market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company"), 25);
+            Assert::AreEqual(25,market.Get_Customer("John", "Doe")->Get_SharesCompany("ABC Company"));
         }
 
         TEST_METHOD(Same_IDTransacion) {
