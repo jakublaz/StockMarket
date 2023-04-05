@@ -7,4 +7,5 @@
 
 int main() {
 	//is bacrupt nit napisane w company.cpp
+    
 }

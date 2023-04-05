@@ -61,6 +61,9 @@ bool Company::Add_StockMarket(StockMarket* stockmarket){
 	if (stockmarket == nullptr) {
 		return false;
 	}
+	if (FindStockMarket(stockmarket->Get_Name())) {
+		return false;
+	}
 	stockmarkets.emplace_back(stockmarket);
 	return true;
 }

@@ -261,10 +261,10 @@ namespace Tests
             //Add 2 Customers
             Customer customer1("Jacek", "Zak", 990889675, 800000);
             //test 2 functions with the same functionality
-            Customer customer2("Anna", "Maria", 898954637);
-            a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
+            Customer customer2("Anna", "Maria", 898954637, 90000);
+            //a.Get_Customer("Anna", "Maria")->Set_PocketMoney(90000);
             //Add Company with 2000 shares and 50000 in money
-            Company company1("Henkel", 983883001, 2000, 50000);
+            Company company1("Henkel", 983883001, 50000, 2000);
 
             a.Add_Company(company1);
             a.Add_Customer(customer1);

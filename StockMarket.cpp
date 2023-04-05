@@ -53,6 +53,7 @@ bool StockMarket::Add_Transaction(int ID,Customer* customer, int amountShares, C
         return false;
     }
     transactions.emplace_back(ID, amountShares, customer, company, this, type);
+
     if (type == "buy") {
         Update_InvestedMoney(company->Get_ShareCost()*amountShares);
     }
@@ -69,6 +70,7 @@ void StockMarket::Add_Pointers(Customer* customer, Company* company, StockMarket
     customer->Add_Company(company);
     customer->Add_StockMarket(market);
     customer->Add_Transaction(transaction);
+
     if (type == "buy") {
         customer->Add_Shares(company->Get_Name(), shares);
     }
@@ -284,7 +286,6 @@ Transaction* StockMarket::FindTransaction(int ID)
 {
     for (auto& c : transactions) {
         if (c.Get_ID() == ID) {
-            Transaction* ptr = &c;
             return &c;
         }
     }

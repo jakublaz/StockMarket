@@ -32,7 +32,7 @@ void Customer::Set_InvestedMoney(double amount) {
 }
 
 void Customer::Set_PocketMoney(double amount) {
-    this->investedMoney = amount;
+    this->pocketMoney = amount;
 }
 
 string Customer::Get_Name(){
@@ -190,7 +190,7 @@ Company* Customer::Find_Company(string name)
 Transaction* Customer::Find_Transaction(string nameCustomer, string nameCompany, int ID)
 {
     for (auto it = transactions.begin(); it != transactions.end(); ++it) {
-        if ((*it)->Get_Company()->Get_Name()==nameCompany && (*it)->Get_Customer()->Get_Name()==nameCustomer) {
+        if ((*it)->Get_Company()->Get_Name()==nameCompany && (*it)->Get_Customer()->Get_Name()==nameCustomer && (*it)->Get_ID()==ID) {
             return *it;
         }
     }
