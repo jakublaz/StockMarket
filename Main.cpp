@@ -42,4 +42,5 @@ int main() {
 
     cout<<a.SizeOf_Transactions();
     cout<<b.SizeOf_Transactions();
+    cout<<b.SizeOf_Customers();
 }

@@ -36,7 +36,7 @@ bool StockMarket::Remove_Customer(string name, string surname) {
     //usuwanie wszystkich transakcji
     todelete->Remove_AllTransactions();
     todelete->Remove_AllCompanies();
-    todelete->Remove_AllStockMarkets();
+    todelete->Remove_AllStockMarkets(todelete);
 
 
     auto it = transactions.begin();
@@ -79,20 +79,8 @@ bool StockMarket::Remove_Company(string name) {
     todelete->Remove_AllCustomers();
     todelete->Remove_AllStockMarkets(todelete);
 
-
-    //transactions.erase(
-    //    remove_if(
-    //        transactions.begin(),
-    //        transactions.end(),
-    //        [todelete](auto t) { return t.Get_Company() == todelete; }
-    //    ),
-    //    transactions.end()
-    //);
-
-    cout << SizeOf_Transactions();
-
     for (auto it = companies.begin(); it != companies.end(); ++it) {
-        if ((*it)->Get_Name() == name) {
+        if ((*it) == todelete) {
             companies.erase(it);
             return true; // exit the function after removing the customer
         }
@@ -343,6 +331,16 @@ bool StockMarket::Remove_TransactionCompany(Company* company)
         ),
         transactions.end()
     );
+
+    auto itt = companies.begin();
+    companies.erase(
+        remove_if(
+            companies.begin(),
+            companies.end(),
+            [company](auto t) { return t == company; }
+        ),
+        companies.end()
+    );
     return true;
 }
 
@@ -382,6 +380,35 @@ void StockMarket::Print_Customer(string name,string surname)
     cout << "Surname : " << surname << endl;
     cout << "Phone number : " << Get_Customer(name,surname)->Get_PhoneNumber()<< endl;
     cout << "Pocket money : " << Get_Customer(name, surname)->Get_PocketMoney() << endl;
+}
+
+bool StockMarket::Remove_TransactionCustomer(Customer* customer)
+{
+    if (customer == nullptr) {
+        return false;
+    }
+
+    auto it = transactions.begin();
+    transactions.erase(
+        remove_if(
+            transactions.begin(),
+            transactions.end(),
+            [customer](auto t) { return t.Get_Customer() == customer; }
+        ),
+        transactions.end()
+    );
+
+
+    auto itt = customers.begin();
+    customers.erase(
+        remove_if(
+            customers.begin(),
+            customers.end(),
+            [customer](auto t) { return t == customer; }
+        ),
+        customers.end()
+    );
+    return true;
 }
 
 void StockMarket::Print_Company(string name)

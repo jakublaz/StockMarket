@@ -149,8 +149,14 @@ void Customer::Remove_AllCompanies()
     companies.clear();
 }
 
-void Customer::Remove_AllStockMarkets()
+void Customer::Remove_AllStockMarkets(Customer* customer)
 {
+    for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+        (*it)->Remove_TransactionCustomer(customer);
+        if ((*it)->Get_Customer(customer->Get_Name(),customer->Get_Surname()) != nullptr) {
+
+        }
+    }
     stockmarkets.clear();
 }
 

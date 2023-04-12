@@ -106,9 +106,9 @@ public:
 	*/
 	void Remove_AllCompanies();
 	/*
-	* Functions removes all stockmarkets from the list in order to delete the customer
+	* Functions removes all stockmarkets, and customers from them, from the list in order to delete the customer
 	*/
-	void Remove_AllStockMarkets();
+	void Remove_AllStockMarkets(Customer* customer);
 	/*
 	* Function to remove pointer to transaction
 	*/
