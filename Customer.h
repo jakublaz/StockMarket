@@ -98,6 +98,14 @@ public:
 	*/
 	bool Remove_StockMarket(string name);
 	/*
+	* Functions removes all companies from the list in order to delete the customer
+	*/
+	void Remove_AllCompanies();
+	/*
+	* Functions removes all stockmarkets from the list in order to delete the customer
+	*/
+	void Remove_AllStockMarkets();
+	/*
 	* Function to remove pointer to transaction
 	*/
 	bool Remove_Transaction(Transaction* transaction);

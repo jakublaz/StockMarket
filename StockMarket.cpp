@@ -1,4 +1,5 @@
 #include "StockMarket.h"
+#include<algorithm>
 
 StockMarket::StockMarket(){
     this->name = "";
@@ -26,13 +27,21 @@ bool StockMarket::Add_Customer(Customer* customer) {
 }
 
 bool StockMarket::Remove_Customer(string name, string surname) {
+    Customer* todelete = nullptr;
+    todelete = FindCustomer(name,surname);
+
+
+    if (todelete == nullptr) {
+        return false;
+    }
+    //usuwanie wszystkich transakcji
+    todelete->Remove_AllCompanies();
+    todelete->Remove_AllStockMarkets();
+
     for (auto it = customers.begin(); it != customers.end(); ++it) {
-        if ((*it)->Get_Name() == name && (*it)->Get_Surname() == surname) {
-            for (auto c : transactions) {
-                this->Remove_Transaction(&c);
-            }
+        if (*it == todelete) {
             customers.erase(it);
-            return true; // exit the function after removing the customer
+            return true;
         }
     }
     return false;

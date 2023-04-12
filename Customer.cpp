@@ -138,6 +138,16 @@ bool Customer::Remove_StockMarket(string name)
     return false;
 }
 
+void Customer::Remove_AllCompanies()
+{
+    companies.clear();
+}
+
+void Customer::Remove_AllStockMarkets()
+{
+    stockmarkets.clear();
+}
+
 bool Customer::Remove_Transaction(Transaction* transaction)
 {
     if (transaction == nullptr) {
