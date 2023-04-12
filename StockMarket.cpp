@@ -35,8 +35,20 @@ bool StockMarket::Remove_Customer(string name, string surname) {
         return false;
     }
     //usuwanie wszystkich transakcji
+    todelete->Remove_AllTransactions();
     todelete->Remove_AllCompanies();
     todelete->Remove_AllStockMarkets();
+
+
+    auto it = transactions.begin();
+    transactions.erase(
+        std::remove_if(
+            transactions.begin(),
+            transactions.end(),
+            [todelete](auto t) { return t.Get_Customer() == todelete; }
+        ),
+        transactions.end()
+    );
 
     for (auto it = customers.begin(); it != customers.end(); ++it) {
         if (*it == todelete) {
@@ -44,6 +56,7 @@ bool StockMarket::Remove_Customer(string name, string surname) {
             return true;
         }
     }
+
     return false;
 }
 

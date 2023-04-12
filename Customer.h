@@ -86,6 +86,10 @@ public:
 	*/
 	bool Remove_Company(string name);
 	/*
+	* Removes all transactions in order to delete customer
+	*/
+	bool Remove_AllTransactions();
+	/*
 	* Function to add transaction from list transactions
 	*/
 	bool Add_Transaction(Transaction* transaction);	//check if  the limits are ok

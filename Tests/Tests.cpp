@@ -341,12 +341,19 @@ namespace Tests
             //stockmarket
             Assert::AreEqual((double)250, b.GetInvestedMoney());
             Assert::AreEqual((double)2050, a.GetInvestedMoney());
+            Assert::AreEqual(2, a.SizeOf_Transactions());
+            Assert::AreEqual(1, b.SizeOf_Transactions());
 
             //usuwanie z list
+            a.Remove_Transaction(a.Get_Transaction(1));
+
+            Assert::AreEqual(1, a.SizeOf_Transactions());
+
+            a.Remove_Customer(customer1.Get_Name(), customer1.Get_Surname());
+
+            Assert::AreEqual(0, a.SizeOf_Transactions());
 
 
-
-            
         }
 	};
 }

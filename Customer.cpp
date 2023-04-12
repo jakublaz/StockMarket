@@ -97,6 +97,12 @@ bool Customer::Remove_Company(string name)
     return false;
 }
 
+bool Customer::Remove_AllTransactions()
+{
+    transactions.clear();
+    return true;
+}
+
 bool Customer::Add_Transaction(Transaction* transaction)
 {
     if (transaction==nullptr) {

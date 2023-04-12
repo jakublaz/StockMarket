@@ -7,6 +7,4 @@
 
 int main() {
 	//usuwanie pointerów gdy coœ sie usuwa
-
-
 }
