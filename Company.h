@@ -41,6 +41,10 @@ public:
 	*/
 	bool Add_Transaction(Transaction* transaction);
 	/*
+	* Function to remove transaction
+	*/
+	bool Remove_Transaction(Transaction* transaction);
+	/*
 	* Function to add stockmarket to list stockmarkets
 	*/
 	bool Add_StockMarket(StockMarket* stockmarket);

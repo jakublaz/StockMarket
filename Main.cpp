@@ -6,10 +6,7 @@
 #include "Transactions.h"
 
 int main() {
-	//is bacrupt nit napisane w company.cpp
-	//test bancrupt
+	//usuwanie pointerów gdy coœ sie usuwa
 
-	//napisanie funkcji które bêd¹ zmienia³y wartoœci ceny firmy
 
-	//trzeba przetestowaæ funkcjê losuj¹c¹ szansê na udanie sie tranzakcji
 }

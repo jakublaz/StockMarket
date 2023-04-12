@@ -44,6 +44,10 @@ public:
 	*/
 	bool Remove_Company(string name);
 	/*
+	* Function to remove transactions if one of the parts of transactions is removed
+	*/
+	bool Remove_Transaction(Transaction* transaction);
+	/*
 	* function is used in adding pointers after adding a transaction
 	*/
 	void Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type);

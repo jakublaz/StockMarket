@@ -98,6 +98,10 @@ public:
 	*/
 	bool Remove_StockMarket(string name);
 	/*
+	* Function to remove pointer to transaction
+	*/
+	bool Remove_Transaction(Transaction* transaction);
+	/*
 	* Function returns pointer to company if found
 	* if not returns nullptr
 	*/

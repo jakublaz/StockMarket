@@ -138,6 +138,16 @@ bool Customer::Remove_StockMarket(string name)
     return false;
 }
 
+bool Customer::Remove_Transaction(Transaction* transaction)
+{
+    if (transaction == nullptr) {
+        return false;
+    }
+
+    transactions.remove(transaction);
+    return true;
+}
+
 Company* Customer::Get_Company(string name)
 {
     return Find_Company(name);

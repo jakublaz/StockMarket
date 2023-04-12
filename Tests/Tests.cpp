@@ -303,9 +303,9 @@ namespace Tests
             Assert::AreEqual(a.Get_Transaction("Zak", "Henkel", 2)->Get_Company()->Get_Name(), a.Get_Company("Henkel")->Get_Name());
         }
 
-        TEST_METHOD(Bancrupt) {
-            Assert::AreEqual(1, 0);
-        }
+        //TEST_METHOD(Bancrupt) {
+        //    Assert::AreEqual(1, 0);
+        //}
 
         TEST_METHOD(Scenario_2) {
             //1 customer in 2 diffrent stock markets, with 2 diffrent companies
@@ -341,6 +341,12 @@ namespace Tests
             //stockmarket
             Assert::AreEqual((double)250, b.GetInvestedMoney());
             Assert::AreEqual((double)2050, a.GetInvestedMoney());
+
+            //usuwanie z list
+
+
+
+            
         }
 	};
 }

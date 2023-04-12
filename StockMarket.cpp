@@ -28,6 +28,9 @@ bool StockMarket::Add_Customer(Customer* customer) {
 bool StockMarket::Remove_Customer(string name, string surname) {
     for (auto it = customers.begin(); it != customers.end(); ++it) {
         if ((*it)->Get_Name() == name && (*it)->Get_Surname() == surname) {
+            for (auto c : transactions) {
+                this->Remove_Transaction(&c);
+            }
             customers.erase(it);
             return true; // exit the function after removing the customer
         }
@@ -332,4 +335,22 @@ void StockMarket::Print_Company(string name)
 double StockMarket::GetInvestedMoney()
 {
     return investedMoney;
+}
+
+bool StockMarket::Remove_Transaction(Transaction* transaction) {
+
+    if (transaction == nullptr) {
+        return false;
+    }
+    transaction->Get_Customer()->Remove_Transaction(transaction);
+    transaction->Get_Company()->Remove_Transaction(transaction);
+    Update_InvestedMoney(transaction->Get_Amount() * (-1));
+
+    for (auto it = transactions.begin(); it != transactions.end(); ++it) {
+        if (&(*it) == transaction) {
+            transactions.erase(it);
+            return true;
+        }
+    }
+    return false;
 }

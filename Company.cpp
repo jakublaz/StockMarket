@@ -57,6 +57,16 @@ bool Company::Add_Transaction(Transaction* transaction) {
 	return true;
 }
 
+bool Company::Remove_Transaction(Transaction* transaction)
+{
+	if (transaction == nullptr) {
+		return false;
+	}
+
+	transactions.remove(transaction);
+	return true;
+}
+
 bool Company::Add_StockMarket(StockMarket* stockmarket){
 	if (stockmarket == nullptr) {
 		return false;
