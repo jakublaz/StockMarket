@@ -37,6 +37,18 @@ public:
 	*/
 	bool Remove_Customer(string name, string surname);
 	/*
+	* Function to remove all transactions in order to delete this company
+	*/
+	void Remove_AllTransactions();
+	/*
+	* Function to remove all customers in order to delete this company
+	*/
+	void Remove_AllCustomers();
+	/*
+	* Function to remove all stockmarkets and transactions in them with this company in order to delete this company
+	*/
+	void Remove_AllStockMarkets(Company* company);
+	/*
 	* Function to add transaction to list transactions
 	*/
 	bool Add_Transaction(Transaction* transaction);

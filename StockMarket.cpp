@@ -30,7 +30,6 @@ bool StockMarket::Remove_Customer(string name, string surname) {
     Customer* todelete = nullptr;
     todelete = FindCustomer(name,surname);
 
-
     if (todelete == nullptr) {
         return false;
     }
@@ -42,7 +41,7 @@ bool StockMarket::Remove_Customer(string name, string surname) {
 
     auto it = transactions.begin();
     transactions.erase(
-        std::remove_if(
+        remove_if(
             transactions.begin(),
             transactions.end(),
             [todelete](auto t) { return t.Get_Customer() == todelete; }
@@ -69,6 +68,29 @@ bool StockMarket::Add_Company(Company* company) {
 }
 
 bool StockMarket::Remove_Company(string name) {
+    Company* todelete = nullptr;
+    todelete = FindCompany(name);
+
+    if (todelete == nullptr) {
+        return false;
+    }
+
+    todelete->Remove_AllTransactions();
+    todelete->Remove_AllCustomers();
+    todelete->Remove_AllStockMarkets(todelete);
+
+
+    //transactions.erase(
+    //    remove_if(
+    //        transactions.begin(),
+    //        transactions.end(),
+    //        [todelete](auto t) { return t.Get_Company() == todelete; }
+    //    ),
+    //    transactions.end()
+    //);
+
+    cout << SizeOf_Transactions();
+
     for (auto it = companies.begin(); it != companies.end(); ++it) {
         if ((*it)->Get_Name() == name) {
             companies.erase(it);
@@ -305,6 +327,23 @@ Transaction* StockMarket::Get_Transaction(int ID)
 StockMarket* StockMarket::Get_StockMarket()
 {
     return this;
+}
+
+bool StockMarket::Remove_TransactionCompany(Company* company)
+{
+    if (company == nullptr) {
+        return false;
+    }
+    auto it = transactions.begin();
+    transactions.erase(
+        remove_if(
+            transactions.begin(),
+            transactions.end(),
+            [company](auto t) { return t.Get_Company() == company; }
+        ),
+        transactions.end()
+    );
+    return true;
 }
 
 Company* StockMarket::FindCompany(string name)

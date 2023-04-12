@@ -124,6 +124,10 @@ public:
 	*/
 	int SizeOf_Transactions();
 	/*
+	* Remoeves all transaction with this company
+	*/
+	bool Remove_TransactionCompany(Company* company);
+	/*
 	* Function returning pointer to transaction with specyfic id
 	*/
 	Transaction* Get_Transaction(int ID);

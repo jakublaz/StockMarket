@@ -46,6 +46,24 @@ bool Company::Remove_Customer(string name, string surname) {
 	return false;
 }
 
+void Company::Remove_AllTransactions()
+{
+	transactions.clear();
+}
+
+void Company::Remove_AllCustomers()
+{
+	customers.clear();
+}
+
+void Company::Remove_AllStockMarkets(Company* company)
+{
+	for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+		(*it)->Remove_TransactionCompany(company);
+	}
+	stockmarkets.clear();
+}
+
 bool Company::Add_Transaction(Transaction* transaction) {
 	if (transaction == nullptr) {
 		return false;
