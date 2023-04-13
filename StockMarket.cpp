@@ -36,18 +36,8 @@ bool StockMarket::Remove_Customer(string name, string surname) {
     //usuwanie wszystkich transakcji
     todelete->Remove_AllTransactions();
     todelete->Remove_AllCompanies();
-    todelete->Remove_AllStockMarkets(todelete);
-
-
-    auto it = transactions.begin();
-    transactions.erase(
-        remove_if(
-            transactions.begin(),
-            transactions.end(),
-            [todelete](auto t) { return t.Get_Customer() == todelete; }
-        ),
-        transactions.end()
-    );
+    todelete->Remove_StockMarket(this);
+    Remove_TransactionCustomer(todelete);
 
     for (auto it = customers.begin(); it != customers.end(); ++it) {
         if (*it == todelete) {
@@ -77,12 +67,13 @@ bool StockMarket::Remove_Company(string name) {
 
     todelete->Remove_AllTransactions();
     todelete->Remove_AllCustomers();
-    todelete->Remove_AllStockMarkets(todelete);
+    todelete->Remove_AllStockMarkets(this);
+    Remove_TransactionCompany(todelete);
 
     for (auto it = companies.begin(); it != companies.end(); ++it) {
         if ((*it) == todelete) {
             companies.erase(it);
-            return true; // exit the function after removing the customer
+            return true; // exit the function after removing the company
         }
     }
     return false;
@@ -330,16 +321,6 @@ bool StockMarket::Remove_TransactionCompany(Company* company)
             [company](auto t) { return t.Get_Company() == company; }
         ),
         transactions.end()
-    );
-
-    auto itt = companies.begin();
-    companies.erase(
-        remove_if(
-            companies.begin(),
-            companies.end(),
-            [company](auto t) { return t == company; }
-        ),
-        companies.end()
     );
     return true;
 }

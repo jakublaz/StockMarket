@@ -349,9 +349,9 @@ namespace Tests
             a.Remove_Company("Henkel");
 
             Assert::AreEqual(0, a.SizeOf_Transactions());
-            Assert::AreEqual(0, b.SizeOf_Transactions());
+            Assert::AreEqual(1, b.SizeOf_Transactions());
             Assert::AreEqual(0, a.SizeOf_Customers());
-            Assert::AreEqual(0, b.SizeOf_Customers());
+            Assert::AreEqual(1, b.SizeOf_Customers());
 
         }
 	};

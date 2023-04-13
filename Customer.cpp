@@ -149,15 +149,17 @@ void Customer::Remove_AllCompanies()
     companies.clear();
 }
 
-void Customer::Remove_AllStockMarkets(Customer* customer)
+void Customer::Remove_StockMarket(StockMarket* stockmarket)
 {
-    for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
-        (*it)->Remove_TransactionCustomer(customer);
-        if ((*it)->Get_Customer(customer->Get_Name(),customer->Get_Surname()) != nullptr) {
-
-        }
-    }
-    stockmarkets.clear();
+    auto it = stockmarkets.begin();
+    stockmarkets.erase(
+        remove_if(
+            stockmarkets.begin(),
+            stockmarkets.end(),
+            [stockmarket](auto t) { return t == stockmarket; }
+        ),
+        stockmarkets.end()
+    );
 }
 
 bool Customer::Remove_Transaction(Transaction* transaction)

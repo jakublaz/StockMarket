@@ -56,12 +56,17 @@ void Company::Remove_AllCustomers()
 	customers.clear();
 }
 
-void Company::Remove_AllStockMarkets(Company* company)
+void Company::Remove_AllStockMarkets(StockMarket* stockmarket)
 {
-	for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
-		(*it)->Remove_TransactionCompany(company);
-	}
-	stockmarkets.clear();
+	auto it = stockmarkets.begin();
+	stockmarkets.erase(
+		remove_if(
+			stockmarkets.begin(),
+			stockmarkets.end(),
+			[stockmarket](auto t) { return t == stockmarket; }
+		),
+		stockmarkets.end()
+	);
 }
 
 bool Company::Add_Transaction(Transaction* transaction) {

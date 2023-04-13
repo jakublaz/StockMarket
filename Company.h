@@ -47,7 +47,7 @@ public:
 	/*
 	* Function to remove all stockmarkets and transactions in them with this company in order to delete this company
 	*/
-	void Remove_AllStockMarkets(Company* company);
+	void Remove_AllStockMarkets(StockMarket* stockmarket);
 	/*
 	* Function to add transaction to list transactions
 	*/
