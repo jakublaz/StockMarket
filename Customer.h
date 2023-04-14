@@ -12,9 +12,6 @@
 using namespace std;
 
 
-//if you want to buy for smaller  amount then sharecost you have to gamble
-//the same for selling for higher money
-
 class Company;
 class Transaction;
 class StockMarket;

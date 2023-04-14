@@ -67,7 +67,7 @@ bool StockMarket::Remove_Company(string name) {
 
     todelete->Remove_AllTransactions();
     todelete->Remove_AllCustomers();
-    todelete->Remove_AllStockMarkets(this);
+    todelete->Remove_StockMarkets(this);
     Remove_TransactionCompany(todelete);
 
     for (auto it = companies.begin(); it != companies.end(); ++it) {

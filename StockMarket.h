@@ -48,13 +48,13 @@ public:
 	*/
 	bool Remove_Transaction(Transaction* transaction);
 	/*
-	* function is used in adding pointers after adding a transaction
+	* function is used in adding pointers while adding a transaction
 	*/
 	void Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type);
 	/*
 	* Function to add transaction to list transactions
-	* It has to be checked before adding a transaction
-	* If it can't add the transaction it will show it on the screen why
+	* It has to be checked before adding a transaction(using check transaction)
+	* If it can't add the transaction it will return 0
 	*/
 	bool Add_Transaction(int ID, Customer* customer, int amountShares, Company* company, string type);
 	/*

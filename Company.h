@@ -47,7 +47,7 @@ public:
 	/*
 	* Function to remove all stockmarkets and transactions in them with this company in order to delete this company
 	*/
-	void Remove_AllStockMarkets(StockMarket* stockmarket);
+	void Remove_StockMarkets(StockMarket* stockmarket);
 	/*
 	* Function to add transaction to list transactions
 	*/
@@ -110,13 +110,6 @@ public:
 	* the price must be higher then the costShare if we buy, lower if we sell
 	*/
 	void Update_Money(int shares, double money, string type);
-	/*
-	* Checks if the price is ok for the restrictions
-	* return -1 if price is too low
-	* return 0 if price is ok
-	* return 1 if price is too high
-	*/
-	bool Ok_Price(int shares, double money, string type); //used in Update_Money();
 	/*
 	* Test Function
 	* returns size of the list of customers
@@ -193,6 +186,7 @@ private:
 	* list of stock markets you are in
 	*/
     list<StockMarket*> stockmarkets;
+
 	//this functions will be used to check if certain objects are not on the lists
     //will return nullptr if not found and pointer to element if found
 	Customer* FindCustomer(string surname);

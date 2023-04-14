@@ -5,9 +5,7 @@
 #include "Company.h"
 #include "StockMarket.h"
 #include<string>
-//check if money is over 10 Euros for a transaction
-//buing more shares then there exists
-//buying for more moeny then you have
+
 
 using namespace std;
 

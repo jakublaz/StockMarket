@@ -56,7 +56,7 @@ void Company::Remove_AllCustomers()
 	customers.clear();
 }
 
-void Company::Remove_AllStockMarkets(StockMarket* stockmarket)
+void Company::Remove_StockMarkets(StockMarket* stockmarket)
 {
 	auto it = stockmarkets.begin();
 	stockmarkets.erase(
@@ -154,36 +154,10 @@ void Company::Update_CostShare()
 
 void Company::Update_Money(int shares, double money, string type)// po co to jest?
 {
-	Ok_Price(shares, money, type);	//po co?
 	double cost = shares * this->costShare;
 	double payed = shares * money;
 	this->money = this->money - cost + payed;
 	Update_CostShare();
-}
-
-bool Company::Ok_Price(int shares,double money, string type)
-{
-	double price = money / (double)shares;
-	double random = (rand() % 11)/10;
-	if (type == "buy") {
-		if (price < this->costShare) {
-			if (random >= price / costShare + 0.1) {
-				return true;
-			}
-			return false;
-		}
-		return true;
-	}
-	else {
-		if (price > this->costShare) {
-			if (random >= costShare / price + 0.1) {
-				return true;
-			}
-			return false;
-		}
-		return true;
-	}
-	return false;
 }
 
 int Company::Sizeof_Customers()
