@@ -163,7 +163,6 @@ bool StockMarket::Check_Transaction(int ID, Customer* customer, int amountShares
     return true;
 }
 
-
 void StockMarket::Print_Transactions(const string& name)
 {
     for (auto it = transactions.begin(); it != transactions.end(); ++it) {

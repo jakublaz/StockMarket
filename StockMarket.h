@@ -48,19 +48,11 @@ public:
 	*/
 	bool Remove_Transaction(Transaction* transaction);
 	/*
-	* function is used in adding pointers while adding a transaction
-	*/
-	void Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type);
-	/*
 	* Function to add transaction to list transactions
 	* It has to be checked before adding a transaction(using check transaction)
 	* If it can't add the transaction it will return 0
 	*/
 	bool Add_Transaction(int ID, Customer* customer, int amountShares, Company* company, string type);
-	/*
-	* Function to check if all limitations are met
-	*/
-	bool Check_Transaction(int ID, Customer* customer, int amountShares, Company* company, string type);
 	/*
 	* Prints all transactions where name equals company or customer
 	*/
@@ -185,6 +177,16 @@ private:
 	Customer* FindCustomer(string name, string surname);
 	Transaction* FindTransaction(int ID);
 
+	/*
+	* function is used in adding pointers while adding a transaction
+	*/
+	void Add_Pointers(Customer* customer, Company* company, StockMarket* market, Transaction* transaction, int shares, string type);
+	/*
+	* Function to check if all limitations are met
+	*/
+	bool Check_Transaction(int ID, Customer* customer, int amountShares, Company* company, string type);
+
+	/*friend bool Company::Company_Remove_StockMarket(string name);*/
 };
 
 #endif /* STOCKMARKET_H */

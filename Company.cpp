@@ -111,6 +111,17 @@ bool Company::Remove_StockMarket(string name){
 	return false;
 }
 
+bool Company::Company_Remove_StockMarket(string name)
+{
+		for (auto it = stockmarkets.begin(); it != stockmarkets.end(); ++it) {
+			if ((*it)->Get_Name() == name) {
+				stockmarkets.erase(it);
+				return true;
+			}
+		}
+		return false;
+}
+
 string Company::Get_Name() {
 	return this->name;
 }
@@ -234,4 +245,9 @@ void Company::Update_SoldShares(int amount) {
 int Company::Get_FreeShares()
 {
 	return shares - soldshares;
+}
+
+bool Company_Remove_StockMarket(string name)
+{
+	return false;
 }

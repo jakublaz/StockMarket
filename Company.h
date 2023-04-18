@@ -194,6 +194,10 @@ private:
 	* Function to remove stockmarket from list stockmarkets
 	*/
 	bool Remove_StockMarket(string name);
+	/*
+	* test function instead of Remove_StockMarket
+	*/
+	bool Company_Remove_StockMarket(string name);
 };
 
 #endif /* COMPANY_H */
