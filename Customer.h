@@ -75,42 +75,6 @@ public:
 	*/
 	bool SellShares(int ID, int shares, Company* company, StockMarket* market, string type);
 	/*
-	* Function to add company to list companies
-	*/
-	bool Add_Company(Company* company);
-	/*
-	* Function to remove company to list companies
-	*/
-	bool Remove_Company(string name);
-	/*
-	* Removes all transactions in order to delete customer
-	*/
-	bool Remove_AllTransactions();
-	/*
-	* Function to add transaction from list transactions
-	*/
-	bool Add_Transaction(Transaction* transaction);	//check if  the limits are ok
-	/*
-	* Function to add stockmarket to list stockmarkets
-	*/
-	bool Add_StockMarket(StockMarket* stockmarket);
-	/*
-	* Function to remove stockmarket from list stockmarkets
-	*/
-	bool Remove_StockMarket(string name);
-	/*
-	* Functions removes all companies from the list in order to delete the customer
-	*/
-	void Remove_AllCompanies();
-	/*
-	* Functions removes all stockmarkets, and customers from them, from the list in order to delete the customer
-	*/
-	void Remove_StockMarket(StockMarket* stockmarket);
-	/*
-	* Function to remove pointer to transaction
-	*/
-	bool Remove_Transaction(Transaction* transaction);
-	/*
 	* Function returns pointer to company if found
 	* if not returns nullptr
 	*/
@@ -149,6 +113,7 @@ public:
 	*/
 	void Set_InvestedMoney(double amount);
 private:
+	friend class StockMarket;
 	/*
 	* name of the customer
 	*/
@@ -189,6 +154,43 @@ private:
 	Company* Find_Company(string name);
 	Transaction* Find_Transaction(string nameCustomer, string nameCompany, int ID);
 	StockMarket* Find_StockMarket(string name);
+
+	/*
+	* Function to add company to list companies
+	*/
+	bool Add_Company(Company* company);
+	/*
+	* Function to remove company to list companies
+	*/
+	bool Remove_Company(string name);
+	/*
+	* Removes all transactions in order to delete customer
+	*/
+	bool Remove_AllTransactions();
+	/*
+	* Function to add transaction from list transactions
+	*/
+	bool Add_Transaction(Transaction* transaction);	//check if  the limits are ok
+	/*
+	* Function to add stockmarket to list stockmarkets
+	*/
+	bool Add_StockMarket(StockMarket* stockmarket);
+	/*
+	* Function to remove stockmarket from list stockmarkets
+	*/
+	bool Remove_StockMarket(string name);
+	/*
+	* Functions removes all companies from the list in order to delete the customer
+	*/
+	void Remove_AllCompanies();
+	/*
+	* Functions removes all stockmarkets, and customers from them, from the list in order to delete the customer
+	*/
+	void Remove_StockMarket(StockMarket* stockmarket);
+	/*
+	* Function to remove pointer to transaction
+	*/
+	bool Remove_Transaction(Transaction* transaction);
 };
 
 #endif /* CUSTOMER_H */
